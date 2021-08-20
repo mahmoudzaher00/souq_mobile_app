@@ -119,23 +119,19 @@ class LoginScreen extends StatelessWidget{
                         ],
                       ),
                     ),
-                    TextButton(
-                      style:TextButton.styleFrom(
-                          primary: Colors.white,
-                          backgroundColor: Color.fromRGBO(42, 87, 128 ,1),
-                          padding: EdgeInsets.only(
-                            left: MediaQuery.of(context).size.width*0.33,
-                            right: MediaQuery.of(context).size.width*0.33,
-                            top: 10,
-                            bottom: 10,
-                          )
+                    SizedBox(height: 50,
+                      width: MediaQuery.of(context).size.width*0.95,
+                      child: TextButton(
+                        style:TextButton.styleFrom(
+                            primary: Colors.white,
+                            backgroundColor: Color.fromRGBO(42, 87, 128 ,1),),
+                        onPressed: ()  {
+                          if (_form.currentState.validate()) {
+                            Navigator.push(context, MaterialPageRoute(builder: (context)=>HomeScreen()));
+                          }
+                        },
+                        child: Text("Login ", style: TextStyle(fontSize: 18),),
                       ),
-                      onPressed: ()  {
-                        if (_form.currentState.validate()) {
-                          Navigator.push(context, MaterialPageRoute(builder: (context)=>HomeScreen()));
-                        }
-                      },
-                      child: Text("Login ", style: TextStyle(fontSize: 18),),
                     ),
 
                     Padding(
