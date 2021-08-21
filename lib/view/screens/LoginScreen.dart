@@ -29,7 +29,7 @@ class LoginScreen extends StatelessWidget{
                     SizedBox(height: 10,),
                     Image.asset(
                       'images/img1.png',
-                      height: MediaQuery.of(context).size.height*0.4,
+                      height: MediaQuery.of(context).size.height*0.35,
                     ),
 
                     Padding(
@@ -107,19 +107,20 @@ class LoginScreen extends StatelessWidget{
                     Padding(
                       padding: const EdgeInsets.all(12.0),
                       child: Row(
-                        mainAxisAlignment: MainAxisAlignment.start,
+                        mainAxisAlignment: MainAxisAlignment.end,
                         children: [
                           CustomText(
                             //text: " نسيت كلمة السر ؟",
-                            text: 'Forgotten password? ',
-                            fontSize: 18,
-                            fontweight: FontWeight.w600,
+                            text: 'Forgot password? ',
+                            fontSize: 16,
                             color: Colors.black,
                           )
                         ],
                       ),
                     ),
-                    SizedBox(height: 50,
+                    SizedBox(height: 25,),
+                    SizedBox(
+                      height: 50,
                       width: MediaQuery.of(context).size.width*0.95,
                       child: TextButton(
                         style:TextButton.styleFrom(
@@ -133,29 +134,27 @@ class LoginScreen extends StatelessWidget{
                         child: Text("Login ", style: TextStyle(fontSize: 18),),
                       ),
                     ),
-
+                   SizedBox(height: 20,),
                     Padding(
                       padding: const EdgeInsets.all(12.0),
                       child: Row(
-                        mainAxisAlignment: MainAxisAlignment.start,
+                        mainAxisAlignment: MainAxisAlignment.center,
                         children: [
                           GestureDetector(
                             onTap: (){
 
                             },
                             child: CustomText(
-                              text: "'Don\'t have an account?",
-                              fontSize: 18,
-                              fontweight: FontWeight.w600,
+                              text: "Don\'t have an account?",
+                              fontSize: 16,
                               color: Colors.black,
                             ),
                           ),
                           InkWell(
                             child: CustomText(
-                              text: '  Sign up for souq',
-                              fontSize: 18,
-                              //fontweight: FontWeight.w600,
-                              color: Colors.black,
+                              text: ' Sign up ',
+                              fontSize: 16,
+                              color: Color.fromRGBO(42, 87, 128 ,1),
                             ),
                             onTap: (){
                               Navigator.push(context, MaterialPageRoute(builder: (context)=>SignUpScreen()));

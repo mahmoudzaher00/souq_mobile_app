@@ -17,7 +17,6 @@ class SignUpScreen extends StatelessWidget {
         child: Form(
           key: _form,
           child: SingleChildScrollView(
-
             child: Column(
               mainAxisAlignment: MainAxisAlignment.spaceAround,
 
