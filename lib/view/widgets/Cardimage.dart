@@ -15,7 +15,8 @@ class CustomCardImage extends StatelessWidget {
         borderRadius: BorderRadius.all(
           Radius.circular(16),
         ),
-        child: Image.asset(image,height: 142,width: double.infinity,
+        child: Image.asset(image,
+         width: double.infinity,
           fit: BoxFit.fill,
         ),
       ),
