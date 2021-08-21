@@ -2,16 +2,26 @@ import 'package:flutter/material.dart';
 import 'package:provider/provider.dart';
 import 'package:untitled1/view/screens/SplashScreen.dart';
 import 'package:untitled1/view_model/Login_view_model.dart';
+import 'package:untitled1/view_model/Resgister_View_Model.dart';
+
 
 
 void main() {
-runApp(ChangeNotifierProvider(create:(_)=>LoginViewModel(),child: MyApp()));
+runApp (
+
+        MyApp());
 }
 
 class MyApp extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
-    return MaterialApp(
+    return  MultiProvider(
+        providers: [
+          ListenableProvider<SignupViewModel>(create: (context) => SignupViewModel()),
+          ListenableProvider<LoginViewModel>(create: (context) => LoginViewModel()),
+
+    ],
+     child: MaterialApp(
       debugShowCheckedModeBanner: false,
       theme: ThemeData(
           primarySwatch: Colors.lightBlue,
@@ -26,8 +36,7 @@ class MyApp extends StatelessWidget {
                   fontSize: 20,
                   color: Color.fromRGBO(42, 87, 128 ,1),
                   fontWeight: FontWeight.bold))),
-      home: SplashScreen(),
-    );
+      home: SplashScreen()));
   }
 }
 
