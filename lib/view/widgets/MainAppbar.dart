@@ -10,12 +10,15 @@ class MainAppBar extends StatelessWidget with PreferredSizeWidget{
       iconTheme: IconThemeData(
         color:Colors.white,
       ),
-      // actions: [
-      //   IconButton(
-      //     icon: Icon(Icons.notifications_outlined,color:Colors.blueAccent[900],),
-      //     onPressed: (){},
-      //   )
-      // ],
+      actions: [
+        Padding(
+          padding: const EdgeInsets.all(10),
+          child: IconButton(
+            icon: Icon(Icons.shopping_cart_rounded,color:Colors.white,),
+            onPressed: (){},
+          ),
+        )
+      ],
       automaticallyImplyLeading: false,
      // shadowColor: Colors.indigo[700],
       elevation: 8,

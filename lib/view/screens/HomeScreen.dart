@@ -13,10 +13,10 @@ class HomeScreen extends StatelessWidget {
     final statusBar = MediaQuery.of(context).padding.top;
     final appBar = AppBar().preferredSize.height;
     return Scaffold(
-      appBar: MainAppBar(),
+    //  appBar: MainAppBar(),
       body: SingleChildScrollView(
         child: Container(
-          height: MediaQuery.of(context).size.height - statusBar -appBar - 65 ,
+          height: MediaQuery.of(context).size.height - statusBar -appBar - 93 ,
           width: MediaQuery.of(context).size.width,
           child: ListView(
             children: [
