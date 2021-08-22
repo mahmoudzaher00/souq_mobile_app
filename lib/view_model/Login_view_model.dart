@@ -1,10 +1,12 @@
 import 'package:flutter/material.dart';
 
 class LoginViewModel extends ChangeNotifier{
-bool passwordvisible=true;
+bool _passwordvisible=true;
 
-void onclick(){
-  passwordvisible=!passwordvisible;
+bool get passwordvisible => _passwordvisible;
+
+  void onclick(){
+  _passwordvisible=!_passwordvisible;
   notifyListeners();
 }
 

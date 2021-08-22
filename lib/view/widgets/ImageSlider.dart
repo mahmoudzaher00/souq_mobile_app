@@ -15,7 +15,7 @@ List _images = [
 
 Widget CarouselImage(BuildContext context) {
   return Container(
-    height: MediaQuery.of(context).size.height * 0.3,
+    height: MediaQuery.of(context).size.height * 0.25,
     child: Carousel(
         borderRadius: true,
         autoplay: true,

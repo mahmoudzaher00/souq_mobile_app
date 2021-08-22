@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:provider/provider.dart';
 import 'package:untitled1/view/screens/SplashScreen.dart';
+import 'package:untitled1/view_model/BottomNagvigation_view_model.dart';
 import 'package:untitled1/view_model/Login_view_model.dart';
 import 'package:untitled1/view_model/Resgister_View_Model.dart';
 
@@ -19,6 +20,7 @@ class MyApp extends StatelessWidget {
         providers: [
           ListenableProvider<SignupViewModel>(create: (context) => SignupViewModel()),
           ListenableProvider<LoginViewModel>(create: (context) => LoginViewModel()),
+          ListenableProvider<BottomNavigationViewModel>(create: (context) => BottomNavigationViewModel()),
 
     ],
      child: MaterialApp(

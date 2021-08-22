@@ -1,18 +1,22 @@
 import 'package:flutter/material.dart';
 
 class SignupViewModel extends ChangeNotifier{
-  bool passwordvisible =true;
-  bool passwordConfirm =true;
+  bool _passwordvisible =true;
+  bool _passwordConfirm =true;
 
+
+  bool get passwordvisible => _passwordvisible;
+  bool get passwordConfirm => _passwordConfirm;
 
   void onclick(){
-    passwordvisible=!passwordvisible;
+    _passwordvisible=!_passwordvisible;
     notifyListeners();
   }
 
   void inClickConfirm(){
-    passwordConfirm=!passwordConfirm;
+    _passwordConfirm=!_passwordConfirm;
     notifyListeners();
   }
+
 
 }

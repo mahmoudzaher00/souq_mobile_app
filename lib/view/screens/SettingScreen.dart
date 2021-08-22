@@ -1,6 +1,6 @@
 import 'package:flutter/material.dart';
 
-class CategoriesScreen extends StatelessWidget {
+class SettingScreen extends StatelessWidget {
 
 
   @override

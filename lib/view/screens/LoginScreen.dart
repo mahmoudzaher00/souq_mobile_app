@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:provider/provider.dart';
 import 'package:untitled1/view/screens/HomeScreen.dart';
+import 'package:untitled1/view/widgets/custom_bottomNavigationBar.dart';
 import 'package:untitled1/view/widgets/custom_text.dart';
 import 'package:untitled1/view_model/Login_view_model.dart';
 import 'SignUpScreen.dart';
@@ -74,7 +75,7 @@ class LoginScreen extends StatelessWidget {
                               color: Color.fromRGBO(42, 87, 128, 1)),
                           suffixIcon: InkWell(
                             onTap: () =>
-                                context.read<LoginViewModel>().onclick(),
+                               _ref.onclick(),
                             child: IconButton(
                               icon: Icon(
                                   _ref.passwordvisible
@@ -134,7 +135,7 @@ class LoginScreen extends StatelessWidget {
                             Navigator.pushReplacement(
                                 context,
                                 MaterialPageRoute(
-                                    builder: (context) => HomeScreen()));
+                                    builder: (context) => CustomBottomNavigationBar()));
                           }
                         },
                         child: Text(
