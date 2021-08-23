@@ -15,8 +15,8 @@ class MoreScreen extends StatelessWidget{
                 color: Colors.white,
               ),
             ),
-            title: Text('بيانات حسابي'),
-            subtitle: Text('معلومات شخصية'),
+            title: Text('My Account'),
+            subtitle: Text('Personal Information'),
             trailing: Icon(Icons.arrow_forward_ios),
             onTap: () {
             //  Navigator.push(context, MaterialPageRoute(builder: (context)=>LoginScreen()));
@@ -34,8 +34,8 @@ class MoreScreen extends StatelessWidget{
                 color: Colors.white,
               ),
             ),
-            title: Text('اللغة'),
-            subtitle: Text('التحكم في اللغه'),
+            title: Text('Language'),
+            subtitle: Text('language control'),
             trailing: Icon(Icons.arrow_forward_ios),
             onTap: () {
              // Navigator.push(context, MaterialPageRoute(builder: (context)=>Language()));
@@ -53,8 +53,8 @@ class MoreScreen extends StatelessWidget{
                 color: Colors.white,
               ),
             ),
-            title: Text('اتصل بنا'),
-            subtitle: Text('للتواصل معنا '),
+            title: Text('Call Us'),
+            subtitle: Text('To Contact Us'),
             trailing: Icon(Icons.arrow_forward_ios),
             onTap: (){
             //  Navigator.push(context, MaterialPageRoute(builder: (context)=>CallUs()));
@@ -72,8 +72,8 @@ class MoreScreen extends StatelessWidget{
                 color: Colors.white,
               ),
             ),
-            title: Text('الشروط والأحكام'),
-            subtitle: Text('قم بمراجعة الشروط والأحكام'),
+            title: Text('Terms and Conditions'),
+            subtitle: Text('Review the terms and conditions'),
             trailing: Icon(Icons.arrow_forward_ios),
             onTap: (){
             //  Navigator.push(context, MaterialPageRoute(builder: (context)=>screen3()));
@@ -91,8 +91,8 @@ class MoreScreen extends StatelessWidget{
                 color: Colors.white,
               ),
             ),
-            title: Text('حول التطبيق'),
-            subtitle: Text('تعرف علينا اكثر'),
+            title: Text('About the app'),
+            subtitle: Text('Get to know us more'),
             trailing: Icon(Icons.arrow_forward_ios),
           ),
           new Divider(

@@ -4,6 +4,9 @@ import 'package:untitled1/view/screens/SplashScreen.dart';
 import 'package:untitled1/view_model/BottomNagvigation_view_model.dart';
 import 'package:untitled1/view_model/Login_view_model.dart';
 import 'package:untitled1/view_model/Resgister_View_Model.dart';
+import 'package:untitled1/view_model/favorite_view_model.dart';
+
+import 'model/remote/Productprovider.dart';
 
 
 
@@ -21,23 +24,15 @@ class MyApp extends StatelessWidget {
           ListenableProvider<SignupViewModel>(create: (context) => SignupViewModel()),
           ListenableProvider<LoginViewModel>(create: (context) => LoginViewModel()),
           ListenableProvider<BottomNavigationViewModel>(create: (context) => BottomNavigationViewModel()),
+          ListenableProvider<ProductProvider>(create: (context) => ProductProvider()),
+          ListenableProvider<FavoriteViewModel>(create: (context) => FavoriteViewModel()),
 
     ],
      child: MaterialApp(
       debugShowCheckedModeBanner: false,
       theme: ThemeData(
           primarySwatch: Colors.lightBlue,
-          textTheme: ThemeData
-              .light()
-              .textTheme
-              .copyWith(
-              body1: TextStyle(color: Color.fromRGBO(20, 50, 50, 1)),
-              body2: TextStyle(color: Color.fromRGBO(20, 50, 50, 1)),
-              title: TextStyle(
-                  fontFamily: 'RobotoCondensed',
-                  fontSize: 20,
-                  color: Color.fromRGBO(42, 87, 128 ,1),
-                  fontWeight: FontWeight.bold))),
+         ),
       home: SplashScreen()));
   }
 }
