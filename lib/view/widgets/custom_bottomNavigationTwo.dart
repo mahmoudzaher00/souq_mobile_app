@@ -2,7 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:provider/provider.dart';
 import 'package:untitled1/view/screens/FavoritesScreen.dart';
 import 'package:untitled1/view/screens/HomeScreen.dart';
-import 'package:untitled1/view/screens/SettingScreen.dart';
+import 'package:untitled1/view/screens/MoreScreen.dart';
 import 'package:untitled1/view_model/BottomNagvigation_view_model.dart';
 
 import 'MainAppbar.dart';
@@ -13,11 +13,12 @@ class CustomBottomNavigationBarTwo extends StatelessWidget {
   List<Widget> _widgetoption = <Widget>[
     HomeScreen(),
     FavoritesScreen(),
-    SettingScreen(),
+    MoreScreen(),
   ];
 
   @override
   Widget build(BuildContext context) {
+
     final _ref=Provider.of<BottomNavigationViewModel>(context);
     return Scaffold(
       appBar: MainAppBar(),

@@ -10,7 +10,6 @@ class CustomCardImage extends StatelessWidget {
     return  Card(
       color: Colors.green,
       shape: RoundedRectangleBorder(borderRadius: BorderRadius.circular(16),),
-
       child: ClipRRect(
         borderRadius: BorderRadius.all(
           Radius.circular(16),

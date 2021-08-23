@@ -2,9 +2,7 @@ import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:untitled1/view/widgets/CategoriesWidget.dart';
 import 'package:untitled1/view/widgets/ImageSlider.dart';
-import 'package:untitled1/view/widgets/MainAppbar.dart';
 import 'package:untitled1/view/widgets/ProductsWidget.dart';
-import 'package:untitled1/view/widgets/custom_bottomNavigationBar.dart';
 import 'package:untitled1/view/widgets/custom_text.dart';
 
 class HomeScreen extends StatelessWidget {

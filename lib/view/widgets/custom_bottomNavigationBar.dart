@@ -2,7 +2,7 @@ import 'package:convex_bottom_bar/convex_bottom_bar.dart';
 import 'package:flutter/material.dart';
 import 'package:provider/provider.dart';
 import 'package:untitled1/view/screens/HomeScreen.dart';
-import 'package:untitled1/view/screens/SettingScreen.dart';
+import 'package:untitled1/view/screens/MoreScreen.dart';
 import 'package:untitled1/view/screens/FavoritesScreen.dart';
 import 'package:untitled1/view_model/BottomNagvigation_view_model.dart';
 
@@ -11,7 +11,7 @@ class CustomBottomNavigationBar extends StatelessWidget {
   List<Widget> _widgetoption = <Widget>[
     HomeScreen(),
     FavoritesScreen(),
-    SettingScreen(),
+    MoreScreen(),
   ];
 
   @override
