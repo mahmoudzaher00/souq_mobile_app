@@ -18,7 +18,7 @@ class _FavoritesScreenState extends State<FavoritesScreen> {
     FavoriteViewModel _ref = Provider.of<FavoriteViewModel>(context);
 
     SchedulerBinding.instance.addPostFrameCallback((_) {
-      _ref.viewAllFilms();
+      _ref.viewAllFavorites();
 
     });
     return
@@ -29,7 +29,7 @@ class _FavoritesScreenState extends State<FavoritesScreen> {
           Container(
             height: MediaQuery.of(context).size.height*0.78,
             child: ListView.builder(
-            itemCount: _ref.filmList.length,
+            itemCount: _ref.FavoritesList.length,
             itemBuilder: (context,i){
              return Container(
                 margin: EdgeInsets.all(12),
@@ -43,14 +43,14 @@ class _FavoritesScreenState extends State<FavoritesScreen> {
                         height: double.infinity,
                         width: 160,
                         child: Image.network(
-                          _ref.filmList[i].favoritesImage,
+                          _ref.FavoritesList[i].favoritesImage,
                           fit: BoxFit.fill,
                         )),
                     Column(
                       mainAxisAlignment: MainAxisAlignment.center,
                       children: [
-                        Text("${_ref.filmList[i].favoritesId}"),
-                        Text("${_ref.filmList[i].favoritesPrice}"),
+                        Text("${_ref.FavoritesList[i].favoritesId}"),
+                        Text("${_ref.FavoritesList[i].favoritesPrice}"),
                       ],
                     ),
                     IconButton(icon: Icon(Icons.favorite), onPressed: () {})

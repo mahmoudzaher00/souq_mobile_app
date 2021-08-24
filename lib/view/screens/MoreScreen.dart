@@ -1,4 +1,7 @@
 import 'package:flutter/material.dart';
+import 'package:untitled1/translations/locale_keys.g.dart';
+import 'package:easy_localization/easy_localization.dart';
+import 'package:untitled1/view/screens/Language.dart';
 
 class MoreScreen extends StatelessWidget{
   @override
@@ -15,8 +18,8 @@ class MoreScreen extends StatelessWidget{
                 color: Colors.white,
               ),
             ),
-            title: Text('My Account'),
-            subtitle: Text('Personal Information'),
+            title: Text('${LocaleKeys.my_account.tr()}'),
+            subtitle: Text('${LocaleKeys.Personal_Information.tr()}'),
             trailing: Icon(Icons.arrow_forward_ios),
             onTap: () {
             //  Navigator.push(context, MaterialPageRoute(builder: (context)=>LoginScreen()));
@@ -34,32 +37,32 @@ class MoreScreen extends StatelessWidget{
                 color: Colors.white,
               ),
             ),
-            title: Text('Language'),
-            subtitle: Text('language control'),
+            title: Text('${LocaleKeys.Language.tr()}'),
+            subtitle: Text('${LocaleKeys.language_control.tr()}'),
             trailing: Icon(Icons.arrow_forward_ios),
             onTap: () {
-             // Navigator.push(context, MaterialPageRoute(builder: (context)=>Language()));
+              Navigator.push(context, MaterialPageRoute(builder: (context)=>LanguageScreen()));
             },
           ),
           Divider(
             height: 1.0,
             indent: 1.0,
           ),
-          ListTile(
-            leading: CircleAvatar(
-              backgroundColor: Colors.lightGreenAccent,
-              child: Icon(
-                Icons.phone,
-                color: Colors.white,
-              ),
-            ),
-            title: Text('Call Us'),
-            subtitle: Text('To Contact Us'),
-            trailing: Icon(Icons.arrow_forward_ios),
-            onTap: (){
-            //  Navigator.push(context, MaterialPageRoute(builder: (context)=>CallUs()));
-            },
-          ),
+          // ListTile(
+          //   leading: CircleAvatar(
+          //     backgroundColor: Colors.lightGreenAccent,
+          //     child: Icon(
+          //       Icons.phone,
+          //       color: Colors.white,
+          //     ),
+          //   ),
+          //   title: Text('Call Us'),
+          //   subtitle: Text('To Contact Us'),
+          //   trailing: Icon(Icons.arrow_forward_ios),
+          //   onTap: (){
+          //   //  Navigator.push(context, MaterialPageRoute(builder: (context)=>CallUs()));
+          //   },
+          // ),
           new Divider(
             height: 1.0,
             indent: 1.0,
@@ -72,8 +75,8 @@ class MoreScreen extends StatelessWidget{
                 color: Colors.white,
               ),
             ),
-            title: Text('Terms and Conditions'),
-            subtitle: Text('Review the terms and conditions'),
+            title: Text('${LocaleKeys.Terms_and_Conditions.tr()}'),
+            subtitle: Text('${LocaleKeys.Review_conditions.tr()}'),
             trailing: Icon(Icons.arrow_forward_ios),
             onTap: (){
             //  Navigator.push(context, MaterialPageRoute(builder: (context)=>screen3()));
@@ -91,8 +94,8 @@ class MoreScreen extends StatelessWidget{
                 color: Colors.white,
               ),
             ),
-            title: Text('About the app'),
-            subtitle: Text('Get to know us more'),
+            title: Text('${LocaleKeys.About_app.tr()}'),
+            subtitle: Text('${LocaleKeys.Get_more.tr()}'),
             trailing: Icon(Icons.arrow_forward_ios),
           ),
           new Divider(

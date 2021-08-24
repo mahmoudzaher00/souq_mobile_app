@@ -1,11 +1,12 @@
 import 'package:flutter/material.dart';
 import 'package:provider/provider.dart';
+import 'package:untitled1/translations/locale_keys.g.dart';
 import 'package:untitled1/view/screens/FavoritesScreen.dart';
 import 'package:untitled1/view/screens/HomeScreen.dart';
 import 'package:untitled1/view/screens/MoreScreen.dart';
 import 'package:untitled1/view_model/BottomNagvigation_view_model.dart';
-
 import 'MainAppbar.dart';
+import 'package:easy_localization/easy_localization.dart';
 
 class CustomBottomNavigationBarTwo extends StatelessWidget {
 
@@ -54,17 +55,17 @@ class CustomBottomNavigationBarTwo extends StatelessWidget {
             items: <BottomNavigationBarItem>[
               BottomNavigationBarItem(
                 icon: new Icon(Icons.home),
-               label: 'Home'
+               label: '${LocaleKeys.home.tr()}'
                // title: new Text(LocaleKeys.NBB_text.tr()),
               ),
               BottomNavigationBarItem(
                 icon: new Icon(Icons.favorite_border_outlined),
-               label: 'Favorites'
+               label: '${LocaleKeys.Favorites.tr()}'
                // title: new Text(LocaleKeys.NBB_text2.tr()),
               ),
               BottomNavigationBarItem(
                   icon: Icon(Icons.more_horiz_rounded),
-                 label: 'More'
+                 label: '${LocaleKeys.more.tr()}'
                  // title: Text(LocaleKeys.NBB_text3.tr())),
               )],
           ),

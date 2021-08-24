@@ -1,6 +1,6 @@
 import 'dart:async';
 import 'package:flutter/material.dart';
-import 'package:untitled1/view/widgets/custom_bottomNavigationTwo.dart';
+import 'package:untitled1/view/screens/LoginScreen.dart';
 
 import 'LoginScreen.dart';
 

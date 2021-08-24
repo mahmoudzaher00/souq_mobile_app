@@ -1,7 +1,9 @@
 import 'package:flutter/material.dart';
+import 'package:untitled1/translations/locale_keys.g.dart';
 import 'package:untitled1/view/screens/LoginScreen.dart';
 import 'package:provider/provider.dart';
 import 'package:untitled1/view_model/Resgister_View_Model.dart';
+import 'package:easy_localization/easy_localization.dart';
 
 class SignUpScreen extends StatelessWidget {
   GlobalKey<FormState> _form = GlobalKey<FormState>();
@@ -28,7 +30,7 @@ class SignUpScreen extends StatelessWidget {
                   children: [
                     SizedBox(height: MediaQuery.of(context).size.height * 0.2),
                     Text(
-                      'Sign Up',
+                      '${LocaleKeys.Signup.tr()}',
                       style: TextStyle(
                           fontSize: 35,
                           fontWeight: FontWeight.w900,
@@ -52,13 +54,13 @@ class SignUpScreen extends StatelessWidget {
                                 color: Color.fromRGBO(23, 56, 88, 1)),
                           ),
                           border: UnderlineInputBorder(),
-                          labelText: 'Email',
+                          labelText: '${LocaleKeys.login.tr()}',
                         ),
                         validator: (value) {
                           if (value.isEmpty) {
-                            return "Please Enter Your Email";
+                            return "${LocaleKeys.enter_email.tr()}";
                           } else if (value.length < 3) {
-                            return "Email cannot be less than three characters! ";
+                            return "${LocaleKeys.cannot_less.tr()} ";
                           } else {
                             return null;
                           }
@@ -93,13 +95,13 @@ class SignUpScreen extends StatelessWidget {
                                 color: Color.fromRGBO(23, 56, 88, 1)),
                           ),
                           border: UnderlineInputBorder(),
-                          labelText: 'Password',
+                          labelText: '${LocaleKeys.password.tr()}',
                         ),
                         validator: (value) {
                           if (value.isEmpty)
-                            return 'Please Enter Your Password';
+                            return '${LocaleKeys.enter_password.tr()}';
                           if (value.length < 6)
-                            return 'The password cannot be less than six digits';
+                            return '${LocaleKeys.pass_cannot_less.tr()}';
                           else {
                             return null;
                           }
@@ -134,13 +136,13 @@ class SignUpScreen extends StatelessWidget {
                                 color: Color.fromRGBO(23, 56, 88, 1)),
                           ),
                           border: UnderlineInputBorder(),
-                          labelText: 'Confirm Password',
+                          labelText: '${LocaleKeys.confirm_password.tr()}',
                         ),
                         validator: (value) {
                           if (value.isEmpty)
-                            return 'Please Enter Your Password';
+                            return '${LocaleKeys.confirm_enter_password.tr()}';
                           if (value.length < 6)
-                            return 'The password cannot be less than six digits';
+                            return '${LocaleKeys.pass_cannot_less.tr()}';
                           else {
                             return null;
                           }
@@ -169,7 +171,7 @@ class SignUpScreen extends StatelessWidget {
                         }
                       },
                       child: Text(
-                        "Sign Up ",
+                        "${LocaleKeys.Signup.tr()}",
                         style: TextStyle(fontSize: 18),
                       ),
                     ),

@@ -1,18 +1,16 @@
 import 'package:flutter/material.dart';
 import 'package:provider/provider.dart';
-import 'package:untitled1/view/screens/HomeScreen.dart';
-import 'package:untitled1/view/widgets/custom_bottomNavigationBar.dart';
+import 'package:untitled1/translations/locale_keys.g.dart';
 import 'package:untitled1/view/widgets/custom_bottomNavigationTwo.dart';
 import 'package:untitled1/view/widgets/custom_text.dart';
 import 'package:untitled1/view_model/Login_view_model.dart';
+import 'package:easy_localization/easy_localization.dart';
 import 'SignUpScreen.dart';
 
 class LoginScreen extends StatelessWidget {
   GlobalKey<FormState> _form = GlobalKey<FormState>();
-  final TextEditingController _emailTextEditingController =
-      TextEditingController();
-  final TextEditingController _passwordTextEditingController =
-      TextEditingController();
+  final TextEditingController _emailTextEditingController = TextEditingController();
+  final TextEditingController _passwordTextEditingController = TextEditingController();
 
   @override
   Widget build(BuildContext context) {
@@ -52,13 +50,13 @@ class LoginScreen extends StatelessWidget {
                                 color: Color.fromRGBO(23, 56, 88, 1)),
                           ),
                           border: UnderlineInputBorder(),
-                          labelText: 'Email',
+                          labelText: '${LocaleKeys.login.tr()}',
                         ),
                         validator: (value) {
                           if (value.isEmpty) {
-                            return "Please Enter Your Email";
+                            return "${LocaleKeys.enter_email.tr()}";
                           } else if (value.length < 3) {
-                            return "Email cannot be less than three characters! ";
+                            return "${LocaleKeys.cannot_less.tr()}";
                           } else {
                             return null;
                           }
@@ -94,13 +92,13 @@ class LoginScreen extends StatelessWidget {
                                 color: Color.fromRGBO(23, 56, 88, 1)),
                           ),
                           border: UnderlineInputBorder(),
-                          labelText: 'Password',
+                          labelText: '${LocaleKeys.password.tr()}',
                         ),
                         validator: (value) {
                           if (value.isEmpty)
-                            return 'Please Enter Your Password';
+                            return '${LocaleKeys.enter_password.tr()}';
                           if (value.length < 6)
-                            return 'The password cannot be less than six digits';
+                            return '${LocaleKeys.pass_cannot_less.tr()}';
                           else {
                             return null;
                           }
@@ -113,7 +111,7 @@ class LoginScreen extends StatelessWidget {
                         mainAxisAlignment: MainAxisAlignment.end,
                         children: [
                           CustomText(
-                            text: 'Forgot password? ',
+                            text: '${LocaleKeys.forgot.tr()}',
                             fontSize: 16,
                             color: Colors.black,
                           )
@@ -140,7 +138,7 @@ class LoginScreen extends StatelessWidget {
                           }
                         },
                         child: Text(
-                          "Login ",
+                          "${LocaleKeys.log.tr()}",
                           style: TextStyle(fontSize: 18),
                         ),
                       ),
@@ -156,14 +154,14 @@ class LoginScreen extends StatelessWidget {
                           GestureDetector(
                             onTap: () {},
                             child: CustomText(
-                              text: "Don\'t have an account?",
+                              text: "${LocaleKeys.have_account.tr()}",
                               fontSize: 16,
                               color: Colors.black,
                             ),
                           ),
                           InkWell(
                             child: CustomText(
-                              text: ' Sign up ',
+                              text: '${LocaleKeys.Signup.tr()}',
                               fontSize: 16,
                               color: Color.fromRGBO(42, 87, 128, 1),
                             ),
