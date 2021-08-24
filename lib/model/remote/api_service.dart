@@ -14,7 +14,7 @@ class ApiServices{
   Future<http.Response>fetchproduct()async{
     String Url='https://student.valuxapps.com/api/products';
     Response response=await http.get(Uri.parse(Url));
-    print(response.body);
+   // print(response.body);
     return response;
   }
 }

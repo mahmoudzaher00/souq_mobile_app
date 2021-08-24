@@ -2,6 +2,8 @@ import 'dart:async';
 import 'package:flutter/material.dart';
 import 'package:untitled1/view/widgets/custom_bottomNavigationTwo.dart';
 
+import 'LoginScreen.dart';
+
 class SplashScreen extends StatefulWidget {
   @override
   _SplashScreenState createState() => _SplashScreenState();
@@ -36,7 +38,7 @@ class _SplashScreenState extends State<SplashScreen> {
       Navigator.push(
           context,
           MaterialPageRoute(
-              builder: (context) => CustomBottomNavigationBarTwo()));
+              builder: (context) => LoginScreen()));
     });
   }
 }

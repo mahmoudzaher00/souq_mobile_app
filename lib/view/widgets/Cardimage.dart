@@ -2,7 +2,6 @@ import 'package:flutter/material.dart';
 
 class CustomCardImage extends StatelessWidget {
   final String image;
-
   CustomCardImage({this.image});
 
   @override

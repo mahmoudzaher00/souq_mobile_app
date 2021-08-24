@@ -11,6 +11,7 @@ class HomeScreen extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     final statusBar = MediaQuery.of(context).padding.top;
+
     final appBar = AppBar().preferredSize.height;
     ProductProvider product = Provider.of<ProductProvider>(context);
     product.fetchproduct();
@@ -19,7 +20,7 @@ class HomeScreen extends StatelessWidget {
       body: product.productResponse != null
           ? SingleChildScrollView(
               child: Container(
-                height: MediaQuery.of(context).size.height - statusBar - appBar - 93,
+                height: MediaQuery.of(context).size.height - statusBar - appBar - 105,
                 width: MediaQuery.of(context).size.width,
                 child: ListView(children: [
                   Column(
