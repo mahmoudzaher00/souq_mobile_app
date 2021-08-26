@@ -7,7 +7,7 @@ class CustomCardImage extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return  Card(
-      color: Colors.green,
+      color: Color.fromRGBO(42, 87, 128, 1),
       shape: RoundedRectangleBorder(borderRadius: BorderRadius.circular(16),),
       child: ClipRRect(
         borderRadius: BorderRadius.all(

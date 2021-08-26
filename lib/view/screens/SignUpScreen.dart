@@ -7,12 +7,11 @@ import 'package:easy_localization/easy_localization.dart';
 
 class SignUpScreen extends StatelessWidget {
   GlobalKey<FormState> _form = GlobalKey<FormState>();
-  final TextEditingController _emailTextEditingController =
-      TextEditingController();
-  final TextEditingController _passwordTextEditingController =
-      TextEditingController();
-  final TextEditingController _passwordTextEditingControllerConfirm =
-      TextEditingController();
+  final TextEditingController _emailTextEditingController = TextEditingController();
+  final TextEditingController _nameTextEditingController = TextEditingController();
+  final TextEditingController _passwordTextEditingController = TextEditingController();
+  final TextEditingController _passwordTextEditingControllerconfirm = TextEditingController();
+  final TextEditingController _phoneTextEditingController = TextEditingController();
 
   @override
   Widget build(BuildContext context) {
@@ -28,13 +27,44 @@ class SignUpScreen extends StatelessWidget {
                 Column(
                   crossAxisAlignment: CrossAxisAlignment.center,
                   children: [
-                    SizedBox(height: MediaQuery.of(context).size.height * 0.2),
+                    SizedBox(height: MediaQuery.of(context).size.height * 0.1),
                     Text(
                       '${LocaleKeys.Signup.tr()}',
                       style: TextStyle(
                           fontSize: 35,
                           fontWeight: FontWeight.w900,
                           color: Color.fromRGBO(42, 87, 128, 1)),
+                    ),
+                    Padding(
+                      padding: EdgeInsets.all(10),
+                      child: TextFormField(
+                        controller: _nameTextEditingController,
+                        obscureText: false,
+                        keyboardType: TextInputType.name,
+                        decoration: InputDecoration(
+                          prefixIcon: Icon(Icons.person,
+                              color: Color.fromRGBO(42, 87, 128, 1)),
+                          labelStyle: TextStyle(color: Colors.black),
+                          enabledBorder: UnderlineInputBorder(
+                            borderSide: BorderSide(color: Colors.black),
+                          ),
+                          focusedBorder: UnderlineInputBorder(
+                            borderSide: BorderSide(
+                                color: Color.fromRGBO(23, 56, 88, 1)),
+                          ),
+                          border: UnderlineInputBorder(),
+                          labelText: '${LocaleKeys.Name.tr()}',
+                        ),
+                        validator: (value) {
+                          if (value.isEmpty) {
+                            return "${LocaleKeys.enter_name.tr()}";
+                          } else if (value.length < 3) {
+                            return "${LocaleKeys.cannot_less_name.tr()} ";
+                          } else {
+                            return null;
+                          }
+                        },
+                      ),
                     ),
                     Padding(
                       padding: EdgeInsets.all(10),
@@ -111,7 +141,7 @@ class SignUpScreen extends StatelessWidget {
                     Padding(
                       padding: EdgeInsets.all(10),
                       child: TextFormField(
-                        controller: _passwordTextEditingControllerConfirm,
+                        controller: _passwordTextEditingControllerconfirm,
                         obscureText: _ref.passwordConfirm ? true : false,
                         keyboardType: TextInputType.number,
                         decoration: InputDecoration(
@@ -139,10 +169,40 @@ class SignUpScreen extends StatelessWidget {
                           labelText: '${LocaleKeys.confirm_password.tr()}',
                         ),
                         validator: (value) {
+                          if(value.isEmpty && value !=_passwordTextEditingController.text){
+                              return '${LocaleKeys.confirm_enter_password.tr()}';;
+                          }else{
+                            return null;
+                          }
+
+                        },
+                      ),
+                    ),
+                    Padding(
+                      padding: EdgeInsets.all(10),
+                      child: TextFormField(
+                        controller: _phoneTextEditingController,
+                        obscureText: false,
+                        keyboardType: TextInputType.phone,
+                        decoration: InputDecoration(
+                          prefixIcon: Icon(Icons.phone,
+                              color: Color.fromRGBO(42, 87, 128, 1)),
+                          labelStyle: TextStyle(color: Colors.black),
+                          enabledBorder: UnderlineInputBorder(
+                            borderSide: BorderSide(color: Colors.black),
+                          ),
+                          focusedBorder: UnderlineInputBorder(
+                            borderSide: BorderSide(
+                                color: Color.fromRGBO(23, 56, 88, 1)),
+                          ),
+                          border: UnderlineInputBorder(),
+                          labelText: '${LocaleKeys.phone.tr()}',
+                        ),
+                        validator: (value) {
                           if (value.isEmpty)
-                            return '${LocaleKeys.confirm_enter_password.tr()}';
+                            return '${LocaleKeys.enter_phone.tr()}';
                           if (value.length < 6)
-                            return '${LocaleKeys.pass_cannot_less.tr()}';
+                            return '${LocaleKeys.cannot_less_phone.tr()}';
                           else {
                             return null;
                           }
@@ -150,29 +210,26 @@ class SignUpScreen extends StatelessWidget {
                       ),
                     ),
                     SizedBox(
-                      height: MediaQuery.of(context).size.height * 0.1,
+                      height: MediaQuery.of(context).size.height * 0.05,
                     ),
-                    TextButton(
-                      style: TextButton.styleFrom(
-                          primary: Colors.white,
-                          backgroundColor: Color.fromRGBO(42, 87, 128, 1),
-                          padding: EdgeInsets.only(
-                            left: MediaQuery.of(context).size.width * 0.33,
-                            right: MediaQuery.of(context).size.width * 0.33,
-                            top: 10,
-                            bottom: 10,
-                          )),
-                      onPressed: () {
-                        if (_form.currentState.validate()) {
-                          Navigator.push(
-                              context,
-                              MaterialPageRoute(
-                                  builder: (context) => LoginScreen()));
-                        }
-                      },
-                      child: Text(
-                        "${LocaleKeys.Signup.tr()}",
-                        style: TextStyle(fontSize: 18),
+                    SizedBox(
+                      height: 50,
+                      width: MediaQuery.of(context).size.width * 0.95,
+                      child: TextButton(
+                        style: TextButton.styleFrom(
+                            primary: Colors.white,
+                            backgroundColor: Color.fromRGBO(42, 87, 128, 1),
+                            ),
+                        onPressed: () {
+                          if (_form.currentState.validate()) {
+                           // Navigator.push(context, MaterialPageRoute(builder: (context) => LoginScreen()));
+                            sendRequestData(_ref ,context);
+                          }
+                        },
+                        child: Text(
+                          "${LocaleKeys.Signup.tr()}",
+                          style: TextStyle(fontSize: 18),
+                        ),
                       ),
                     ),
                   ],
@@ -183,5 +240,24 @@ class SignUpScreen extends StatelessWidget {
         ),
       ),
     );
+  }
+  Future<void> sendRequestData(SignupViewModel ref, BuildContext context) async {
+    var body = <String, String>{
+        "name": _nameTextEditingController.text,
+        "email": _emailTextEditingController.text,
+         "password": _passwordTextEditingController.text,
+        "phone": _phoneTextEditingController.text,
+
+      };
+    ref.RegisterSendRequest(body).then((value) {
+
+        print(value.message);
+        print(value.status);
+
+
+
+
+      }
+      );
   }
 }

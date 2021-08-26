@@ -11,7 +11,7 @@
   "Signup": "Sign up",
   "have_account": "Don't have an account?",
   "confirm_password": "Confirm Password",
-  "confirm_enter_password": "Please Enter Your Password ِagain",
+  "confirm_enter_password": "Password  not match",
   "home": "Home",
   "Favorites": "Favorites",
   "more": "More",
@@ -22,5 +22,17 @@
   "Review_conditions": "Review the terms and conditions",
   "About_app": "About the app",
   "Get_more": "Get to know us more",
-  "Terms_and_Conditions": "Terms and Conditions"
+  "Terms_and_Conditions": "Terms and Conditions",
+  "Categories": "Categories",
+  "Recommended": "Recommended For You",
+  "addfavorites": " This Product added to favorites",
+  "deletefavorites": " This Product removed from to favorites",
+  "SelectLanguage": "Select Language",
+  "Languagechanged": "Language has changed",
+  "Name": "User Name",
+  "phone": "Phone Number",
+  "enter_name": "Please Enter Your User Name",
+  "enter_phone": "Please Enter Your Phone Number",
+  "cannot_less_name": "User name cannot be less than three characters!",
+  "cannot_less_phone": "Phone number cannot be less than10 numbers!"
 }

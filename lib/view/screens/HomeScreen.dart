@@ -1,12 +1,12 @@
-import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:provider/provider.dart';
 import 'package:untitled1/model/remote/Productprovider.dart';
+import 'package:untitled1/translations/locale_keys.g.dart';
 import 'package:untitled1/view/widgets/CategoriesWidget.dart';
 import 'package:untitled1/view/widgets/ImageSlider.dart';
 import 'package:untitled1/view/widgets/ProductsWidget.dart';
 import 'package:untitled1/view/widgets/custom_text.dart';
-
+import 'package:easy_localization/easy_localization.dart';
 class HomeScreen extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
@@ -38,7 +38,7 @@ class HomeScreen extends StatelessWidget {
                       Padding(
                         padding: const EdgeInsets.only(left: 8.0),
                         child: CustomText(
-                          text: 'Categories',
+                          text: '${LocaleKeys.Categories.tr()}',
                           fontweight: FontWeight.bold,
                           fontSize: 20,
                         ),
@@ -50,7 +50,7 @@ class HomeScreen extends StatelessWidget {
                       Padding(
                           padding: const EdgeInsets.only(left: 8.0, bottom: 12),
                           child: CustomText(
-                            text: 'Recommended For You',
+                            text: '${LocaleKeys.Recommended.tr()}',
                             fontweight: FontWeight.bold,
                             fontSize: 20,
                           )),

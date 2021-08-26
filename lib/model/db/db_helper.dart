@@ -66,4 +66,16 @@ class DbHelper {
       return null;
     }
   }
+  //3-delete
+  Future<int>deleteFavorites(Favorites favorites) async{
+    var _db = await database;
+    return await _db.delete(Constants.TABLE_NAME,  where: Constants.COL_ID+"=?" , whereArgs: [favorites.favoritesId] );
+  }
+  //4-update
+  Future<int> updatenote(Favorites favorites) async{
+    var _db = await database;
+    return await _db.update(Constants.TABLE_NAME, favorites.toMap() , where: Constants.COL_ID+"=?" , whereArgs: [favorites.favoritesId] );
+  }
 }
+
+

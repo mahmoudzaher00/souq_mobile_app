@@ -27,15 +27,5 @@ abstract class  LocaleKeys {
   static const Terms_and_Conditions = 'Terms_and_Conditions';
   static const Categories = 'Categories';
   static const Recommended = 'Recommended';
-  static const addfavorites = 'addfavorites';
-  static const deletefavorites = 'deletefavorites';
-  static const SelectLanguage = 'SelectLanguage';
-  static const Languagechanged = 'Languagechanged';
-  static const Name = 'Name';
-  static const phone = 'phone';
-  static const enter_name = 'enter_name';
-  static const enter_phone = 'enter_phone';
-  static const cannot_less_name = 'cannot_less_name';
-  static const cannot_less_phone = 'cannot_less_phone';
 
 }

@@ -27,7 +27,7 @@ class CodegenLoader extends AssetLoader{
   "Signup": "إنشاء حساب",
   "have_account": "ليس ليدك حساب؟",
   "confirm_password": "تأكيد كلمة المرور ",
-  "confirm_enter_password": "الرجاء إدخل كلمة المرور مرة أخري",
+  "confirm_enter_password": "كلمة السر غير متطابقة",
   "home": "الرئيسة",
   "Favorites": "المفضلات",
   "more": "المزيد",
@@ -38,7 +38,19 @@ class CodegenLoader extends AssetLoader{
   "Review_conditions": "راجع الشروط والأحكام",
   "About_app": "حول التطبيق",
   "Get_more": "معرفة المزيد",
-  "Terms_and_Conditions": "الشروط والأحكام"
+  "Terms_and_Conditions": "الشروط والأحكام",
+  "Categories": "التصنيفات",
+  "Recommended": "الموصي به",
+  "addfavorites": "تمت إضافة المنتج إلى المفضلات",
+  "deletefavorites": "تمت إزالة المنتج إلى المفضلات",
+  "SelectLanguage": "أختيار اللغة",
+  "Languagechanged": "تم تغير اللغة ",
+  "Name": "اسم المستخدم",
+  "phone": "رقم الهاتف",
+  "enter_name": "الرجاء إدخال اسم المستخدم",
+  "enter_phone": "الرجاء إدخال رقم الهاتف",
+  "cannot_less_name": "!لا يمكن أن يكون اسم المستخدم أقل من ثلاثة أحرف",
+  "cannot_less_phone": "!لا يمكن أن يكون رقم الهاتف أقل من 10 أرقام"
 };
 static const Map<String,dynamic> en = {
   "login": "Email",
@@ -53,7 +65,7 @@ static const Map<String,dynamic> en = {
   "Signup": "Sign up",
   "have_account": "Don't have an account?",
   "confirm_password": "Confirm Password",
-  "confirm_enter_password": "Please Enter Your Password ِagain",
+  "confirm_enter_password": "Password  not match",
   "home": "Home",
   "Favorites": "Favorites",
   "more": "More",
@@ -64,7 +76,19 @@ static const Map<String,dynamic> en = {
   "Review_conditions": "Review the terms and conditions",
   "About_app": "About the app",
   "Get_more": "Get to know us more",
-  "Terms_and_Conditions": "Terms and Conditions"
+  "Terms_and_Conditions": "Terms and Conditions",
+  "Categories": "Categories",
+  "Recommended": "Recommended For You",
+  "addfavorites": " This Product added to favorites",
+  "deletefavorites": " This Product removed from to favorites",
+  "SelectLanguage": "Select Language",
+  "Languagechanged": "Language has changed",
+  "Name": "User Name",
+  "phone": "Phone Number",
+  "enter_name": "Please Enter Your User Name",
+  "enter_phone": "Please Enter Your Phone Number",
+  "cannot_less_name": "User name cannot be less than three characters!",
+  "cannot_less_phone": "Phone number cannot be less than10 numbers!"
 };
 static const Map<String, Map<String,dynamic>> mapLocales = {"ar": ar, "en": en};
 }

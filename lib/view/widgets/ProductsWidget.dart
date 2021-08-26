@@ -45,16 +45,18 @@ class _ProductsWidgetState extends State<ProductsWidget> {
                 ),
               ),
 
-              // Flexible(
-              //   child: Container(
-              //       width: double.infinity,
-              //     height: 20,
-              //     child: CustomText(
-              //        text: '${product.productResponse.data.data[index].name}',
-              //        fontSize: 16,
-              //      ),
-              //    ),
-              // ),
+              Flexible(
+                child: Container(
+                    width: double.infinity,
+                  height: 28,
+                  child: Center(
+                    child: CustomText(
+                       text: '${product.productResponse.data.data[index].name.substring(0,16)}',
+                       fontSize: 16,
+                     ),
+                  ),
+                 ),
+              ),
               Row(
                 mainAxisAlignment: MainAxisAlignment.spaceAround,
                 children: [

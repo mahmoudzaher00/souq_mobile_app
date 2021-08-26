@@ -11,7 +11,7 @@
   "Signup": "إنشاء حساب",
   "have_account": "ليس ليدك حساب؟",
   "confirm_password": "تأكيد كلمة المرور ",
-  "confirm_enter_password": "الرجاء إدخل كلمة المرور مرة أخري",
+  "confirm_enter_password": "كلمة السر غير متطابقة",
   "home": "الرئيسة",
   "Favorites": "المفضلات",
   "more": "المزيد",
@@ -22,5 +22,17 @@
   "Review_conditions": "راجع الشروط والأحكام",
   "About_app": "حول التطبيق",
   "Get_more": "معرفة المزيد",
-  "Terms_and_Conditions": "الشروط والأحكام"
+  "Terms_and_Conditions": "الشروط والأحكام",
+  "Categories": "التصنيفات",
+  "Recommended": "الموصي به",
+  "addfavorites": "تمت إضافة المنتج إلى المفضلات",
+  "deletefavorites": "تمت إزالة المنتج إلى المفضلات",
+  "SelectLanguage": "أختيار اللغة",
+  "Languagechanged": "تم تغير اللغة ",
+  "Name": "اسم المستخدم",
+  "phone": "رقم الهاتف",
+  "enter_name": "الرجاء إدخال اسم المستخدم",
+  "enter_phone": "الرجاء إدخال رقم الهاتف",
+  "cannot_less_name": "!لا يمكن أن يكون اسم المستخدم أقل من ثلاثة أحرف",
+  "cannot_less_phone": "!لا يمكن أن يكون رقم الهاتف أقل من 10 أرقام"
 }

@@ -108,7 +108,7 @@ class LoginScreen extends StatelessWidget {
                     Padding(
                       padding: const EdgeInsets.all(12.0),
                       child: Row(
-                        mainAxisAlignment: MainAxisAlignment.end,
+                        //mainAxisAlignment: MainAxisAlignment.end,
                         children: [
                           CustomText(
                             text: '${LocaleKeys.forgot.tr()}',

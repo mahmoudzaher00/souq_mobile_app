@@ -1,17 +1,10 @@
-import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter/scheduler.dart';
 import 'package:provider/provider.dart';
 
 import 'package:untitled1/view_model/favorite_view_model.dart';
 
-class FavoritesScreen extends StatefulWidget {
-
-  @override
-  _FavoritesScreenState createState() => _FavoritesScreenState();
-}
-
-class _FavoritesScreenState extends State<FavoritesScreen> {
+class FavoritesScreen extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
@@ -23,47 +16,60 @@ class _FavoritesScreenState extends State<FavoritesScreen> {
     });
     return
       //_ref.filmList.isNotEmpty?
-    Container(
-      child: Column(
-        children: [
-          Container(
-            height: MediaQuery.of(context).size.height*0.78,
-            child: ListView.builder(
-            itemCount: _ref.FavoritesList.length,
-            itemBuilder: (context,i){
-             return Container(
-                margin: EdgeInsets.all(12),
-                height: MediaQuery.of(context).size.height * 0.1,
-                color: Colors.grey,
-                child:
-                Row(
-                  mainAxisAlignment: MainAxisAlignment.spaceBetween,
-                  children: [
-                    Container(
-                        height: double.infinity,
-                        width: 160,
-                        child: Image.network(
-                          _ref.FavoritesList[i].favoritesImage,
-                          fit: BoxFit.fill,
-                        )),
-                    Column(
-                      mainAxisAlignment: MainAxisAlignment.center,
+
+     Container(
+       height: double.infinity,
+        child: Column(
+          children: [
+            Container(
+              height: MediaQuery.of(context).size.height*0.78,
+              child: ListView.builder(
+              itemCount: _ref.FavoritesList.length,
+              itemBuilder: (context,i){
+               return Card(
+                 elevation: 10,
+                 shape:  RoundedRectangleBorder(
+                   borderRadius: BorderRadius.circular(10),),
+                 child: ClipRRect(
+                     borderRadius: BorderRadius.circular(16),
+                 child: Container(
+                    margin: EdgeInsets.all(12),
+                    height: MediaQuery.of(context).size.height * 0.16,
+                    child:
+                    Row(
+                      mainAxisAlignment: MainAxisAlignment.spaceBetween,
                       children: [
-                        Text("${_ref.FavoritesList[i].favoritesId}"),
-                        Text("${_ref.FavoritesList[i].favoritesPrice}"),
+                        Container(
+                            height: double.infinity,
+                            width: 160,
+                            child: Image.network(
+                              _ref.FavoritesList[i].favoritesImage,
+                             fit: BoxFit.fill,
+                              //scale: 1.5  ,
+                            )),
+                        Column(
+                          mainAxisAlignment: MainAxisAlignment.center,
+                          children: [
+                            Text("${_ref.FavoritesList[i].favoritesName.substring(0,16)}",style: TextStyle(fontSize: 22),),
+                            Text("${_ref.FavoritesList[i].favoritesPrice}",style: TextStyle(fontSize: 18,fontWeight: FontWeight.bold),),
+                          ],
+                        ),
+                        IconButton(icon: Icon(Icons.favorite), onPressed: () {
+                          _ref.deletefav(_ref.FavoritesList[i], context);
+
+                        })
                       ],
                     ),
-                    IconButton(icon: Icon(Icons.favorite), onPressed: () {})
-                  ],
-                ),
-            );
-            }
+              ),
+               ));
+              }
+              ),
             ),
-          ),
 
-        ],
-      ),
-    );
+          ],
+        ),
+      );
+
         //:Container(child: Center(child: Text("No items")),);
   }
 }
