@@ -1,8 +1,8 @@
 class Favorites {
-  int favoritesId;
-  String favoritesImage;
-  String favoritesName;
-  String favoritesPrice;
+  int? favoritesId;
+  String? favoritesImage;
+  String? favoritesName;
+  String? favoritesPrice;
 
   Favorites({this.favoritesId, this.favoritesImage, this.favoritesName, this.favoritesPrice});
 

@@ -6,8 +6,8 @@ import 'package:untitled1/model/db/Favorites.dart';
 
 
 class DbHelper {
-  static DbHelper _helper;
-  static Database _db;
+  static DbHelper? _helper;
+  static Database? _db;
 
   DbHelper._getInstance();
 
@@ -15,14 +15,14 @@ class DbHelper {
     if (_helper == null) {
       _helper = DbHelper._getInstance();
     }
-    return _helper;
+    return _helper!;
   }
   Future<Database> get database async {
     if (_db == null) {
       //create db object
       _db = await initDb();
     }
-    return _db;
+    return _db!;
   }
 
   Future<Database> initDb() async {
@@ -50,7 +50,7 @@ class DbHelper {
   }
 
   Future<List<Favorites>> getAllFavorites() async {
-    _db = await database;
+   var _db = await database;
     var resultQuery =await _db.query(Constants.TABLE_NAME);
     List<Favorites> list= resultQuery.map((e) => Favorites.fromMap(e)).toList();
     return list;
@@ -63,7 +63,7 @@ class DbHelper {
       return await _db.insert(Constants.TABLE_NAME, favorites.toMap());
   }catch(e){
       print(e);
-      return null;
+      return null!;
     }
   }
   //3-delete

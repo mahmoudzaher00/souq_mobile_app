@@ -1,4 +1,4 @@
-import 'package:carousel_pro/carousel_pro.dart';
+//import 'package:carousel_pro/carousel_pro.dart';
 import 'package:flutter/material.dart';
 import 'package:untitled1/view/widgets/Cardimage.dart';
 
@@ -16,18 +16,18 @@ List _images = [
 Widget CarouselImage(BuildContext context) {
   return Container(
     height: MediaQuery.of(context).size.height * 0.25,
-    child: Carousel(
-        borderRadius: true,
-        autoplay: true,
-        showIndicator: true,
-        animationDuration: Duration(seconds: 2),
-        autoplayDuration: Duration(seconds: 4),
-        animationCurve: Curves.easeInOutCubic,
-        boxFit: BoxFit.fill,
-        dotColor: Colors.black45,
-        dotIncreasedColor: Colors.black,
-        dotBgColor: Color.fromARGB(0, 0, 0, 0),
-        dotSize: 5,
-        images: _images),
+    // child: Carousel(
+    //     borderRadius: true,
+    //     autoplay: true,
+    //     showIndicator: true,
+    //     animationDuration: Duration(seconds: 2),
+    //     autoplayDuration: Duration(seconds: 4),
+    //     animationCurve: Curves.easeInOutCubic,
+    //     boxFit: BoxFit.fill,
+    //     dotColor: Colors.black45,
+    //     dotIncreasedColor: Colors.black,
+    //     dotBgColor: Color.fromARGB(0, 0, 0, 0),
+    //     dotSize: 5,
+    //     images: _images),
   );
 }

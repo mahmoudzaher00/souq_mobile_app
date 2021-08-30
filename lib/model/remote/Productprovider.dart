@@ -6,8 +6,8 @@ import 'api_service.dart';
 
 
 class ProductProvider extends ChangeNotifier {
-  ProductException productException;
-  Product productResponse;
+  ProductException? productException;
+  Product? productResponse;
 
   fetchproduct() {
     ApiServices().fetchproduct().then((value) {

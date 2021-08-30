@@ -1,5 +1,6 @@
 import 'package:dio/dio.dart';
 import 'package:flutter/material.dart';
+//import 'package:toast/toast.dart';
 import 'package:untitled1/model/remote/Register.dart';
 
 class SignupViewModel extends ChangeNotifier{
@@ -21,38 +22,69 @@ class SignupViewModel extends ChangeNotifier{
   }
 
   Future<Register> RegisterSendRequest(Map<dynamic, dynamic> jsonMap) async {
-    // BaseOptions options = new BaseOptions(
-    //     connectTimeout: 5000,
-    //     receiveTimeout: 3000,
-    //     validateStatus: (code) {
-    //       if(code==406){
-    //         return true;
-    //       }
-    //       return true;
-    //     }
-    //
-    // );
-    notifyListeners();
     Dio _dio = Dio();
-    //_dio.options.contentType = Headers.formUrlEncodedContentType;
-    final _result = await _dio.post('https://student.valuxapps.com/api/register',
-      data: jsonMap,
+    BaseOptions options = new BaseOptions(
+        connectTimeout: 5000,
+        receiveTimeout: 3000,
+        followRedirects: false,
+        receiveDataWhenStatusError: true,
+        validateStatus: (status) {
+          return status! < 500;
+        },
     );
-    final Register registerResponse = Register.fromJson(_result.data);
-    print(registerResponse.message);
-    if(registerResponse.status == false){
-      print(registerResponse.message);
-      print(registerResponse.status);
-      return registerResponse;
-    }
-    else{
-      print(registerResponse.status);
-      print(registerResponse.message);
-     // print(registerResponse.data.name);
-      return registerResponse;
-    }
-    notifyListeners();
-  }
+    _dio.options.headers['lang'] = "en";
+    _dio.options.headers['Content-Type'] = 'application/json';
+    //_dio.options.contentType = Headers.formUrlEncodedContentType;
 
+    final _result = await _dio.post('https://student.valuxapps.com/api/register', data: jsonMap,);
+
+    final Register registerResponse = Register.fromJson(_result.data);
+
+    print(registerResponse.message);
+
+    return registerResponse;
+
+
+  }
+  notifyListeners();
 
 }
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+// static Future<Response> postData({
+// required String path,
+// required Map<String, dynamic>? data,
+// Map<String, dynamic>? query,
+// String lang = 'en',
+// String? token  ,
+// }) async {
+// dio.options.headers =
+// {
+// 'lang': lang,
+// 'Content-Type':'application/json',
+// 'Authorization' : token??'' ,
+// }
+// ;
+// return await dio.post(path,data: data , queryParameters: query);
+// }

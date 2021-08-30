@@ -1,7 +1,8 @@
 import 'package:flutter/material.dart';
+//import 'package:toast/toast.dart';
 import 'package:untitled1/translations/locale_keys.g.dart';
-import 'package:untitled1/view/screens/LoginScreen.dart';
 import 'package:provider/provider.dart';
+import 'package:untitled1/view/widgets/custom_bottomNavigationTwo.dart';
 import 'package:untitled1/view_model/Resgister_View_Model.dart';
 import 'package:easy_localization/easy_localization.dart';
 
@@ -56,7 +57,7 @@ class SignUpScreen extends StatelessWidget {
                           labelText: '${LocaleKeys.Name.tr()}',
                         ),
                         validator: (value) {
-                          if (value.isEmpty) {
+                          if (value!.isEmpty) {
                             return "${LocaleKeys.enter_name.tr()}";
                           } else if (value.length < 3) {
                             return "${LocaleKeys.cannot_less_name.tr()} ";
@@ -87,7 +88,7 @@ class SignUpScreen extends StatelessWidget {
                           labelText: '${LocaleKeys.login.tr()}',
                         ),
                         validator: (value) {
-                          if (value.isEmpty) {
+                          if (value!.isEmpty) {
                             return "${LocaleKeys.enter_email.tr()}";
                           } else if (value.length < 3) {
                             return "${LocaleKeys.cannot_less.tr()} ";
@@ -113,7 +114,7 @@ class SignUpScreen extends StatelessWidget {
                                   _ref.passwordvisible
                                       ? Icons.visibility
                                       : Icons.visibility_off,
-                                  color: Color.fromRGBO(42, 87, 128, 1)),
+                                  color: Color.fromRGBO(42, 87, 128, 1)),onPressed: ()=>_ref.onclick(),
                             ),
                           ),
                           labelStyle: TextStyle(color: Colors.black),
@@ -128,7 +129,7 @@ class SignUpScreen extends StatelessWidget {
                           labelText: '${LocaleKeys.password.tr()}',
                         ),
                         validator: (value) {
-                          if (value.isEmpty)
+                          if (value!.isEmpty)
                             return '${LocaleKeys.enter_password.tr()}';
                           if (value.length < 6)
                             return '${LocaleKeys.pass_cannot_less.tr()}';
@@ -154,7 +155,7 @@ class SignUpScreen extends StatelessWidget {
                                   _ref.passwordConfirm
                                       ? Icons.visibility
                                       : Icons.visibility_off,
-                                  color: Color.fromRGBO(42, 87, 128, 1)),
+                                  color: Color.fromRGBO(42, 87, 128, 1)),onPressed: ()=>_ref.inClickConfirm(),
                             ),
                           ),
                           labelStyle: TextStyle(color: Colors.black),
@@ -169,7 +170,7 @@ class SignUpScreen extends StatelessWidget {
                           labelText: '${LocaleKeys.confirm_password.tr()}',
                         ),
                         validator: (value) {
-                          if(value.isEmpty && value !=_passwordTextEditingController.text){
+                          if(value!.isEmpty && value !=_passwordTextEditingController.text){
                               return '${LocaleKeys.confirm_enter_password.tr()}';;
                           }else{
                             return null;
@@ -199,7 +200,7 @@ class SignUpScreen extends StatelessWidget {
                           labelText: '${LocaleKeys.phone.tr()}',
                         ),
                         validator: (value) {
-                          if (value.isEmpty)
+                          if (value!.isEmpty)
                             return '${LocaleKeys.enter_phone.tr()}';
                           if (value.length < 6)
                             return '${LocaleKeys.cannot_less_phone.tr()}';
@@ -221,8 +222,8 @@ class SignUpScreen extends StatelessWidget {
                             backgroundColor: Color.fromRGBO(42, 87, 128, 1),
                             ),
                         onPressed: () {
-                          if (_form.currentState.validate()) {
-                           // Navigator.push(context, MaterialPageRoute(builder: (context) => LoginScreen()));
+                          if (_form.currentState!.validate()) {
+                           Navigator.push(context, MaterialPageRoute(builder: (context) => CustomBottomNavigationBarTwo()));
                             sendRequestData(_ref ,context);
                           }
                         },
@@ -250,7 +251,7 @@ class SignUpScreen extends StatelessWidget {
 
       };
     ref.RegisterSendRequest(body).then((value) {
-
+         //Toast.show(value.message, context);
         print(value.message);
         print(value.status);
 

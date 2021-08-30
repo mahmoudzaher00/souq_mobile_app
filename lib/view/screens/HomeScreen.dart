@@ -17,7 +17,7 @@ class HomeScreen extends StatelessWidget {
     product.fetchproduct();
 
     return Scaffold(
-      body: product.productResponse != null
+      body: product.productResponse!=null
           ? SingleChildScrollView(
               child: Container(
                 height: MediaQuery.of(context).size.height - statusBar - appBar - 105,

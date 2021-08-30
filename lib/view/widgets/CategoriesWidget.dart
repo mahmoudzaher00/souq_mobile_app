@@ -5,11 +5,12 @@ import 'package:untitled1/view/widgets/custom_text.dart';
 
 class CategoriesWidget extends StatelessWidget {
   List<CategoriesInfo> _Categorieslist=[
-    CategoriesInfo('images/categoires/Electronics.jpg', 'Electronics'),
-    CategoriesInfo('images/categoires/supermarhet.jpg', 'Super Market'),
-    CategoriesInfo('images/categoires/HealthBeauty.jpg', 'Health & Beauty'),
-    CategoriesInfo('images/categoires/Sports.jpg', 'Sports'),
-    CategoriesInfo('images/categoires/Toys.jpg', 'Toys'),
+    CategoriesInfo(category_image:'images/categoires/Electronics.jpg',category_name: 'Electronics'),
+    CategoriesInfo(category_image:'images/categoires/supermarhet.jpg',category_name: 'Super Market'),
+    CategoriesInfo(category_image:'images/categoires/HealthBeauty.jpg',category_name: 'Health & Beauty'),
+    CategoriesInfo(category_image:'images/categoires/Sports.jpg', category_name:'Sports'),
+    CategoriesInfo(category_image:'images/categoires/Toys.jpg',category_name: 'Toys'),
+
 
 
   ] ;
