@@ -1,6 +1,8 @@
 import 'dart:async';
 import 'package:flutter/material.dart';
 import 'package:untitled1/view/screens/LoginScreen.dart';
+import 'package:untitled1/view/shared/Network/local/shared_pref.dart';
+import 'package:untitled1/view/widgets/custom_bottomNavigationTwo.dart';
 
 import 'LoginScreen.dart';
 
@@ -35,10 +37,15 @@ class _SplashScreenState extends State<SplashScreen> {
 
   gotoNext() {
     Timer(Duration(seconds: 3), () {
-      Navigator.push(
-          context,
-          MaterialPageRoute(
-              builder: (context) => LoginScreen()));
+      if (MySharedPreferences.getDataFromSharedPreference(key: "token") != null) {
+        Navigator.push(
+            context,
+            MaterialPageRoute(
+                builder: (context) => CustomBottomNavigationBarTwo()));
+      } else {
+        Navigator.push(
+            context, MaterialPageRoute(builder: (context) => LoginScreen()));
+      }
     });
   }
 }

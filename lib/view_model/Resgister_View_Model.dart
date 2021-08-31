@@ -1,6 +1,8 @@
 import 'package:dio/dio.dart';
 import 'package:flutter/material.dart';
 import 'package:untitled1/model/Register.dart';
+import 'package:untitled1/view/shared/Network/local/shared_pref.dart';
+import 'package:untitled1/view/shared/components/constants.dart';
 
 
 
@@ -47,6 +49,11 @@ class SignupViewModel extends ChangeNotifier{
 
     print(registerResponse.message);
     notifyListeners();
+    MySharedPreferences.putDataInSharedPreference(value: registerResponse.data!.token, key: 'token')
+        .then((value) {
+       token =  registerResponse.data!.token!;
+
+    });
 
     return registerResponse;
 

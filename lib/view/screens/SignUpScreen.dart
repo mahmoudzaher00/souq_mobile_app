@@ -1,7 +1,7 @@
 import 'package:flutter/material.dart';
-//import 'package:toast/toast.dart';
 import 'package:untitled1/translations/locale_keys.g.dart';
 import 'package:provider/provider.dart';
+import 'package:untitled1/view/shared/Network/local/shared_pref.dart';
 import 'package:untitled1/view/shared/components/components.dart';
 import 'package:untitled1/view/widgets/custom_bottomNavigationTwo.dart';
 import 'package:untitled1/view_model/Resgister_View_Model.dart';
@@ -9,10 +9,15 @@ import 'package:easy_localization/easy_localization.dart';
 
 class SignUpScreen extends StatelessWidget {
   GlobalKey<FormState> _form = GlobalKey<FormState>();
+
   final TextEditingController _emailTextEditingController = TextEditingController();
+
   final TextEditingController _nameTextEditingController = TextEditingController();
+
   final TextEditingController _passwordTextEditingController = TextEditingController();
+
   final TextEditingController _passwordTextEditingControllerconfirm = TextEditingController();
+
   final TextEditingController _phoneTextEditingController = TextEditingController();
 
   @override
@@ -93,8 +98,7 @@ class SignUpScreen extends StatelessWidget {
                             return "${LocaleKeys.enter_email.tr()}";
                           } else if (value.length < 6) {
                             return "${LocaleKeys.cannot_less.tr()} ";
-                          }
-                          else {
+                          } else {
                             return null;
                           }
                         },
@@ -116,7 +120,8 @@ class SignUpScreen extends StatelessWidget {
                                   _ref.passwordvisible
                                       ? Icons.visibility
                                       : Icons.visibility_off,
-                                  color: Color.fromRGBO(42, 87, 128, 1)),onPressed: ()=>_ref.onclick(),
+                                  color: Color.fromRGBO(42, 87, 128, 1)),
+                              onPressed: () => _ref.onclick(),
                             ),
                           ),
                           labelStyle: TextStyle(color: Colors.black),
@@ -157,7 +162,8 @@ class SignUpScreen extends StatelessWidget {
                                   _ref.passwordConfirm
                                       ? Icons.visibility
                                       : Icons.visibility_off,
-                                  color: Color.fromRGBO(42, 87, 128, 1)),onPressed: ()=>_ref.inClickConfirm(),
+                                  color: Color.fromRGBO(42, 87, 128, 1)),
+                              onPressed: () => _ref.inClickConfirm(),
                             ),
                           ),
                           labelStyle: TextStyle(color: Colors.black),
@@ -172,12 +178,13 @@ class SignUpScreen extends StatelessWidget {
                           labelText: '${LocaleKeys.confirm_password.tr()}',
                         ),
                         validator: (value) {
-                          if(value!.isEmpty || value !=_passwordTextEditingController.text){
-                              return '${LocaleKeys.confirm_enter_password.tr()}';;
-                          }else{
+                          if (value!.isEmpty ||
+                              value != _passwordTextEditingController.text) {
+                            return '${LocaleKeys.confirm_enter_password.tr()}';
+                            ;
+                          } else {
                             return null;
                           }
-
                         },
                       ),
                     ),
@@ -204,7 +211,7 @@ class SignUpScreen extends StatelessWidget {
                         validator: (value) {
                           if (value!.isEmpty)
                             return '${LocaleKeys.enter_phone.tr()}';
-                          if (value.length < 11 ||value.length >11)
+                          if (value.length < 11 || value.length > 11)
                             return '${LocaleKeys.cannot_less_phone.tr()}';
                           else {
                             return null;
@@ -220,12 +227,12 @@ class SignUpScreen extends StatelessWidget {
                       width: MediaQuery.of(context).size.width * 0.95,
                       child: TextButton(
                         style: TextButton.styleFrom(
-                            primary: Colors.white,
-                            backgroundColor: Color.fromRGBO(42, 87, 128, 1),
-                            ),
+                          primary: Colors.white,
+                          backgroundColor: Color.fromRGBO(42, 87, 128, 1),
+                        ),
                         onPressed: () {
                           if (_form.currentState!.validate()) {
-                            sendRequestData(_ref ,context);
+                            sendRequestData(_ref, context);
                           }
                         },
                         child: Text(
@@ -244,26 +251,24 @@ class SignUpScreen extends StatelessWidget {
     );
   }
 
-  Future<void> sendRequestData(SignupViewModel ref, BuildContext context) async {
+  Future<void> sendRequestData(
+      SignupViewModel ref, BuildContext context) async {
     var body = <String, String>{
-        "name": _nameTextEditingController.text,
-        "email": _emailTextEditingController.text,
-         "password": _passwordTextEditingController.text,
-        "phone": _phoneTextEditingController.text,
-
-      };
+      "name": _nameTextEditingController.text,
+      "email": _emailTextEditingController.text,
+      "password": _passwordTextEditingController.text,
+      "phone": _phoneTextEditingController.text,
+    };
     ref.RegisterSendRequest(body).then((value) {
-         //Toast.show(value.message, context);
-      if(value.status == false){
+      //Toast.show(value.message, context);
+      if (value.status == false) {
         makeToast("${value.message}");
+      } else {
+        Navigator.push(
+            context,
+            MaterialPageRoute(
+                builder: (context) => CustomBottomNavigationBarTwo()));
       }
-      else{
-        Navigator.push(context, MaterialPageRoute(builder: (context) => CustomBottomNavigationBarTwo()));
-      }
-
-
-    }
-    );
+    });
   }
-
 }
