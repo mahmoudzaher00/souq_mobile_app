@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:fluttertoast/fluttertoast.dart';
 //import 'package:toast/toast.dart';
 import 'package:untitled1/model/db/Favorites.dart';
 import 'package:untitled1/model/db/db_helper.dart';
@@ -24,6 +25,14 @@ class FavoriteViewModel extends ChangeNotifier{
     int row = await helper.addNewFavorites(favorites);
     if (row != 0) {
       //Toast.show("${LocaleKeys.addfavorites.tr()}", context);
+      Fluttertoast.showToast(msg: '${LocaleKeys.addfavorites.tr()}',
+          toastLength: Toast.LENGTH_SHORT,
+          gravity: ToastGravity.BOTTOM,
+          timeInSecForIosWeb: 1,
+          backgroundColor: Colors.grey,
+          textColor: Colors.black,
+          fontSize: 16.0
+      );
     }
     notifyListeners();
   }
@@ -38,6 +47,14 @@ class FavoriteViewModel extends ChangeNotifier{
   void deletefav(Favorites favorites,BuildContext context) async{
     helper.deleteFavorites(favorites).then((value) {
       //Toast.show('${LocaleKeys.deletefavorites.tr()}', context);
+      Fluttertoast.showToast(msg: '${LocaleKeys.deletefavorites.tr()}',
+          toastLength: Toast.LENGTH_SHORT,
+          gravity: ToastGravity.BOTTOM,
+          timeInSecForIosWeb: 1,
+          backgroundColor: Colors.grey,
+          textColor: Colors.black,
+          fontSize: 16.0
+      );
       viewAllFavorites();
     });
     notifyListeners();

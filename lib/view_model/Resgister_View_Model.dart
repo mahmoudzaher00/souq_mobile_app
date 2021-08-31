@@ -1,7 +1,8 @@
 import 'package:dio/dio.dart';
 import 'package:flutter/material.dart';
-//import 'package:toast/toast.dart';
-import 'package:untitled1/model/remote/Register.dart';
+import 'package:untitled1/model/Register.dart';
+
+
 
 class SignupViewModel extends ChangeNotifier{
   bool _passwordvisible =true;
@@ -21,8 +22,11 @@ class SignupViewModel extends ChangeNotifier{
     notifyListeners();
   }
 
+
+
   Future<Register> RegisterSendRequest(Map<dynamic, dynamic> jsonMap) async {
     Dio _dio = Dio();
+
     BaseOptions options = new BaseOptions(
         connectTimeout: 5000,
         receiveTimeout: 3000,
@@ -32,6 +36,7 @@ class SignupViewModel extends ChangeNotifier{
           return status! < 500;
         },
     );
+
     _dio.options.headers['lang'] = "en";
     _dio.options.headers['Content-Type'] = 'application/json';
     //_dio.options.contentType = Headers.formUrlEncodedContentType;
@@ -41,12 +46,13 @@ class SignupViewModel extends ChangeNotifier{
     final Register registerResponse = Register.fromJson(_result.data);
 
     print(registerResponse.message);
+    notifyListeners();
 
     return registerResponse;
 
-
   }
-  notifyListeners();
+
+
 
 }
 

@@ -1,7 +1,8 @@
 import 'dart:convert';
 import 'package:flutter/material.dart';
-import 'package:untitled1/model/local/exception.dart';
-import 'package:untitled1/model/remote/Product.dart';
+import 'package:untitled1/view/shared/Network/remote/exception.dart';
+
+import '../../../../model/Product.dart';
 import 'api_service.dart';
 
 

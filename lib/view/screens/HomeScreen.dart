@@ -1,7 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:provider/provider.dart';
-import 'package:untitled1/model/remote/Productprovider.dart';
 import 'package:untitled1/translations/locale_keys.g.dart';
+import 'package:untitled1/view/shared/Network/remote/Productprovider.dart';
 import 'package:untitled1/view/widgets/CategoriesWidget.dart';
 import 'package:untitled1/view/widgets/ImageSlider.dart';
 import 'package:untitled1/view/widgets/ProductsWidget.dart';

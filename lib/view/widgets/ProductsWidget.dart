@@ -1,7 +1,8 @@
 import 'package:flutter/material.dart';
 import 'package:provider/provider.dart';
 import 'package:untitled1/model/db/Favorites.dart';
-import 'package:untitled1/model/remote/Productprovider.dart';
+import 'package:untitled1/view/shared/Network/remote/Productprovider.dart';
+
 import 'package:untitled1/view/widgets/custom_text.dart';
 import 'package:untitled1/view_model/favorite_view_model.dart';
 

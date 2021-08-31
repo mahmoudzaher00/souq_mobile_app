@@ -1,6 +1,7 @@
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
-import 'package:untitled1/model/local/CategoriesInfo.dart';
+import 'package:untitled1/model/CategoriesInfo.dart';
+
 import 'package:untitled1/view/widgets/custom_text.dart';
 
 class CategoriesWidget extends StatelessWidget {

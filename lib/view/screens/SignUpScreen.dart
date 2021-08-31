@@ -2,6 +2,7 @@ import 'package:flutter/material.dart';
 //import 'package:toast/toast.dart';
 import 'package:untitled1/translations/locale_keys.g.dart';
 import 'package:provider/provider.dart';
+import 'package:untitled1/view/shared/components/components.dart';
 import 'package:untitled1/view/widgets/custom_bottomNavigationTwo.dart';
 import 'package:untitled1/view_model/Resgister_View_Model.dart';
 import 'package:easy_localization/easy_localization.dart';
@@ -90,9 +91,10 @@ class SignUpScreen extends StatelessWidget {
                         validator: (value) {
                           if (value!.isEmpty) {
                             return "${LocaleKeys.enter_email.tr()}";
-                          } else if (value.length < 3) {
+                          } else if (value.length < 6) {
                             return "${LocaleKeys.cannot_less.tr()} ";
-                          } else {
+                          }
+                          else {
                             return null;
                           }
                         },
@@ -170,7 +172,7 @@ class SignUpScreen extends StatelessWidget {
                           labelText: '${LocaleKeys.confirm_password.tr()}',
                         ),
                         validator: (value) {
-                          if(value!.isEmpty && value !=_passwordTextEditingController.text){
+                          if(value!.isEmpty || value !=_passwordTextEditingController.text){
                               return '${LocaleKeys.confirm_enter_password.tr()}';;
                           }else{
                             return null;
@@ -202,7 +204,7 @@ class SignUpScreen extends StatelessWidget {
                         validator: (value) {
                           if (value!.isEmpty)
                             return '${LocaleKeys.enter_phone.tr()}';
-                          if (value.length < 6)
+                          if (value.length < 11 ||value.length >11)
                             return '${LocaleKeys.cannot_less_phone.tr()}';
                           else {
                             return null;
@@ -223,7 +225,6 @@ class SignUpScreen extends StatelessWidget {
                             ),
                         onPressed: () {
                           if (_form.currentState!.validate()) {
-                           Navigator.push(context, MaterialPageRoute(builder: (context) => CustomBottomNavigationBarTwo()));
                             sendRequestData(_ref ,context);
                           }
                         },
@@ -242,6 +243,7 @@ class SignUpScreen extends StatelessWidget {
       ),
     );
   }
+
   Future<void> sendRequestData(SignupViewModel ref, BuildContext context) async {
     var body = <String, String>{
         "name": _nameTextEditingController.text,
@@ -252,13 +254,16 @@ class SignUpScreen extends StatelessWidget {
       };
     ref.RegisterSendRequest(body).then((value) {
          //Toast.show(value.message, context);
-        print(value.message);
-        print(value.status);
-
-
-
-
+      if(value.status == false){
+        makeToast("${value.message}");
       }
-      );
+      else{
+        Navigator.push(context, MaterialPageRoute(builder: (context) => CustomBottomNavigationBarTwo()));
+      }
+
+
+    }
+    );
   }
+
 }

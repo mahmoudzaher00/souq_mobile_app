@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:easy_localization/easy_localization.dart';
+import 'package:fluttertoast/fluttertoast.dart';
 //import 'package:toast/toast.dart';
 import 'package:untitled1/translations/locale_keys.g.dart';
 import 'package:untitled1/view/widgets/custom_bottomNavigationTwo.dart';
@@ -50,6 +51,14 @@ class _LanguageScreenState extends State<LanguageScreen> {
                     )),
                     onTap: () async {
                      // Toast.show('${LocaleKeys.Languagechanged.tr()}', context);
+                      Fluttertoast.showToast(msg: '${LocaleKeys.Languagechanged.tr()}',
+                          toastLength: Toast.LENGTH_SHORT,
+                          gravity: ToastGravity.BOTTOM,
+                          timeInSecForIosWeb: 1,
+                          backgroundColor: Colors.grey,
+                          textColor: Colors.black,
+                          fontSize: 16.0
+                         );
                       await context.setLocale(
                         Locale('en'),
 
@@ -70,7 +79,15 @@ class _LanguageScreenState extends State<LanguageScreen> {
                             style: TextStyle(
                                 fontSize: 24, fontWeight: FontWeight.bold))),
                     onTap: () async {
-                     // Toast.show('${LocaleKeys.Languagechanged.tr()}', context);
+                      Fluttertoast.showToast(msg: '${LocaleKeys.Languagechanged.tr()}',
+                        toastLength: Toast.LENGTH_SHORT,
+                        gravity: ToastGravity.BOTTOM,
+                        timeInSecForIosWeb: 1,
+                        backgroundColor: Colors.grey,
+                        textColor: Colors.black,
+                        fontSize: 16.0
+                    );
+
                       await context.setLocale(
                         Locale('ar'),
                       );

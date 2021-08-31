@@ -3,11 +3,13 @@ import 'package:flutter/material.dart';
 import 'package:provider/provider.dart';
 import 'package:untitled1/translations/codegen_loader.g.dart';
 import 'package:untitled1/view/screens/SplashScreen.dart';
+import 'package:untitled1/view/shared/Network/remote/Productprovider.dart';
 import 'package:untitled1/view_model/BottomNagvigation_view_model.dart';
 import 'package:untitled1/view_model/Login_view_model.dart';
 import 'package:untitled1/view_model/Resgister_View_Model.dart';
 import 'package:untitled1/view_model/favorite_view_model.dart';
-import 'model/remote/Productprovider.dart';
+import 'package:untitled1/view_model/slider_images_view_model.dart';
+
 
 void main() async {
   WidgetsFlutterBinding.ensureInitialized();
@@ -34,6 +36,7 @@ class MyApp extends StatelessWidget {
           ListenableProvider<BottomNavigationViewModel>(create: (context) => BottomNavigationViewModel()),
           ListenableProvider<ProductProvider>(create: (context) => ProductProvider()),
           ListenableProvider<FavoriteViewModel>(create: (context) => FavoriteViewModel()),
+          ListenableProvider<SliderImagesViewModel>(create: (context) => SliderImagesViewModel()),
         ],
         child: MaterialApp(
           supportedLocales: context.supportedLocales,
