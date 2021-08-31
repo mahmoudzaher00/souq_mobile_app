@@ -1,5 +1,5 @@
 class ProductException{
-  String? message;
+  String message;
   ProductException({this.message});
   ProductException.checkstatuscode(int statuscode){
     switch(statuscode){

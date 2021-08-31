@@ -25,7 +25,7 @@ class _ProductsWidgetState extends State<ProductsWidget> {
       shrinkWrap:true,
       physics: ScrollPhysics(),
       addRepaintBoundaries:true,
-      itemCount: product.productResponse!.data!.data!.length,
+      itemCount: product.productResponse.data.data.length,
       itemBuilder: (context, index) {
         return Card(
           shape: RoundedRectangleBorder(borderRadius: BorderRadius.circular(15),),
@@ -39,7 +39,7 @@ class _ProductsWidgetState extends State<ProductsWidget> {
                   topRight: Radius.circular(5),
                 ),
                 child: Image.network(
-                  '${product.productResponse!.data!.data![index].image}',
+                  '${product.productResponse.data.data[index].image}',
                   fit: BoxFit.fill,
                   height: 125,
                   width: double.infinity,
@@ -52,7 +52,7 @@ class _ProductsWidgetState extends State<ProductsWidget> {
                   height: 28,
                   child: Center(
                     child: CustomText(
-                       text: '${product.productResponse!.data!.data![index].name!.substring(0,16)}',
+                       text: '${product.productResponse.data.data[index].name.substring(0,16)}',
                        fontSize: 16,
                      ),
                   ),
@@ -61,29 +61,29 @@ class _ProductsWidgetState extends State<ProductsWidget> {
               Row(
                 mainAxisAlignment: MainAxisAlignment.spaceAround,
                 children: [
-                  CustomText(text: '${product.productResponse!.data!.data![index].price}',),
+                  CustomText(text: '${product.productResponse.data.data[index].price}',),
                   Row(
                     children: [
                       IconButton(icon: Icon(Icons.shopping_cart_rounded,color:Color.fromRGBO(42, 87, 128, 1) ,), onPressed: (){}),
-                      product.productResponse!.data!.data![index].inFavorites!?
+                      product.productResponse.data.data[index].inFavorites?
                       IconButton(icon: Icon(Icons.favorite,color:Color.fromRGBO(42, 87, 128, 1) ,),
                           onPressed: (){
-                             product.productResponse!.data!.data![index].inFavorites = _ref.isfav;
+                             product.productResponse.data.data[index].inFavorites = _ref.isfav;
                             _ref.onclick();
                           }):
                       IconButton(icon: Icon(Icons.favorite_border,), onPressed: (){
 
                           Favorites f = Favorites(
-                            favoritesId:product.productResponse!.data!.data![index].id,
-                            favoritesImage: product.productResponse!.data!.data![index].image,
-                            favoritesName: product.productResponse!.data!.data![index].name,
-                            favoritesPrice: "${product.productResponse!.data!.data![index].price}",
+                            favoritesId:product.productResponse.data.data[index].id,
+                            favoritesImage: product.productResponse.data.data[index].image,
+                            favoritesName: product.productResponse.data.data[index].name,
+                            favoritesPrice: "${product.productResponse.data.data[index].price}",
                           );
                           _ref.addFav(f ,context);
 
 
                         print("${_ref.viewAllFavorites()}");
-                        product.productResponse!.data!.data![index].inFavorites = _ref.isfav;
+                        product.productResponse.data.data[index].inFavorites = _ref.isfav;
                         _ref.onclick();
                       })
                     ],

@@ -13,12 +13,12 @@ class FavoritesScreen extends StatelessWidget {
 
     FavoriteViewModel _ref = Provider.of<FavoriteViewModel>(context);
 
-    SchedulerBinding.instance!.addPostFrameCallback((_) {
+    SchedulerBinding.instance.addPostFrameCallback((_) {
       _ref.viewAllFavorites();
 
     });
     return
-      //_ref.filmList.isNotEmpty?
+      //_ref.filmList.isNotEmpty
 
      SafeArea(
        child: SingleChildScrollView(

@@ -1,32 +1,40 @@
+import 'package:flutter/cupertino.dart';
 import 'package:shared_preferences/shared_preferences.dart';
 
 class MySharedPreferences {
-  static late SharedPreferences sharedpreferences;
+  static SharedPreferences sharedPreferences;
 
   static init() async {
-    sharedpreferences = await SharedPreferences.getInstance();
+    sharedPreferences = await SharedPreferences.getInstance();
   }
 
-  static Future<bool> putDataInSharedPreference({required dynamic value, required String key,}) async {
-    if(value is String)
-      return await sharedpreferences.setString(key, value);
-    if(value is int)
-      return await sharedpreferences.setInt(key, value);
-    if(value is bool)
-      return await sharedpreferences.setBool(key, value);
-    else
-      return await sharedpreferences.setDouble(key, value);
+  static Future<bool> putBoolean({
+    @required String key,
+    @required bool value,
+  }) async {
+    return await sharedPreferences.setBool(key, value);
   }
 
-
-  static dynamic getDataFromSharedPreference({required String key,})
-  {
-    return sharedpreferences.get(key);
+  static dynamic getData({
+    @required String key,
+  }) {
+    return sharedPreferences.get(key);
   }
 
-  static Future<bool> clearDataFromSharedPreference({required String key,}) async{
+  static Future<bool> saveData({
+    @required String key,
+    @required dynamic value,
+  }) async {
+    if (value is String) return await sharedPreferences.setString(key, value);
+    if (value is int) return await sharedPreferences.setInt(key, value);
+    if (value is bool) return await sharedPreferences.setBool(key, value);
 
-    return await sharedpreferences.remove(key);
+    return await sharedPreferences.setDouble(key, value);
+  }
 
+  static Future<bool> removeData({
+    @required String key,
+  }) async {
+    return await sharedPreferences.remove(key);
   }
 }

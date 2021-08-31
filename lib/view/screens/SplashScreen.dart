@@ -37,15 +37,9 @@ class _SplashScreenState extends State<SplashScreen> {
 
   gotoNext() {
     Timer(Duration(seconds: 3), () {
-      if (MySharedPreferences.getDataFromSharedPreference(key: "token") != null) {
-        Navigator.push(
-            context,
-            MaterialPageRoute(
-                builder: (context) => CustomBottomNavigationBarTwo()));
-      } else {
         Navigator.push(
             context, MaterialPageRoute(builder: (context) => LoginScreen()));
       }
-    });
+    );
   }
 }

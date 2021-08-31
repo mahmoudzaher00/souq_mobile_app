@@ -2,6 +2,7 @@ import 'package:dio/dio.dart';
 import 'package:flutter/material.dart';
 import 'package:untitled1/model/Register.dart';
 import 'package:untitled1/view/shared/Network/local/shared_pref.dart';
+import 'package:untitled1/view/shared/Network/remote/dio_helper.dart';
 import 'package:untitled1/view/shared/components/constants.dart';
 
 
@@ -23,41 +24,62 @@ class SignupViewModel extends ChangeNotifier{
     _passwordConfirm=!_passwordConfirm;
     notifyListeners();
   }
-
-
-
-  Future<Register> RegisterSendRequest(Map<dynamic, dynamic> jsonMap) async {
-    Dio _dio = Dio();
-
-    BaseOptions options = new BaseOptions(
-        connectTimeout: 5000,
-        receiveTimeout: 3000,
-        followRedirects: false,
-        receiveDataWhenStatusError: true,
-        validateStatus: (status) {
-          return status! < 500;
-        },
-    );
-
-    _dio.options.headers['lang'] = "en";
-    _dio.options.headers['Content-Type'] = 'application/json';
-    //_dio.options.contentType = Headers.formUrlEncodedContentType;
-
-    final _result = await _dio.post('https://student.valuxapps.com/api/register', data: jsonMap,);
-
-    final Register registerResponse = Register.fromJson(_result.data);
-
-    print(registerResponse.message);
+  Register registerModel;
+  void userRegister({@required String name, @required String email, @required String password, @required String phone,}) {
     notifyListeners();
-    MySharedPreferences.putDataInSharedPreference(value: registerResponse.data!.token, key: 'token')
-        .then((value) {
-       token =  registerResponse.data!.token!;
+    DioHelper.postData(
+      url: "register",
+      data: {
+        'name': name,
+        'email': email,
+        'password': password,
+        'phone': phone,
+      },
+    ).then((value) {
+      print(value.data);
+
+      registerModel= Register.fromJson(value.data);
+      notifyListeners();
+
+    }).catchError((error) {
+      print(error.toString());
+      notifyListeners();
 
     });
-
-    return registerResponse;
-
   }
+
+  // Future<Register> RegisterSendRequest(Map<dynamic, dynamic> jsonMap) async {
+  //   Dio _dio = Dio();
+  //
+  //   BaseOptions options = new BaseOptions(
+  //       connectTimeout: 5000,
+  //       receiveTimeout: 3000,
+  //       followRedirects: false,
+  //       receiveDataWhenStatusError: true,
+  //       validateStatus: (status) {
+  //         return status < 500;
+  //       },
+  //   );
+  //
+  //   _dio.options.headers['lang'] = "en";
+  //   _dio.options.headers['Content-Type'] = 'application/json';
+  //   //_dio.options.contentType = Headers.formUrlEncodedContentType;
+  //
+  //   final _result = await _dio.post('https://student.valuxapps.com/api/register', data: jsonMap,);
+  //
+  //   final Register registerResponse = Register.fromJson(_result.data);
+  //
+  //   print(registerResponse.message);
+  //   notifyListeners();
+  //   // MySharedPreferences.putDataInSharedPreference(value: registerResponse.data.token, key: 'token')
+  //   //     .then((value) {
+  //   //    token =  registerResponse.data.token;
+  //   //
+  //   // });
+  //
+  //   return registerResponse;
+  //
+  // }
 
 
 

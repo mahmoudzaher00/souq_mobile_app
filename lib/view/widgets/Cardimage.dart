@@ -1,7 +1,7 @@
 import 'package:flutter/material.dart';
 
 class CustomCardImage extends StatelessWidget {
-  final String? image;
+  final String image;
   CustomCardImage({this.image});
 
   @override
@@ -13,7 +13,7 @@ class CustomCardImage extends StatelessWidget {
         borderRadius: BorderRadius.all(
           Radius.circular(16),
         ),
-        child: Image.asset(image!,
+        child: Image.asset(image,
          width: double.infinity,
           fit: BoxFit.fill,
         ),

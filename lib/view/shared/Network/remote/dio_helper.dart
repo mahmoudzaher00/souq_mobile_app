@@ -1,71 +1,72 @@
 import 'package:dio/dio.dart';
+import 'package:flutter/cupertino.dart';
 
-class DioHelper{
-  //static DioHelper? _dioHelper;
-  static late Dio dio ;
+class DioHelper {
+  static Dio dio;
 
-  static init(){
+  static init() {
     dio = Dio(
-        BaseOptions(
-          baseUrl: 'https://student.valuxapps.com/api/',
-          receiveDataWhenStatusError: true,
-          connectTimeout: 50000 ,
-          sendTimeout: 50000,
-          validateStatus: (status){return status! < 500;},
-        )
+      BaseOptions(
+        baseUrl: 'https://student.valuxapps.com/api/',
+        receiveDataWhenStatusError: true,
+      ),
     );
   }
 
   static Future<Response> getData({
-    required String path,
-    Map<String, dynamic>? query,
+    @required String url,
+    Map<String, dynamic> query,
     String lang = 'en',
-    String token = '' ,
+    String token,
   }) async {
-    dio.options.headers =
-    {
+    dio.options.headers = {
+      'Content-Type': 'application/json',
       'lang': lang,
-      'Content-Type':'application/json',
-      'Authorization' : token ,
-    }
-    ;
-    return await dio.get(path , queryParameters: query);
-  }
+      'Authorization': token,
+    };
 
+    return await dio.get(
+      url,
+      queryParameters: query ?? null,
+    );
+  }
 
   static Future<Response> postData({
-    required String path,
-    required Map<String, dynamic>? data,
-    Map<String, dynamic>? query,
+    @required String url,
+    @required Map<String, dynamic> data,
+    Map<String, dynamic> query,
     String lang = 'en',
-    String? token  ,
+    String token,
   }) async {
-    dio.options.headers =
-    {
+    dio.options.headers = {
+      'Content-Type': 'application/json',
       'lang': lang,
-      'Content-Type':'application/json',
-      'Authorization' : token??'' ,
-    }
-    ;
-    return await dio.post(path,data: data , queryParameters: query);
+      'Authorization': token,
+    };
+
+    return dio.post(
+      url,
+      queryParameters: query,
+      data: data,
+    );
   }
 
-
-
   static Future<Response> putData({
-    required String path,
-    required Map<String, dynamic>? data,
-    Map<String, dynamic>? query,
+    @required String url,
+    @required Map<String, dynamic> data,
+    Map<String, dynamic> query,
     String lang = 'en',
-    String? token  ,
+    String token,
   }) async {
-    dio.options.headers =
-    {
+    dio.options.headers = {
+      'Content-Type': 'application/json',
       'lang': lang,
-      'Content-Type':'application/json',
-      'Authorization' : token??'' ,
-    }
-    ;
-    return await dio.put(path,data: data , queryParameters: query);
+      'Authorization': token??'',
+    };
+    return dio.put(
+      url,
+      queryParameters: query,
+      data: data,
+    );
   }
 }

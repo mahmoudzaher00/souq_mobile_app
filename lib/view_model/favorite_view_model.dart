@@ -36,7 +36,7 @@ class FavoriteViewModel extends ChangeNotifier{
     }
     notifyListeners();
   }
-  Future<List<Favorites>?> viewAllFavorites() async{
+  Future<List<Favorites>> viewAllFavorites() async{
     helper.getAllFavorites().then((map){
       _FavoritesList = map ;
     }

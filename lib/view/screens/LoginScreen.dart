@@ -53,7 +53,7 @@ class LoginScreen extends StatelessWidget {
                           labelText: '${LocaleKeys.login.tr()}',
                         ),
                         validator: (value) {
-                          if (value!.isEmpty) {
+                          if (value.isEmpty) {
                             return "${LocaleKeys.enter_email.tr()}";
                           } else if (value.length < 3) {
                             return "${LocaleKeys.cannot_less.tr()}";
@@ -80,7 +80,7 @@ class LoginScreen extends StatelessWidget {
                                   _ref.passwordvisible
                                       ? Icons.visibility
                                       : Icons.visibility_off,
-                                  color: Color.fromRGBO(42, 87, 128, 1)), onPressed: ()=>_ref.onclick(),
+                                  color: Color.fromRGBO(42, 87, 128, 1)),
                             ),
                           ),
                           labelStyle: TextStyle(color: Colors.black),
@@ -95,7 +95,7 @@ class LoginScreen extends StatelessWidget {
                           labelText: '${LocaleKeys.password.tr()}',
                         ),
                         validator: (value) {
-                          if (value!.isEmpty)
+                          if (value.isEmpty)
                             return '${LocaleKeys.enter_password.tr()}';
                           if (value.length < 6)
                             return '${LocaleKeys.pass_cannot_less.tr()}';
@@ -130,7 +130,7 @@ class LoginScreen extends StatelessWidget {
                           backgroundColor: Color.fromRGBO(42, 87, 128, 1),
                         ),
                         onPressed: () {
-                          if (_form.currentState!.validate()) {
+                          if (_form.currentState.validate()) {
                             Navigator.pushReplacement(
                                 context,
                                 MaterialPageRoute(

@@ -5,23 +5,23 @@
 import 'dart:convert';
 
 class Register {
-  bool? status;
-  String? message;
-  Data? data;
+  bool status;
+  String message;
+  Data data;
   Register.fromJson(Map<String,dynamic> json){
     status=json["status"];
     message=json["message"];
-    data=json["data"]!=null?Data.fromJson(json['data']):null;
+    data = json['data'] != null ? Data.fromJson(json['data']) : null;
   }
   }
 
 class Data {
-  String? name;
-  String? email;
-  String? phone;
-  int? id;
-  String? image;
-  String? token;
+  String name;
+  String email;
+  String phone;
+  int id;
+  String image;
+  String token;
 
   Data.fromJson(Map<String, dynamic> json){
     name = json['name'];
@@ -32,4 +32,7 @@ class Data {
     token = json['token'];
   }
 
+
 }
+
+
