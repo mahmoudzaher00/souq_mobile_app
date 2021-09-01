@@ -8,7 +8,12 @@ import 'package:untitled1/view/widgets/custom_bottomNavigationTwo.dart';
 import 'package:untitled1/view_model/Resgister_View_Model.dart';
 import 'package:easy_localization/easy_localization.dart';
 
-class SignUpScreen extends StatelessWidget {
+class SignUpScreen extends StatefulWidget {
+  @override
+  _SignUpScreenState createState() => _SignUpScreenState();
+}
+
+class _SignUpScreenState extends State<SignUpScreen> {
   GlobalKey<FormState> _form = GlobalKey<FormState>();
 
   final TextEditingController _emailTextEditingController =
@@ -28,25 +33,22 @@ class SignUpScreen extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    // final _ref = Provider.of<SignupViewModel>(context);
-    return Scaffold(
-      body: Consumer<SignupViewModel>(
-        builder: (context, SignupViewModel model, child) {
-          if (model.registerModel.status) {
-            print(model.registerModel.message);
-            print(model.registerModel.data.token);
+     final model = Provider.of<SignupViewModel>(context);
 
-            MySharedPreferences.saveData(key: 'token',
-              value: model.registerModel.data.token,
-            ).then((value) {
-              token = model.registerModel.data.token;
-              navigateAndFinish(context, CustomBottomNavigationBarTwo());
-            });
-          } else {
-            print(model.registerModel.message);
-            makeToast(model.registerModel.message);
-          }
-          return SafeArea(
+     Future<void> sendRegisterData() async {
+       if (await checkInternetConnectivity()) {
+         model.userRegister(
+           name: _nameTextEditingController.text,
+           email: _emailTextEditingController.text,
+           password: _passwordTextEditingController.text,
+           phone: _phoneTextEditingController.text,
+           context: context
+         );
+       } else print("No internet ");
+
+     }
+     return Scaffold(
+      body: SafeArea(
             child: Form(
               key: _form,
               child: SingleChildScrollView(
@@ -139,6 +141,7 @@ class SignUpScreen extends StatelessWidget {
                               suffixIcon: InkWell(
                                 onTap: () => model.onclick(),
                                 child: IconButton(
+                                  onPressed: (){},
                                   icon: Icon(
                                       model.passwordvisible
                                           ? Icons.visibility
@@ -180,6 +183,7 @@ class SignUpScreen extends StatelessWidget {
                               suffixIcon: InkWell(
                                 onTap: () => model.inClickConfirm(),
                                 child: IconButton(
+                                  onPressed: (){},
                                   icon: Icon(
                                       model.passwordConfirm
                                           ? Icons.visibility
@@ -203,7 +207,7 @@ class SignUpScreen extends StatelessWidget {
                                   value !=
                                       _passwordTextEditingController.text) {
                                 return '${LocaleKeys.confirm_enter_password.tr()}';
-                                ;
+
                               } else {
                                 return null;
                               }
@@ -254,12 +258,7 @@ class SignUpScreen extends StatelessWidget {
                             ),
                             onPressed: () {
                               if (_form.currentState.validate()) {
-                                model.userRegister(
-                                    name: _nameTextEditingController.text,
-                                    email: _emailTextEditingController.text,
-                                    password:
-                                        _passwordTextEditingController.text,
-                                    phone: _phoneTextEditingController.text);
+                                sendRegisterData();
                               }
                             },
                             child: Text(
@@ -274,30 +273,8 @@ class SignUpScreen extends StatelessWidget {
                 ),
               ),
             ),
-          );
-        },
-      ),
+          )
     );
+
   }
-//
-//   Future<void> sendRequestData(
-//       SignupViewModel ref, BuildContext context) async {
-//     var body = <String, String>{
-//       "name": _nameTextEditingController.text,
-//       "email": _emailTextEditingController.text,
-//       "password": _passwordTextEditingController.text,
-//       "phone": _phoneTextEditingController.text,
-//     };
-//     ref.RegisterSendRequest(body).then((value) {
-//       //Toast.show(value.message, context);
-//       if (value.status == false) {
-//         makeToast("${value.message}");
-//       } else {
-//         Navigator.push(
-//             context,
-//             MaterialPageRoute(
-//                 builder: (context) => CustomBottomNavigationBarTwo()));
-//       }
-//     });
-//   }
 }

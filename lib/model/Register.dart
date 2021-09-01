@@ -8,6 +8,7 @@ class Register {
   bool status;
   String message;
   Data data;
+
   Register.fromJson(Map<String,dynamic> json){
     status=json["status"];
     message=json["message"];

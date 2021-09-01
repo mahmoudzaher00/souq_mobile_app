@@ -27,18 +27,16 @@ void main() async {
   await MySharedPreferences.init();
 
   Widget widget;
-  bool onBoarding = MySharedPreferences.getData(key: 'onBoarding');
+
   token = MySharedPreferences.getData(key: 'token');
 
-  if (onBoarding != null) {
+
     if (token != null) {
       widget = CustomBottomNavigationBarTwo();
     } else {
-      widget = LoginScreen();
+      widget = SplashScreen();
     }
-  } else {
-    widget = SplashScreen();
-  }
+
   runApp(EasyLocalization(
     path: 'assets/translations',
       supportedLocales: [
@@ -48,10 +46,19 @@ void main() async {
       fallbackLocale: Locale('en'),
       assetLoader: CodegenLoader(),
 
-      child: MyApp()));
+      child: MyApp(
+        startWidget: widget,
+      )));
 }
 
 class MyApp extends StatelessWidget {
+  final Widget startWidget;
+
+  MyApp({
+    this.startWidget,
+  });
+
+
   @override
   Widget build(BuildContext context) {
     return MultiProvider(
@@ -71,6 +78,6 @@ class MyApp extends StatelessWidget {
             theme: ThemeData(
               primarySwatch: Colors.lightBlue,
             ),
-            home: SplashScreen()));
+            home: startWidget));
   }
 }

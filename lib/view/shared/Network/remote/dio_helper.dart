@@ -8,7 +8,13 @@ class DioHelper {
     dio = Dio(
       BaseOptions(
         baseUrl: 'https://student.valuxapps.com/api/',
-        receiveDataWhenStatusError: true,
+              connectTimeout: 50000,
+              receiveTimeout: 30000,
+              followRedirects: false,
+              receiveDataWhenStatusError: true,
+              validateStatus: (status) {
+                return status < 500;
+              },
       ),
     );
   }

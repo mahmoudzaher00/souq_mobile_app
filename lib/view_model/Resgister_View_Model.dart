@@ -1,10 +1,10 @@
-import 'package:dio/dio.dart';
 import 'package:flutter/material.dart';
 import 'package:untitled1/model/Register.dart';
 import 'package:untitled1/view/shared/Network/local/shared_pref.dart';
 import 'package:untitled1/view/shared/Network/remote/dio_helper.dart';
+import 'package:untitled1/view/shared/components/components.dart';
 import 'package:untitled1/view/shared/components/constants.dart';
-
+import 'package:untitled1/view/widgets/custom_bottomNavigationTwo.dart';
 
 
 class SignupViewModel extends ChangeNotifier{
@@ -24,8 +24,11 @@ class SignupViewModel extends ChangeNotifier{
     _passwordConfirm=!_passwordConfirm;
     notifyListeners();
   }
+
   Register registerModel;
-  void userRegister({@required String name, @required String email, @required String password, @required String phone,}) {
+  void userRegister(
+    {@required String name, @required String email, @required String password, @required String phone,BuildContext context})
+  {
     notifyListeners();
     DioHelper.postData(
       url: "register",
@@ -35,17 +38,33 @@ class SignupViewModel extends ChangeNotifier{
         'password': password,
         'phone': phone,
       },
-    ).then((value) {
-      print(value.data);
+      ).then((value) {
+        print(value.data);
+        registerModel= Register.fromJson(value.data);
 
-      registerModel= Register.fromJson(value.data);
-      notifyListeners();
+        if(registerModel.status == true && registerModel.status != null)
+        {
+          MySharedPreferences.saveData(
+            key: 'token',
+            value: registerModel.data.token,
+          ).then((value) {
+            token = registerModel.data.token;
+            Navigator.pushAndRemoveUntil
+              (context, MaterialPageRoute(builder: (context)=> CustomBottomNavigationBarTwo()), (Route<dynamic> route) => false,);
 
-    }).catchError((error) {
-      print(error.toString());
-      notifyListeners();
+          });
+          return registerModel;
+        }
+        else if(registerModel.status == false || registerModel.status == null){
+          makeToast(registerModel.message);
+          return registerModel;
+        }
 
-    });
+      }).catchError((error) {
+        print(error.toString());
+        notifyListeners();
+
+      });
   }
 
   // Future<Register> RegisterSendRequest(Map<dynamic, dynamic> jsonMap) async {
@@ -80,7 +99,13 @@ class SignupViewModel extends ChangeNotifier{
   //   return registerResponse;
   //
   // }
-
+// if(registerModel.status == true){
+//   navigateAndFinish(context,CustomBottomNavigationBarTwo);
+//
+// }else{
+//   makeToast(registerModel.message);
+//   return registerModel;
+// }
 
 
 }
