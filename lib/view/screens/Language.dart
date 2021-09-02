@@ -39,64 +39,70 @@ class _LanguageScreenState extends State<LanguageScreen> {
             children: [
               Padding(
                 padding: const EdgeInsets.all(24.0),
-                child: Container(
-                  width: double.infinity,
-                  child: InkWell(
-                    child: Center(
-                        child: Text(
-                      'English',
-                      style:
-                          TextStyle(fontSize: 24, fontWeight: FontWeight.bold),
-                    )),
-                    onTap: () async {
-                     // Toast.show('${LocaleKeys.Languagechanged.tr()}', context);
-                      Fluttertoast.showToast(msg: '${LocaleKeys.Languagechanged.tr()}',
+                child: SizedBox(
+                  height: 50,
+                  width: MediaQuery.of(context).size.width * 0.95,
+                  child: TextButton(
+                    style: TextButton.styleFrom(
+                      primary: Colors.white,
+                      backgroundColor: Colors.lightBlue
+                    ),
+                    onPressed: () async {
+                      Fluttertoast.showToast(
+                          msg: '${LocaleKeys.Languagechanged.tr()}',
                           toastLength: Toast.LENGTH_SHORT,
                           gravity: ToastGravity.BOTTOM,
                           timeInSecForIosWeb: 1,
                           backgroundColor: Colors.grey,
                           textColor: Colors.black,
-                          fontSize: 16.0
-                         );
+                          fontSize: 16.0);
                       await context.setLocale(
                         Locale('en'),
-
                       );
                     },
+                    child: Text(
+                      "English",
+                      style: TextStyle(fontSize: 24, fontWeight: FontWeight.bold),
+                    ),
                   ),
                 ),
               ),
-              Divider(
-                thickness: 3,
-              ),
+
               Padding(
-                padding: const EdgeInsets.all(22.0),
-                child: Container(
-                  child: InkWell(
-                    child: Center(
-                        child: Text('العربية',
-                            style: TextStyle(
-                                fontSize: 24, fontWeight: FontWeight.bold))),
-                    onTap: () async {
-                      Fluttertoast.showToast(msg: '${LocaleKeys.Languagechanged.tr()}',
-                        toastLength: Toast.LENGTH_SHORT,
-                        gravity: ToastGravity.BOTTOM,
-                        timeInSecForIosWeb: 1,
-                        backgroundColor: Colors.grey,
-                        textColor: Colors.black,
-                        fontSize: 16.0
-                    );
+                padding: const EdgeInsets.all(24.0),
+                child: SizedBox(
+                  height: 50,
+                  width: MediaQuery.of(context).size.width * 0.95,
+                  child: TextButton(
+                    style: TextButton.styleFrom(
+                        primary: Colors.white,
+                        backgroundColor: Colors.lightBlue
+                    ),
+                    onPressed: () async {
+                      Fluttertoast.showToast(
+                          msg: '${LocaleKeys.Languagechanged.tr()}',
+                          toastLength: Toast.LENGTH_SHORT,
+                          gravity: ToastGravity.BOTTOM,
+                          timeInSecForIosWeb: 1,
+                          backgroundColor: Colors.grey,
+                          textColor: Colors.black,
+                          fontSize: 16.0);
 
                       await context.setLocale(
                         Locale('ar'),
                       );
                     },
+                    child: Text(
+                      "العربية",
+                      style: TextStyle(fontSize: 24, fontWeight: FontWeight.bold),
+                    ),
                   ),
                 ),
               ),
-              Divider(
-                thickness: 3,
-              )
+
+
+
+
             ],
           ),
         ));

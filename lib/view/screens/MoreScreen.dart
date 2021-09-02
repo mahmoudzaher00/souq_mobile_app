@@ -89,14 +89,14 @@ class MoreScreen extends StatelessWidget{
           ),
           ListTile(
             leading: CircleAvatar(
-              backgroundColor: Colors.amber,
+              backgroundColor: Colors.grey,
               child: Icon(
-                Icons.info,
-                color: Colors.white,
+                Icons.logout,
+                color: Colors.black,
               ),
             ),
-            title: Text('${LocaleKeys.About_app.tr()}'),
-            subtitle: Text('${LocaleKeys.Get_more.tr()}'),
+            title: Text('${LocaleKeys.logout.tr()}'),
+            //subtitle: Text('${LocaleKeys.Get_more.tr()}'),
             trailing: Icon(Icons.arrow_forward_ios),
             onTap: (){
               signOut(context);

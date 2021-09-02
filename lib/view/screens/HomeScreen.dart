@@ -36,7 +36,7 @@ class HomeScreen extends StatelessWidget {
                         height: 5,
                       ),
                       Padding(
-                        padding: const EdgeInsets.only(left: 8.0),
+                        padding: const EdgeInsets.only(left: 8.0,right: 8.0),
                         child: CustomText(
                           text: '${LocaleKeys.Categories.tr()}',
                           fontweight: FontWeight.bold,
@@ -48,7 +48,7 @@ class HomeScreen extends StatelessWidget {
                         thickness: 3,
                       ),
                       Padding(
-                          padding: const EdgeInsets.only(left: 8.0, bottom: 12),
+                          padding: const EdgeInsets.only(left: 8.0, bottom: 12,right: 8.0),
                           child: CustomText(
                             text: '${LocaleKeys.Recommended.tr()}',
                             fontweight: FontWeight.bold,

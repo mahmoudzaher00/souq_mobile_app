@@ -35,5 +35,6 @@
   "enter_phone": "Please Enter Your Phone Number",
   "cannot_less_name": "User name cannot be less than three characters!",
   "cannot_less_phone": "Phone number cannot be less than11 numbers!",
-  "Nointernet ": "No internet Connection"
+  "Nointernet ": "No internet Connection",
+  "logout": "Log Out"
 }
