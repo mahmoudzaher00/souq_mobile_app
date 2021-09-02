@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:untitled1/model/Login.dart';
+import 'package:untitled1/model/Profile.dart';
 import 'package:untitled1/view/shared/Network/local/shared_pref.dart';
 import 'package:untitled1/view/shared/Network/remote/dio_helper.dart';
 import 'package:untitled1/view/shared/components/components.dart';
@@ -16,9 +17,9 @@ bool get passwordvisible => _passwordvisible;
   notifyListeners();
 }
 Login loginmodel;
-  void userLogin(
-{@required String email,@required String password,BuildContext context}
-      )
+Profile profileModel;
+
+  void userLogin({@required String email,@required String password,BuildContext context})
   {
     notifyListeners();
     DioHelper.postData(url:"login", data: {
@@ -32,6 +33,16 @@ Login loginmodel;
             key: 'token',
             value: loginmodel.data.token).then((value) {
           token = loginmodel.data.token;
+          DioHelper.getData(url: 'profile', token : MySharedPreferences.getData(key: "token")).
+          then((value) {
+            print(value.data);
+            profileModel= Profile.fromJson(value.data);
+            return profileModel;
+          }).catchError((error) {
+            print(error.toString());
+            notifyListeners();
+
+          });
           Navigator.pushAndRemoveUntil(context, MaterialPageRoute(
               builder: (context) => CustomBottomNavigationBarTwo()), (
               Route<dynamic> route) => false);
@@ -46,6 +57,7 @@ Login loginmodel;
       print(error.toString());
       notifyListeners();
     });
+    notifyListeners();
   }
 
 }

@@ -7,6 +7,7 @@ import 'package:untitled1/view/widgets/custom_bottomNavigationTwo.dart';
 import 'package:untitled1/view/widgets/custom_text.dart';
 import 'package:untitled1/view_model/Login_view_model.dart';
 import 'package:easy_localization/easy_localization.dart';
+import 'package:untitled1/view_model/Profile_view_model.dart';
 import 'SignUpScreen.dart';
 
 class LoginScreen extends StatelessWidget {
@@ -16,13 +17,19 @@ class LoginScreen extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
+
     final _ref = Provider.of<LoginViewModel>(context);
-    Future<Void>sendLogindata()async {
+   // final ref = Provider.of<ProfileViewModel>(context);
+
+    Future<Void> sendLoginData() async {
       if (await checkInternetConnectivity()) {
         _ref.userLogin(
             email: _emailTextEditingController.text,
             password: _passwordTextEditingController.text,
             context: context);
+        //ref.getProfileData();
+
+
       }
       else{
         makeToast("${LocaleKeys.Nointernet.tr()}");
@@ -142,7 +149,8 @@ class LoginScreen extends StatelessWidget {
                         ),
                         onPressed: () {
                           if (_form.currentState.validate()) {
-                            sendLogindata();
+                            sendLoginData();
+
                           }
                         },
                         child: Text(
@@ -162,14 +170,14 @@ class LoginScreen extends StatelessWidget {
                           GestureDetector(
                             onTap: () {},
                             child: CustomText(
-                              text: "${LocaleKeys.have_account.tr()}",
+                              text: "${LocaleKeys.have_account.tr()} ",
                               fontSize: 16,
                               color: Colors.black,
                             ),
                           ),
                           InkWell(
                             child: CustomText(
-                              text: '${LocaleKeys.Signup.tr()}',
+                              text: ' ${LocaleKeys.Signup.tr()}',
                               fontSize: 16,
                               color: Color.fromRGBO(42, 87, 128, 1),
                             ),

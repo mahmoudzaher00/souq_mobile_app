@@ -1,10 +1,15 @@
 import 'package:flutter/material.dart';
+import 'package:path/path.dart';
+import 'package:provider/provider.dart';
+import 'package:untitled1/model/Profile.dart';
 import 'package:untitled1/model/Register.dart';
 import 'package:untitled1/view/shared/Network/local/shared_pref.dart';
 import 'package:untitled1/view/shared/Network/remote/dio_helper.dart';
 import 'package:untitled1/view/shared/components/components.dart';
 import 'package:untitled1/view/shared/components/constants.dart';
 import 'package:untitled1/view/widgets/custom_bottomNavigationTwo.dart';
+
+import 'Profile_view_model.dart';
 
 
 class SignupViewModel extends ChangeNotifier{
@@ -24,12 +29,28 @@ class SignupViewModel extends ChangeNotifier{
     _passwordConfirm=!_passwordConfirm;
     notifyListeners();
   }
+  Profile profileModel;
+
+
+  // void getProfileData(){
+  //   DioHelper.getData(url: 'profile', token : MySharedPreferences.getData(key: "token")).
+  //   then((value) {
+  //     print(value.data);
+  //     profileModel= Profile.fromJson(value.data);
+  //     return profileModel;
+  //   }).catchError((error) {
+  //     print(error.toString());
+  //     notifyListeners();
+  //
+  //   });
+  //   notifyListeners();
+  // }
 
   Register registerModel;
   void userRegister(
     {@required String name, @required String email, @required String password, @required String phone,BuildContext context})
   {
-    notifyListeners();
+
     DioHelper.postData(
       url: "register",
       data: {
@@ -49,6 +70,17 @@ class SignupViewModel extends ChangeNotifier{
             value: registerModel.data.token,
           ).then((value) {
             token = registerModel.data.token;
+
+            DioHelper.getData(url: 'profile', token : MySharedPreferences.getData(key: "token")).
+            then((value) {
+              print(value.data);
+              profileModel= Profile.fromJson(value.data);
+              return profileModel;
+            }).catchError((error) {
+              print(error.toString());
+              notifyListeners();
+
+            });
             Navigator.pushAndRemoveUntil
               (context, MaterialPageRoute(builder: (context)=> CustomBottomNavigationBarTwo()), (Route<dynamic> route) => false,);
 
@@ -65,6 +97,7 @@ class SignupViewModel extends ChangeNotifier{
         notifyListeners();
 
       });
+    notifyListeners();
   }
 
   // Future<Register> RegisterSendRequest(Map<dynamic, dynamic> jsonMap) async {

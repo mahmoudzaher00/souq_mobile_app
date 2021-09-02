@@ -11,6 +11,7 @@ import 'package:untitled1/view/shared/components/constants.dart';
 import 'package:untitled1/view/widgets/custom_bottomNavigationTwo.dart';
 import 'package:untitled1/view_model/BottomNagvigation_view_model.dart';
 import 'package:untitled1/view_model/Login_view_model.dart';
+import 'package:untitled1/view_model/Profile_view_model.dart';
 import 'package:untitled1/view_model/Resgister_View_Model.dart';
 import 'package:untitled1/view_model/favorite_view_model.dart';
 import 'package:untitled1/view_model/slider_images_view_model.dart';
@@ -69,6 +70,7 @@ class MyApp extends StatelessWidget {
           ListenableProvider<ProductProvider>(create: (context) => ProductProvider()),
           ListenableProvider<FavoriteViewModel>(create: (context) => FavoriteViewModel()),
           ListenableProvider<SliderImagesViewModel>(create: (context) => SliderImagesViewModel()),
+          //ListenableProvider<ProfileViewModel>(create: (context) => ProfileViewModel()),
         ],
         child: MaterialApp(
           supportedLocales: context.supportedLocales,

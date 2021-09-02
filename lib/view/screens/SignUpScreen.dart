@@ -2,6 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:untitled1/translations/locale_keys.g.dart';
 import 'package:provider/provider.dart';
 import 'package:untitled1/view/shared/components/components.dart';
+import 'package:untitled1/view_model/Profile_view_model.dart';
 import 'package:untitled1/view_model/Resgister_View_Model.dart';
 import 'package:easy_localization/easy_localization.dart';
 
@@ -26,6 +27,7 @@ class _SignUpScreenState extends State<SignUpScreen> {
   @override
   Widget build(BuildContext context) {
      final _model = Provider.of<SignupViewModel>(context);
+    // final ref = Provider.of<ProfileViewModel>(context);
 
      Future<void> sendRegisterData() async {
        if (await checkInternetConnectivity()) {
@@ -36,6 +38,7 @@ class _SignUpScreenState extends State<SignUpScreen> {
            phone: _phoneTextEditingController.text,
            context: context
          );
+        // ref.getProfileData();
        } else {
          //print("No internet ");
          makeToast('${LocaleKeys.Nointernet.tr()}');
@@ -251,6 +254,7 @@ class _SignUpScreenState extends State<SignUpScreen> {
                             onPressed: () {
                               if (_form.currentState.validate()) {
                                 sendRegisterData();
+                                //ref.getProfileData();
                               }
                             },
                             child: Text(
