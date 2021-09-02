@@ -50,7 +50,8 @@ class CodegenLoader extends AssetLoader{
   "enter_name": "الرجاء إدخال اسم المستخدم",
   "enter_phone": "الرجاء إدخال رقم الهاتف",
   "cannot_less_name": "!لا يمكن أن يكون اسم المستخدم أقل من ثلاثة أحرف",
-  "cannot_less_phone": "!لا يمكن أن يكون رقم الهاتف أقل من 10 أرقام"
+  "cannot_less_phone": "!لا يمكن أن يكون رقم الهاتف أقل من 11 أرقام",
+  "Nointernet ": "غير متصل بالانترنت"
 };
 static const Map<String,dynamic> en = {
   "login": "Email",
@@ -88,7 +89,8 @@ static const Map<String,dynamic> en = {
   "enter_name": "Please Enter Your User Name",
   "enter_phone": "Please Enter Your Phone Number",
   "cannot_less_name": "User name cannot be less than three characters!",
-  "cannot_less_phone": "Phone number cannot be less than10 numbers!"
+  "cannot_less_phone": "Phone number cannot be less than11 numbers!",
+  "Nointernet ": "No internet Connection"
 };
 static const Map<String, Map<String,dynamic>> mapLocales = {"ar": ar, "en": en};
 }

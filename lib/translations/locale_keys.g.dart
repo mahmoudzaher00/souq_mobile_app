@@ -37,5 +37,6 @@ abstract class  LocaleKeys {
   static const enter_phone = 'enter_phone';
   static const cannot_less_name = 'cannot_less_name';
   static const cannot_less_phone = 'cannot_less_phone';
+  static const Nointernet  = 'Nointernet ';
 
 }

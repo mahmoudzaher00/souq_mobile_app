@@ -1,10 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:untitled1/translations/locale_keys.g.dart';
 import 'package:provider/provider.dart';
-import 'package:untitled1/view/shared/Network/local/shared_pref.dart';
 import 'package:untitled1/view/shared/components/components.dart';
-import 'package:untitled1/view/shared/components/constants.dart';
-import 'package:untitled1/view/widgets/custom_bottomNavigationTwo.dart';
 import 'package:untitled1/view_model/Resgister_View_Model.dart';
 import 'package:easy_localization/easy_localization.dart';
 
@@ -16,35 +13,34 @@ class SignUpScreen extends StatefulWidget {
 class _SignUpScreenState extends State<SignUpScreen> {
   GlobalKey<FormState> _form = GlobalKey<FormState>();
 
-  final TextEditingController _emailTextEditingController =
-      TextEditingController();
+  final TextEditingController _emailTextEditingController = TextEditingController();
 
-  final TextEditingController _nameTextEditingController =
-      TextEditingController();
+  final TextEditingController _nameTextEditingController = TextEditingController();
 
-  final TextEditingController _passwordTextEditingController =
-      TextEditingController();
+  final TextEditingController _passwordTextEditingController = TextEditingController();
 
-  final TextEditingController _passwordTextEditingControllerconfirm =
-      TextEditingController();
+  final TextEditingController _passwordTextEditingControllerconfirm = TextEditingController();
 
-  final TextEditingController _phoneTextEditingController =
-      TextEditingController();
+  final TextEditingController _phoneTextEditingController = TextEditingController();
 
   @override
   Widget build(BuildContext context) {
-     final model = Provider.of<SignupViewModel>(context);
+     final _model = Provider.of<SignupViewModel>(context);
 
      Future<void> sendRegisterData() async {
        if (await checkInternetConnectivity()) {
-         model.userRegister(
+         _model.userRegister(
            name: _nameTextEditingController.text,
            email: _emailTextEditingController.text,
            password: _passwordTextEditingController.text,
            phone: _phoneTextEditingController.text,
            context: context
          );
-       } else print("No internet ");
+       } else {
+         //print("No internet ");
+         makeToast('${LocaleKeys.Nointernet.tr()}');
+
+       }
 
      }
      return Scaffold(
@@ -133,22 +129,20 @@ class _SignUpScreenState extends State<SignUpScreen> {
                           padding: EdgeInsets.all(10),
                           child: TextFormField(
                             controller: _passwordTextEditingController,
-                            obscureText: model.passwordvisible ? true : false,
+                            obscureText:_model.passwordvisible,
                             keyboardType: TextInputType.number,
                             decoration: InputDecoration(
                               prefixIcon: Icon(Icons.lock_rounded,
                                   color: Color.fromRGBO(42, 87, 128, 1)),
-                              suffixIcon: InkWell(
-                                onTap: () => model.onclick(),
-                                child: IconButton(
-                                  onPressed: (){},
+                              suffixIcon: IconButton(
+                                  onPressed: () {return _model.onclick();},
                                   icon: Icon(
-                                      model.passwordvisible
+                                      _model.passwordvisible
                                           ? Icons.visibility
                                           : Icons.visibility_off,
                                       color: Color.fromRGBO(42, 87, 128, 1)),
                                 ),
-                              ),
+
                               labelStyle: TextStyle(color: Colors.black),
                               enabledBorder: UnderlineInputBorder(
                                 borderSide: BorderSide(color: Colors.black),
@@ -175,22 +169,20 @@ class _SignUpScreenState extends State<SignUpScreen> {
                           padding: EdgeInsets.all(10),
                           child: TextFormField(
                             controller: _passwordTextEditingControllerconfirm,
-                            obscureText: model.passwordConfirm ? true : false,
+                            obscureText: _model.passwordConfirm ? true : false,
                             keyboardType: TextInputType.number,
                             decoration: InputDecoration(
                               prefixIcon: Icon(Icons.lock_rounded,
                                   color: Color.fromRGBO(42, 87, 128, 1)),
-                              suffixIcon: InkWell(
-                                onTap: () => model.inClickConfirm(),
-                                child: IconButton(
-                                  onPressed: (){},
+                              suffixIcon:  IconButton(
+                                onPressed:() =>_model.inClickConfirm(),
                                   icon: Icon(
-                                      model.passwordConfirm
+                                      _model.passwordConfirm
                                           ? Icons.visibility
                                           : Icons.visibility_off,
                                       color: Color.fromRGBO(42, 87, 128, 1)),
                                 ),
-                              ),
+
                               labelStyle: TextStyle(color: Colors.black),
                               enabledBorder: UnderlineInputBorder(
                                 borderSide: BorderSide(color: Colors.black),

@@ -1,6 +1,8 @@
+import 'dart:ffi';
 import 'package:flutter/material.dart';
 import 'package:provider/provider.dart';
 import 'package:untitled1/translations/locale_keys.g.dart';
+import 'package:untitled1/view/shared/components/components.dart';
 import 'package:untitled1/view/widgets/custom_bottomNavigationTwo.dart';
 import 'package:untitled1/view/widgets/custom_text.dart';
 import 'package:untitled1/view_model/Login_view_model.dart';
@@ -15,6 +17,17 @@ class LoginScreen extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     final _ref = Provider.of<LoginViewModel>(context);
+    Future<Void>sendLogindata()async {
+      if (await checkInternetConnectivity()) {
+        _ref.userLogin(
+            email: _emailTextEditingController.text,
+            password: _passwordTextEditingController.text,
+            context: context);
+      }
+      else{
+        makeToast("${LocaleKeys.Nointernet.tr()}");
+      }
+    }
     return Scaffold(
       body: SafeArea(
         child: Form(
@@ -72,17 +85,15 @@ class LoginScreen extends StatelessWidget {
                         decoration: InputDecoration(
                           prefixIcon: Icon(Icons.lock_rounded,
                               color: Color.fromRGBO(42, 87, 128, 1)),
-                          suffixIcon: InkWell(
-                            onTap: () =>
-                               _ref.onclick(),
-                            child: IconButton(
+                          suffixIcon: IconButton(
+                            onPressed:  () =>
+                                _ref.onclick(),
                               icon: Icon(
                                   _ref.passwordvisible
                                       ? Icons.visibility
                                       : Icons.visibility_off,
                                   color: Color.fromRGBO(42, 87, 128, 1)),
                             ),
-                          ),
                           labelStyle: TextStyle(color: Colors.black),
                           enabledBorder: UnderlineInputBorder(
                             borderSide: BorderSide(color: Colors.black),
@@ -131,10 +142,7 @@ class LoginScreen extends StatelessWidget {
                         ),
                         onPressed: () {
                           if (_form.currentState.validate()) {
-                            Navigator.pushReplacement(
-                                context,
-                                MaterialPageRoute(
-                                    builder: (context) => CustomBottomNavigationBarTwo()));
+                            sendLogindata();
                           }
                         },
                         child: Text(
