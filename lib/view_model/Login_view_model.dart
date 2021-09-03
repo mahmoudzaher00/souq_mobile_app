@@ -7,6 +7,8 @@ import 'package:untitled1/view/shared/components/components.dart';
 import 'package:untitled1/view/shared/components/constants.dart';
 import 'package:untitled1/view/widgets/custom_bottomNavigationTwo.dart';
 
+import 'Profile_view_model.dart';
+
 class LoginViewModel extends ChangeNotifier{
 bool _passwordvisible=true;
 
@@ -33,16 +35,7 @@ Profile profileModel;
             key: 'token',
             value: loginmodel.data.token).then((value) {
           token = loginmodel.data.token;
-          DioHelper.getData(url: 'profile', token : MySharedPreferences.getData(key: "token")).
-          then((value) {
-            print(value.data);
-            profileModel= Profile.fromJson(value.data);
-            return profileModel;
-          }).catchError((error) {
-            print(error.toString());
-            notifyListeners();
-
-          });
+          ProfileViewModel.getProfileData();
           Navigator.pushAndRemoveUntil(context, MaterialPageRoute(
               builder: (context) => CustomBottomNavigationBarTwo()), (
               Route<dynamic> route) => false);

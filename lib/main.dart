@@ -70,7 +70,7 @@ class MyApp extends StatelessWidget {
           ListenableProvider<ProductProvider>(create: (context) => ProductProvider()),
           ListenableProvider<FavoriteViewModel>(create: (context) => FavoriteViewModel()),
           ListenableProvider<SliderImagesViewModel>(create: (context) => SliderImagesViewModel()),
-          //ListenableProvider<ProfileViewModel>(create: (context) => ProfileViewModel()),
+          ListenableProvider<ProfileViewModel>(create: (context) => ProfileViewModel()),
         ],
         child: MaterialApp(
           supportedLocales: context.supportedLocales,

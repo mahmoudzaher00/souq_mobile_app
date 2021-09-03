@@ -70,17 +70,7 @@ class SignupViewModel extends ChangeNotifier{
             value: registerModel.data.token,
           ).then((value) {
             token = registerModel.data.token;
-
-            DioHelper.getData(url: 'profile', token : MySharedPreferences.getData(key: "token")).
-            then((value) {
-              print(value.data);
-              profileModel= Profile.fromJson(value.data);
-              return profileModel;
-            }).catchError((error) {
-              print(error.toString());
-              notifyListeners();
-
-            });
+            ProfileViewModel.getProfileData();
             Navigator.pushAndRemoveUntil
               (context, MaterialPageRoute(builder: (context)=> CustomBottomNavigationBarTwo()), (Route<dynamic> route) => false,);
 
