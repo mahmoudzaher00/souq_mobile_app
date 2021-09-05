@@ -3,11 +3,11 @@ import 'package:flutter/material.dart';
 import 'package:provider/provider.dart';
 import 'package:untitled1/translations/locale_keys.g.dart';
 import 'package:untitled1/view/shared/components/components.dart';
-import 'package:untitled1/view/widgets/custom_bottomNavigationTwo.dart';
+
 import 'package:untitled1/view/widgets/custom_text.dart';
 import 'package:untitled1/view_model/Login_view_model.dart';
 import 'package:easy_localization/easy_localization.dart';
-import 'package:untitled1/view_model/Profile_view_model.dart';
+
 import 'SignUpScreen.dart';
 
 class LoginScreen extends StatelessWidget {
@@ -19,7 +19,7 @@ class LoginScreen extends StatelessWidget {
   Widget build(BuildContext context) {
 
     final _ref = Provider.of<LoginViewModel>(context);
-   // final ref = Provider.of<ProfileViewModel>(context);
+
 
     Future<Void> sendLoginData() async {
       if (await checkInternetConnectivity()) {

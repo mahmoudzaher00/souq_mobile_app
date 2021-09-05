@@ -1,8 +1,12 @@
 import 'dart:async';
 import 'package:flutter/material.dart';
+import 'package:flutter/scheduler.dart';
+import 'package:provider/provider.dart';
 import 'package:untitled1/view/screens/LoginScreen.dart';
 import 'package:untitled1/view/shared/Network/local/shared_pref.dart';
+import 'package:untitled1/view/shared/Network/remote/Productprovider.dart';
 import 'package:untitled1/view/widgets/custom_bottomNavigationTwo.dart';
+import 'package:untitled1/view_model/Profile_view_model.dart';
 
 import 'LoginScreen.dart';
 
@@ -24,6 +28,7 @@ class _SplashScreenState extends State<SplashScreen> {
 
   @override
   Widget build(BuildContext context) {
+
     return Scaffold(
       body: Container(
         width: MediaQuery.of(context).size.width,

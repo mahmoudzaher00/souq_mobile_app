@@ -12,7 +12,8 @@ class ProfileViewModel extends ChangeNotifier{
 
    DioHelper.getData(url: 'profile', token : MySharedPreferences.getData(key: "token")).
    then((value) {
-     print(value.data);
+     // print(value.data);
+     print("done");
      profileModel= Profile.fromJson(value.data);
      return profileModel;
    }).catchError((error) {

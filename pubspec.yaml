@@ -66,8 +66,8 @@ flutter:
      - assets/translations/
      - images/slideshow/
      - images/categoires/
-     - images/img1.png
-     - images/img2.png
+     - images/
+
 
 
   # An image asset can refer to one or more resolution-specific "variants", see

@@ -2,21 +2,15 @@ import 'package:flutter/material.dart';
 import 'package:provider/provider.dart';
 import 'package:untitled1/model/db/Favorites.dart';
 import 'package:untitled1/view/shared/Network/remote/Productprovider.dart';
-
 import 'package:untitled1/view/widgets/custom_text.dart';
 import 'package:untitled1/view_model/favorite_view_model.dart';
 
-class ProductsWidget extends StatefulWidget {
-  @override
-  _ProductsWidgetState createState() => _ProductsWidgetState();
-}
+class ProductsWidget extends StatelessWidget {
 
-class _ProductsWidgetState extends State<ProductsWidget> {
   @override
   Widget build(BuildContext context) {
     FavoriteViewModel _ref = Provider.of<FavoriteViewModel>(context);
     ProductProvider product = Provider.of<ProductProvider>(context);
-    product.fetchproduct();
     return  GridView.builder(
       gridDelegate: SliverGridDelegateWithFixedCrossAxisCount(
         crossAxisCount: 2,
