@@ -24,10 +24,13 @@ Profile profileModel;
   void userLogin({@required String email,@required String password,BuildContext context})
   {
     notifyListeners();
-    DioHelper.postData(url:"login", data: {
+    DioHelper.postData(
+        url:"login",
+        data: {
       'email':email,
       'password':password,
-    }).then((value) {
+    }
+    ).then((value) {
       print(value.data);
       loginmodel = Login.fromJson(value.data);
       if (loginmodel.status == true && loginmodel.status != null) {

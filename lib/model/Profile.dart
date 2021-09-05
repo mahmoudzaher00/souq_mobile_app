@@ -1,7 +1,3 @@
-
-
-
-
 class Profile {
   bool status;
   dynamic message;
