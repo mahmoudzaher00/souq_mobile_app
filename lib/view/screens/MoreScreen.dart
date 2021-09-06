@@ -5,6 +5,7 @@ import 'package:easy_localization/easy_localization.dart';
 import 'package:untitled1/view/screens/Language.dart';
 import 'package:untitled1/view/screens/ProfileScreen.dart';
 import 'package:untitled1/view/shared/components/constants.dart';
+import 'package:untitled1/view_model/Profile_view_model.dart';
 
 
 class MoreScreen extends StatelessWidget{
@@ -28,8 +29,7 @@ class MoreScreen extends StatelessWidget{
             trailing: Icon(Icons.arrow_forward_ios),
             onTap: () {
               Navigator.push(context, MaterialPageRoute(builder: (context)=>ProfileScreen()));
-
-            },
+              },
           ),
           new Divider(
             height: 1.0,

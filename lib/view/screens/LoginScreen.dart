@@ -21,7 +21,7 @@ class LoginScreen extends StatelessWidget {
     final _ref = Provider.of<LoginViewModel>(context);
 
 
-    Future<Void> sendLoginData() async {
+    Future<void> sendLoginData() async {
       if (await checkInternetConnectivity()) {
         _ref.userLogin(
             email: _emailTextEditingController.text,

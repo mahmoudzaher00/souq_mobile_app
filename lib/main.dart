@@ -10,6 +10,7 @@ import 'package:untitled1/view/shared/Network/remote/dio_helper.dart';
 import 'package:untitled1/view/shared/components/constants.dart';
 import 'package:untitled1/view/widgets/custom_bottomNavigationTwo.dart';
 import 'package:untitled1/view_model/BottomNagvigation_view_model.dart';
+import 'package:untitled1/view_model/Cart_View_Model.dart';
 import 'package:untitled1/view_model/Login_view_model.dart';
 import 'package:untitled1/view_model/Profile_view_model.dart';
 import 'package:untitled1/view_model/Resgister_View_Model.dart';
@@ -23,13 +24,13 @@ void main() async {
 
 
 
-
   DioHelper.init();
   await MySharedPreferences.init();
 
   Widget widget;
 
   token = MySharedPreferences.getData(key: 'token');
+
 
 
     if (token != null) {
@@ -52,14 +53,23 @@ void main() async {
       )));
 }
 
-class MyApp extends StatelessWidget {
+class MyApp extends StatefulWidget {
   final Widget startWidget;
 
   MyApp({
     this.startWidget,
   });
 
+  @override
+  _MyAppState createState() => _MyAppState();
+}
 
+class _MyAppState extends State<MyApp> {
+  @override
+  void initState() {
+    CartViewModel.getCartData();
+    super.initState();
+  }
   @override
   Widget build(BuildContext context) {
     return MultiProvider(
@@ -71,6 +81,7 @@ class MyApp extends StatelessWidget {
           ListenableProvider<FavoriteViewModel>(create: (context) => FavoriteViewModel()),
           ListenableProvider<SliderImagesViewModel>(create: (context) => SliderImagesViewModel()),
           ListenableProvider<ProfileViewModel>(create: (context) => ProfileViewModel()),
+          ListenableProvider<CartViewModel>(create: (context) => CartViewModel()),
         ],
         child: MaterialApp(
           supportedLocales: context.supportedLocales,
@@ -80,6 +91,6 @@ class MyApp extends StatelessWidget {
             theme: ThemeData(
               primarySwatch: Colors.lightBlue,
             ),
-            home: startWidget));
+            home: widget.startWidget));
   }
 }

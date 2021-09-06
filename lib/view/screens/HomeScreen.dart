@@ -8,6 +8,7 @@ import 'package:untitled1/view/widgets/ImageSlider.dart';
 import 'package:untitled1/view/widgets/ProductsWidget.dart';
 import 'package:untitled1/view/widgets/custom_text.dart';
 import 'package:easy_localization/easy_localization.dart';
+import 'package:untitled1/view_model/Cart_View_Model.dart';
 import 'package:untitled1/view_model/Profile_view_model.dart';
 class HomeScreen extends StatefulWidget {
 
@@ -19,6 +20,7 @@ class _HomeScreenState extends State<HomeScreen> {
   @override
   void initState() {
     ProfileViewModel.getProfileData();
+    CartViewModel.getCartData();
     super.initState();
   }
 
