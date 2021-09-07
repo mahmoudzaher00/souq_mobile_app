@@ -10,21 +10,12 @@ import 'package:untitled1/view_model/favorite_view_model.dart';
 import 'MainAppbar.dart';
 import 'package:easy_localization/easy_localization.dart';
 
-class CustomBottomNavigationBarTwo extends StatefulWidget {
+class CustomBottomNavigationBarTwo extends StatelessWidget {
 
 
-  @override
-  _CustomBottomNavigationBarTwoState createState() => _CustomBottomNavigationBarTwoState();
-}
-
-class _CustomBottomNavigationBarTwoState extends State<CustomBottomNavigationBarTwo> {
 
 
-  @override
-  void initState() {
-    // CartViewModel.getCartData();
-    super.initState();
-  }
+
 
   List<Widget> _widgetoption = <Widget>[
     HomeScreen(),

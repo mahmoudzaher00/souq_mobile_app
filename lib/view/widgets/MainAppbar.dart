@@ -1,7 +1,7 @@
 import 'package:flutter/material.dart';
-import 'package:untitled1/model/Cart.dart';
 import 'package:untitled1/view/screens/CartScreen.dart';
 import 'package:untitled1/view_model/Cart_View_Model.dart';
+
 
 class MainAppBar extends StatefulWidget with PreferredSizeWidget {
   final Size preferredSize;
@@ -13,11 +13,11 @@ class MainAppBar extends StatefulWidget with PreferredSizeWidget {
 }
 
 class _MainAppBarState extends State<MainAppBar> {
-  void initState() {
-    // CartViewModel.getCartData();
-    super.initState();
-  }
-  List x = [];
+  // void initState() {
+  //   CartViewModel.getCartData();
+  //   super.initState();
+  //
+  // }
 
   @override
   Widget build(BuildContext context) {
@@ -39,7 +39,6 @@ class _MainAppBarState extends State<MainAppBar> {
                     color: Colors.white,
                   ),
                   onPressed: () {
-                    // CartViewModel.getCartData();
                     Navigator.push(context, MaterialPageRoute(builder: (context) => CartScreen()));
                   },
                 ),
@@ -50,8 +49,8 @@ class _MainAppBarState extends State<MainAppBar> {
                       color: Colors.red.shade900, shape: BoxShape.circle),
                   child: Padding(
                     padding: const EdgeInsets.all(4.0),
-                    child: x.length ==null?Text("") :Text(
-                     "${x.length}",
+                    child: CartViewModel.getCart.data.cartItems.length ==null?Text("") :Text(
+                     "${CartViewModel.getCart.data.cartItems.length}",
                       style: TextStyle(color: Colors.white),
                     )
                   ),

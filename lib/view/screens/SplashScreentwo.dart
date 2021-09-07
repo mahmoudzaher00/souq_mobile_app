@@ -1,14 +1,15 @@
 import 'dart:async';
 import 'package:flutter/material.dart';
-import 'package:untitled1/view/screens/LoginScreen.dart';
-import 'LoginScreen.dart';
+import 'package:untitled1/view/widgets/custom_bottomNavigationTwo.dart';
+import 'package:untitled1/view_model/Cart_View_Model.dart';
 
-class SplashScreen extends StatefulWidget {
+
+class SplashScreentwo extends StatefulWidget {
   @override
-  _SplashScreenState createState() => _SplashScreenState();
+  _SplashScreentwoState createState() => _SplashScreentwoState();
 }
 
-class _SplashScreenState extends State<SplashScreen> {
+class _SplashScreentwoState extends State<SplashScreentwo> {
   final int timerDurationMilliseconds = 1200;
 
   final int navigateDurationMilliseconds = 3000;
@@ -17,6 +18,7 @@ class _SplashScreenState extends State<SplashScreen> {
   void initState() {
     super.initState();
     gotoNext();
+    CartViewModel.getCartData();
   }
 
   @override
@@ -34,10 +36,10 @@ class _SplashScreenState extends State<SplashScreen> {
   }
 
   gotoNext() {
-    Timer(Duration(seconds: 3), () {
-        Navigator.pushReplacement(
-            context, MaterialPageRoute(builder: (context) => LoginScreen()));
-      }
+    Timer(Duration(seconds: 6), () {
+      Navigator.pushReplacement(
+          context, MaterialPageRoute(builder: (context) => CustomBottomNavigationBarTwo()));
+    }
     );
   }
 }

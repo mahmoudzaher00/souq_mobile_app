@@ -1,15 +1,15 @@
 import 'package:flutter/material.dart';
-import 'package:flutter/scheduler.dart';
+
 import 'package:provider/provider.dart';
 import 'package:untitled1/translations/locale_keys.g.dart';
-import 'package:untitled1/view/widgets/MainAppbar.dart';
+
 import 'package:untitled1/view_model/Product_view_model.dart';
 import 'package:untitled1/view/widgets/CategoriesWidget.dart';
 import 'package:untitled1/view/widgets/ImageSlider.dart';
 import 'package:untitled1/view/widgets/ProductsWidget.dart';
 import 'package:untitled1/view/widgets/custom_text.dart';
 import 'package:easy_localization/easy_localization.dart';
-import 'package:untitled1/view_model/Cart_View_Model.dart';
+
 import 'package:untitled1/view_model/Profile_view_model.dart';
 class HomeScreen extends StatefulWidget {
 
@@ -18,10 +18,11 @@ class HomeScreen extends StatefulWidget {
 }
 
 class _HomeScreenState extends State<HomeScreen> {
+
   @override
   void initState() {
     ProfileViewModel.getProfileData();
-    // CartViewModel.getCartData();
+     //CartViewModel.getCartData();
     super.initState();
   }
 

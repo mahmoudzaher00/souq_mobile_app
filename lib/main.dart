@@ -4,6 +4,7 @@ import 'package:provider/provider.dart';
 import 'package:untitled1/translations/codegen_loader.g.dart';
 import 'package:untitled1/view/screens/LoginScreen.dart';
 import 'package:untitled1/view/screens/SplashScreen.dart';
+import 'package:untitled1/view/screens/SplashScreentwo.dart';
 import 'package:untitled1/view/shared/Network/local/shared_pref.dart';
 import 'package:untitled1/view_model/Product_view_model.dart';
 import 'package:untitled1/view/shared/Network/remote/dio_helper.dart';
@@ -34,7 +35,7 @@ void main() async {
 
 
     if (token != null) {
-      widget = CustomBottomNavigationBarTwo();
+      widget = SplashScreentwo();
     } else {
       widget = SplashScreen();
     }
@@ -65,11 +66,7 @@ class MyApp extends StatefulWidget {
 }
 
 class _MyAppState extends State<MyApp> {
-  @override
-  void initState() {
-    // CartViewModel.getCartData();
-    super.initState();
-  }
+
   @override
   Widget build(BuildContext context) {
     return MultiProvider(

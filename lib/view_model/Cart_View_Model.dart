@@ -1,8 +1,6 @@
-import 'package:easy_localization/easy_localization.dart';
 import 'package:flutter/material.dart';
 import 'package:untitled1/model/Cart.dart';
 import 'package:untitled1/model/db/CartModel.dart';
-import 'package:untitled1/view/screens/CartScreen.dart';
 import 'package:untitled1/view/shared/Network/local/shared_pref.dart';
 import 'package:untitled1/view/shared/Network/remote/dio_helper.dart';
 import 'package:untitled1/view/shared/components/components.dart';
@@ -34,7 +32,9 @@ class CartViewModel extends ChangeNotifier{
 
 
 
- void getCartData(){
+
+
+  static Future<Cartgetmodel> getCartData(){
     DioHelper.getData(
       url: "carts",
       token: MySharedPreferences.getData(key: 'token')
@@ -45,7 +45,7 @@ class CartViewModel extends ChangeNotifier{
     }).catchError((error) {
       print(error.toString());
     });
-    notifyListeners();
+
 
 
   }

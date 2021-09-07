@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:provider/provider.dart';
+
 import 'package:untitled1/view/shared/components/components.dart';
 import 'package:untitled1/view/widgets/MainAppbar.dart';
 import 'package:untitled1/view_model/Cart_View_Model.dart';
@@ -14,11 +15,13 @@ class CartScreen extends StatefulWidget {
 }
 
 class _CartScreenState extends State<CartScreen> {
-  @override
-  void initState() {
-    // CartViewModel.getCartData();
-    super.initState();
-  }
+  // @override
+  // void initState() {
+  //   CartViewModel.getCartData();
+  //   super.initState();
+  //
+  // }
+ var x = CartViewModel.getCart.data.cartItems;
 
   @override
   Widget build(BuildContext context) {
@@ -26,7 +29,7 @@ class _CartScreenState extends State<CartScreen> {
     Future<void> removecartData(int id) async {
       if (await checkInternetConnectivity()) {
         cartModel.PostCartData(id: id);
-        if(cartModel.postCart.status == true){
+        if(cartModel.postCart.status == true && cartModel.postCart.status != null){
           makeToast(cartModel.postCart.message);
         }else if (cartModel.postCart.status == false){
           makeToast(cartModel.postCart.message);
@@ -93,6 +96,7 @@ class _CartScreenState extends State<CartScreen> {
                                         color: Colors.red,
                                       ),
                                       onPressed: () {
+                                        print("${x.length}");
                                         print(CartViewModel.getCart.data.cartItems[i].product.id);
                                         removecartData(CartViewModel.getCart.data.cartItems[i].product.id);
 
@@ -109,4 +113,5 @@ class _CartScreenState extends State<CartScreen> {
       ),
     );
   }
+
 }

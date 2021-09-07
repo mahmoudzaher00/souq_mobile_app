@@ -16,10 +16,7 @@ class ProductsWidget extends StatefulWidget {
 }
 
 class _ProductsWidgetState extends State<ProductsWidget> {
-  void initState() {
-    // CartViewModel.getCartData();
-    super.initState();
-  }
+
   @override
   Widget build(BuildContext context) {
     FavoriteViewModel _ref = Provider.of<FavoriteViewModel>(context);
@@ -29,7 +26,7 @@ class _ProductsWidgetState extends State<ProductsWidget> {
     Future<void> sendorRemoveCartData(int id) async {
       if (await checkInternetConnectivity()) {
         cartModel.PostCartData(id: id);
-        if(cartModel.postCart.status == true){
+        if(cartModel.postCart.status == true && cartModel.postCart.status != null){
           makeToast(cartModel.postCart.message);
         }else if (cartModel.postCart.status == false){
           makeToast(cartModel.postCart.message);
@@ -98,8 +95,7 @@ class _ProductsWidgetState extends State<ProductsWidget> {
                        color: Color.fromRGBO(42, 87, 128, 1),
                        ),
                        onPressed: () {
-                         // CartViewModel.getCartData();
-                         sendorRemoveCartData(product.productResponse.data.products[index].id);
+                             sendorRemoveCartData(product.productResponse.data.products[index].id);
                        }):
                       IconButton(
                           icon: Icon(
@@ -107,7 +103,6 @@ class _ProductsWidgetState extends State<ProductsWidget> {
 
                           ),
                           onPressed: () {
-                            // CartViewModel.getCartData();
                             sendorRemoveCartData(product.productResponse.data.products[index].id);
                           }),
                       product.productResponse.data.products[index].inFavorites
