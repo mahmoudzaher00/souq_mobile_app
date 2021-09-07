@@ -34,7 +34,7 @@ class CartViewModel extends ChangeNotifier{
 
 
 
- static void getCartData(){
+ void getCartData(){
     DioHelper.getData(
       url: "carts",
       token: MySharedPreferences.getData(key: 'token')
@@ -45,6 +45,7 @@ class CartViewModel extends ChangeNotifier{
     }).catchError((error) {
       print(error.toString());
     });
+    notifyListeners();
 
 
   }

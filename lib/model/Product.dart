@@ -14,6 +14,7 @@ class Product {
     this.message,
     this.data,
   });
+
   bool status;
   dynamic message;
   Data data;
@@ -22,7 +23,6 @@ class Product {
     status: json["status"],
     message: json["message"],
     data: Data.fromJson(json["data"]),
-
   );
 
   Map<String, dynamic> toJson() => {
@@ -34,66 +34,58 @@ class Product {
 
 class Data {
   Data({
-    this.currentPage,
-    this.data,
-    this.firstPageUrl,
-    this.from,
-    this.lastPage,
-    this.lastPageUrl,
-    this.nextPageUrl,
-    this.path,
-    this.perPage,
-    this.prevPageUrl,
-    this.to,
-    this.total,
+    this.banners,
+    this.products,
+    this.ad,
   });
 
-  int currentPage;
-  List<Datum> data;
-  String firstPageUrl;
-  int from;
-  int lastPage;
-  String lastPageUrl;
-  dynamic nextPageUrl;
-  String path;
-  int perPage;
-  dynamic prevPageUrl;
-  int to;
-  int total;
+  List<Banner> banners;
+  List<ProductElement> products;
+  String ad;
 
   factory Data.fromJson(Map<String, dynamic> json) => Data(
-    currentPage: json["current_page"],
-    data: List<Datum>.from(json["data"].map((x) => Datum.fromJson(x))),
-    firstPageUrl: json["first_page_url"],
-    from: json["from"],
-    lastPage: json["last_page"],
-    lastPageUrl: json["last_page_url"],
-    nextPageUrl: json["next_page_url"],
-    path: json["path"],
-    perPage: json["per_page"],
-    prevPageUrl: json["prev_page_url"],
-    to: json["to"],
-    total: json["total"],
+    banners: List<Banner>.from(json["banners"].map((x) => Banner.fromJson(x))),
+    products: List<ProductElement>.from(json["products"].map((x) => ProductElement.fromJson(x))),
+    ad: json["ad"],
   );
 
   Map<String, dynamic> toJson() => {
-    "current_page": currentPage,
-    "data": List<dynamic>.from(data.map((x) => x.toJson())),
-    "first_page_url": firstPageUrl,
-    "from": from,
-    "last_page": lastPage,
-    "last_page_url": lastPageUrl,
-    "next_page_url": nextPageUrl,
-    "path": path,
-    "per_page": perPage,
-    "prev_page_url": prevPageUrl,
-    "to": to,
-    "total": total,
+    "banners": List<dynamic>.from(banners.map((x) => x.toJson())),
+    "products": List<dynamic>.from(products.map((x) => x.toJson())),
+    "ad": ad,
   };
 }
 
-class Datum {
-  Datum({
+class Banner {
+  Banner({
+    this.id,
+    this.image,
+    this.category,
+    this.product,
+  });
+
+  int id;
+  String image;
+  dynamic category;
+  dynamic product;
+
+  factory Banner.fromJson(Map<String, dynamic> json) => Banner(
+    id: json["id"],
+    image: json["image"],
+    category: json["category"],
+    product: json["product"],
+  );
+
+  Map<String, dynamic> toJson() => {
+    "id": id,
+    "image": image,
+    "category": category,
+    "product": product,
+  };
+}
+
+class ProductElement {
+  ProductElement({
     this.id,
     this.price,
     this.oldPrice,
@@ -117,7 +109,7 @@ class Datum {
   bool inFavorites;
   bool inCart;
 
-  factory Datum.fromJson(Map<String, dynamic> json) => Datum(
+  factory ProductElement.fromJson(Map<String, dynamic> json) => ProductElement(
     id: json["id"],
     price: json["price"].toDouble(),
     oldPrice: json["old_price"].toDouble(),

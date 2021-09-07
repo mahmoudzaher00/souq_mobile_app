@@ -2,7 +2,8 @@ import 'package:flutter/material.dart';
 import 'package:flutter/scheduler.dart';
 import 'package:provider/provider.dart';
 import 'package:untitled1/translations/locale_keys.g.dart';
-import 'package:untitled1/view/shared/Network/remote/Productprovider.dart';
+import 'package:untitled1/view/widgets/MainAppbar.dart';
+import 'package:untitled1/view_model/Product_view_model.dart';
 import 'package:untitled1/view/widgets/CategoriesWidget.dart';
 import 'package:untitled1/view/widgets/ImageSlider.dart';
 import 'package:untitled1/view/widgets/ProductsWidget.dart';
@@ -20,7 +21,7 @@ class _HomeScreenState extends State<HomeScreen> {
   @override
   void initState() {
     ProfileViewModel.getProfileData();
-    CartViewModel.getCartData();
+    // CartViewModel.getCartData();
     super.initState();
   }
 
@@ -28,12 +29,11 @@ class _HomeScreenState extends State<HomeScreen> {
   Widget build(BuildContext context) {
     final statusBar = MediaQuery.of(context).padding.top;
     final appBar = AppBar().preferredSize.height;
-
     ProductProvider product = Provider.of<ProductProvider>(context);
     product.fetchproduct();
 
-
     return Scaffold(
+
       body: product.productResponse!=null
           ? SingleChildScrollView(
               child: Container(

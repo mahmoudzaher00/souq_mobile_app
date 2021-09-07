@@ -4,7 +4,7 @@ import 'package:flutter/scheduler.dart';
 import 'package:provider/provider.dart';
 import 'package:untitled1/view/screens/LoginScreen.dart';
 import 'package:untitled1/view/shared/Network/local/shared_pref.dart';
-import 'package:untitled1/view/shared/Network/remote/Productprovider.dart';
+import 'package:untitled1/view_model/Product_view_model.dart';
 import 'package:untitled1/view/widgets/custom_bottomNavigationTwo.dart';
 import 'package:untitled1/view_model/Profile_view_model.dart';
 
@@ -42,7 +42,7 @@ class _SplashScreenState extends State<SplashScreen> {
 
   gotoNext() {
     Timer(Duration(seconds: 3), () {
-        Navigator.push(
+        Navigator.pushReplacement(
             context, MaterialPageRoute(builder: (context) => LoginScreen()));
       }
     );

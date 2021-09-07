@@ -19,15 +19,12 @@ class FavoritesScreen extends StatelessWidget {
     });
     return
       //_ref.filmList.isNotEmpty
-
      SafeArea(
        child: SingleChildScrollView(
-         
          child: Container(
            child: Column(
               children: [
                 Container(
-                 
                   height: MediaQuery.of(context).size.height - statusBar - appBar - 105,
                   child: ListView.builder(
                   itemCount: _ref.FavoritesList.length,

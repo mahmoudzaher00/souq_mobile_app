@@ -2,22 +2,31 @@ import 'package:flutter/material.dart';
 import 'package:provider/provider.dart';
 import 'package:untitled1/model/db/Favorites.dart';
 import 'package:untitled1/translations/locale_keys.g.dart';
-import 'package:untitled1/view/shared/Network/remote/Productprovider.dart';
+import 'package:untitled1/view_model/Product_view_model.dart';
 import 'package:untitled1/view/shared/components/components.dart';
 import 'package:untitled1/view/widgets/custom_text.dart';
 import 'package:untitled1/view_model/Cart_View_Model.dart';
 import 'package:untitled1/view_model/favorite_view_model.dart';
 import 'package:easy_localization/easy_localization.dart';
 
-class ProductsWidget extends StatelessWidget {
+class ProductsWidget extends StatefulWidget {
 
+  @override
+  _ProductsWidgetState createState() => _ProductsWidgetState();
+}
+
+class _ProductsWidgetState extends State<ProductsWidget> {
+  void initState() {
+    // CartViewModel.getCartData();
+    super.initState();
+  }
   @override
   Widget build(BuildContext context) {
     FavoriteViewModel _ref = Provider.of<FavoriteViewModel>(context);
     ProductProvider product = Provider.of<ProductProvider>(context);
     CartViewModel cartModel = Provider.of<CartViewModel>(context);
 
-    Future<void> sendcartData(int id) async {
+    Future<void> sendorRemoveCartData(int id) async {
       if (await checkInternetConnectivity()) {
         cartModel.PostCartData(id: id);
         if(cartModel.postCart.status == true){
@@ -39,7 +48,7 @@ class ProductsWidget extends StatelessWidget {
       shrinkWrap: true,
       physics: ScrollPhysics(),
       addRepaintBoundaries: true,
-      itemCount: product.productResponse.data.data.length,
+      itemCount: product.productResponse.data.products.length,
       itemBuilder: (context, index) {
         return Card(
           shape: RoundedRectangleBorder(
@@ -55,7 +64,7 @@ class ProductsWidget extends StatelessWidget {
                   topRight: Radius.circular(5),
                 ),
                 child: Image.network(
-                  '${product.productResponse.data.data[index].image}',
+                  '${product.productResponse.data.products[index].image}',
                   fit: BoxFit.fill,
                   height: 125,
                   width: double.infinity,
@@ -68,7 +77,7 @@ class ProductsWidget extends StatelessWidget {
                   child: Center(
                     child: CustomText(
                       text:
-                          '${product.productResponse.data.data[index].name.substring(0, 16)}',
+                          '${product.productResponse.data.products[index].name.substring(0, 16)}',
                       fontSize: 16,
                     ),
                   ),
@@ -78,38 +87,37 @@ class ProductsWidget extends StatelessWidget {
                 mainAxisAlignment: MainAxisAlignment.spaceAround,
                 children: [
                   CustomText(
-                    text: '${product.productResponse.data.data[index].price}',
+                    text: '${product.productResponse.data.products[index].price}',
                   ),
                   Row(
                     children: [
-
-                      product.productResponse.data.data[index].inCart==  CartViewModel.getCart.data.cartItems[index].product.inCart ?
+                      product.productResponse.data.products[index].inCart?
                             IconButton(
                            icon: Icon(
                            Icons.shopping_cart_rounded,
                        color: Color.fromRGBO(42, 87, 128, 1),
                        ),
                        onPressed: () {
-                       sendcartData(product.productResponse.data.data[index].id);
-                       }):  IconButton(
-                             icon: Icon(
-                               Icons.shopping_cart_rounded,
+                         // CartViewModel.getCartData();
+                         sendorRemoveCartData(product.productResponse.data.products[index].id);
+                       }):
+                      IconButton(
+                          icon: Icon(
+                            Icons.shopping_cart_rounded,
 
-                             ),
-                             onPressed: () {
-                               sendcartData(product.productResponse.data.data[index].id);
-                             }),
-
-
-
-                      product.productResponse.data.data[index].inFavorites
+                          ),
+                          onPressed: () {
+                            // CartViewModel.getCartData();
+                            sendorRemoveCartData(product.productResponse.data.products[index].id);
+                          }),
+                      product.productResponse.data.products[index].inFavorites
                           ? IconButton(
                               icon: Icon(
                                 Icons.favorite,
                                 color: Color.fromRGBO(42, 87, 128, 1),
                               ),
                               onPressed: () {
-                                product.productResponse.data.data[index]
+                                product.productResponse.data.products[index]
                                     .inFavorites = _ref.isfav;
                                 _ref.onclick();
                               })
@@ -120,18 +128,18 @@ class ProductsWidget extends StatelessWidget {
                               onPressed: () {
                                 Favorites f = Favorites(
                                   favoritesId: product
-                                      .productResponse.data.data[index].id,
+                                      .productResponse.data.products[index].id,
                                   favoritesImage: product
-                                      .productResponse.data.data[index].image,
+                                      .productResponse.data.products[index].image,
                                   favoritesName: product
-                                      .productResponse.data.data[index].name,
+                                      .productResponse.data.products[index].name,
                                   favoritesPrice:
-                                      "${product.productResponse.data.data[index].price}",
+                                      "${product.productResponse.data.products[index].price}",
                                 );
                                 _ref.addFav(f, context);
 
                                 print("${_ref.viewAllFavorites()}");
-                                product.productResponse.data.data[index]
+                                product.productResponse.data.products[index]
                                     .inFavorites = _ref.isfav;
                                 _ref.onclick();
                               })

@@ -3,10 +3,21 @@ import 'package:untitled1/model/Cart.dart';
 import 'package:untitled1/view/screens/CartScreen.dart';
 import 'package:untitled1/view_model/Cart_View_Model.dart';
 
-class MainAppBar extends StatelessWidget with PreferredSizeWidget {
+class MainAppBar extends StatefulWidget with PreferredSizeWidget {
   final Size preferredSize;
 
   MainAppBar() : preferredSize = Size.fromHeight(70.0);
+
+  @override
+  _MainAppBarState createState() => _MainAppBarState();
+}
+
+class _MainAppBarState extends State<MainAppBar> {
+  void initState() {
+    // CartViewModel.getCartData();
+    super.initState();
+  }
+  List x = [];
 
   @override
   Widget build(BuildContext context) {
@@ -28,8 +39,8 @@ class MainAppBar extends StatelessWidget with PreferredSizeWidget {
                     color: Colors.white,
                   ),
                   onPressed: () {
-                    Navigator.push(context,
-                        MaterialPageRoute(builder: (context) => CartScreen()));
+                    // CartViewModel.getCartData();
+                    Navigator.push(context, MaterialPageRoute(builder: (context) => CartScreen()));
                   },
                 ),
               ),
@@ -39,10 +50,10 @@ class MainAppBar extends StatelessWidget with PreferredSizeWidget {
                       color: Colors.red.shade900, shape: BoxShape.circle),
                   child: Padding(
                     padding: const EdgeInsets.all(4.0),
-                    child: Text(
-                      '',
+                    child: x.length ==null?Text("") :Text(
+                     "${x.length}",
                       style: TextStyle(color: Colors.white),
-                    ),
+                    )
                   ),
                 ),
               ),

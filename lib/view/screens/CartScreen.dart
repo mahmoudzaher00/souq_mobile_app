@@ -1,11 +1,41 @@
 import 'package:flutter/material.dart';
+import 'package:provider/provider.dart';
+import 'package:untitled1/view/shared/components/components.dart';
 import 'package:untitled1/view/widgets/MainAppbar.dart';
 import 'package:untitled1/view_model/Cart_View_Model.dart';
+import 'package:untitled1/translations/locale_keys.g.dart';
+import 'package:easy_localization/easy_localization.dart';
 
-class CartScreen extends StatelessWidget {
+class CartScreen extends StatefulWidget {
+
+
+  @override
+  _CartScreenState createState() => _CartScreenState();
+}
+
+class _CartScreenState extends State<CartScreen> {
+  @override
+  void initState() {
+    // CartViewModel.getCartData();
+    super.initState();
+  }
+
   @override
   Widget build(BuildContext context) {
-
+    CartViewModel cartModel = Provider.of<CartViewModel>(context);
+    Future<void> removecartData(int id) async {
+      if (await checkInternetConnectivity()) {
+        cartModel.PostCartData(id: id);
+        if(cartModel.postCart.status == true){
+          makeToast(cartModel.postCart.message);
+        }else if (cartModel.postCart.status == false){
+          makeToast(cartModel.postCart.message);
+        }
+      }
+      else{
+        makeToast("${LocaleKeys.Nointernet.tr()}");
+      }
+    }
     return Scaffold(
       appBar: MainAppBar(),
       body: SingleChildScrollView(
@@ -15,7 +45,7 @@ class CartScreen extends StatelessWidget {
               Container(
                 height: MediaQuery.of(context).size.height * .86,
                 child: ListView.builder(
-                    itemCount:CartViewModel.getCart.data.cartItems.length,
+                    itemCount: CartViewModel.getCart.data.cartItems.length,
                     itemBuilder: (context, i) {
                       return Card(
                           elevation: 10,
@@ -59,10 +89,12 @@ class CartScreen extends StatelessWidget {
                                   ),
                                   IconButton(
                                       icon: Icon(
-                                        Icons.delete,
+                                        Icons.remove_shopping_cart,
                                         color: Colors.red,
                                       ),
                                       onPressed: () {
+                                        print(CartViewModel.getCart.data.cartItems[i].product.id);
+                                        removecartData(CartViewModel.getCart.data.cartItems[i].product.id);
 
                                       })
                                 ],
