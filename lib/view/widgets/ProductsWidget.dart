@@ -20,7 +20,6 @@ class _ProductsWidgetState extends State<ProductsWidget> {
   @override
   Widget build(BuildContext context) {
     FavoriteViewModel _ref = Provider.of<FavoriteViewModel>(context);
-    ProductProvider product = Provider.of<ProductProvider>(context);
     CartViewModel cartModel = Provider.of<CartViewModel>(context);
 
     Future<void> sendorRemoveCartData(int id) async {
@@ -45,7 +44,7 @@ class _ProductsWidgetState extends State<ProductsWidget> {
       shrinkWrap: true,
       physics: ScrollPhysics(),
       addRepaintBoundaries: true,
-      itemCount: product.productResponse.data.products.length,
+      itemCount: ProductProvider.productResponse.data.products.length,
       itemBuilder: (context, index) {
         return Card(
           shape: RoundedRectangleBorder(
@@ -61,7 +60,7 @@ class _ProductsWidgetState extends State<ProductsWidget> {
                   topRight: Radius.circular(5),
                 ),
                 child: Image.network(
-                  '${product.productResponse.data.products[index].image}',
+                  '${ProductProvider.productResponse.data.products[index].image}',
                   fit: BoxFit.fill,
                   height: 125,
                   width: double.infinity,
@@ -74,7 +73,7 @@ class _ProductsWidgetState extends State<ProductsWidget> {
                   child: Center(
                     child: CustomText(
                       text:
-                          '${product.productResponse.data.products[index].name.substring(0, 16)}',
+                          '${ProductProvider.productResponse.data.products[index].name.substring(0, 16)}',
                       fontSize: 16,
                     ),
                   ),
@@ -84,19 +83,18 @@ class _ProductsWidgetState extends State<ProductsWidget> {
                 mainAxisAlignment: MainAxisAlignment.spaceAround,
                 children: [
                   CustomText(
-                    text: '${product.productResponse.data.products[index].price}',
+                    text: '${ProductProvider.productResponse.data.products[index].price}',
                   ),
                   Row(
                     children: [
-                      product.productResponse.data.products[index].inCart?
+                      ProductProvider.productResponse.data.products[index].inCart?
                             IconButton(
                            icon: Icon(
                            Icons.shopping_cart_rounded,
                        color: Color.fromRGBO(42, 87, 128, 1),
                        ),
                        onPressed: () {
-
-                             sendorRemoveCartData(product.productResponse.data.products[index].id);
+                             sendorRemoveCartData(ProductProvider.productResponse.data.products[index].id);
                        }):
                       IconButton(
                           icon: Icon(
@@ -104,16 +102,16 @@ class _ProductsWidgetState extends State<ProductsWidget> {
 
                           ),
                           onPressed: () {
-                            sendorRemoveCartData(product.productResponse.data.products[index].id);
+                            sendorRemoveCartData(ProductProvider.productResponse.data.products[index].id);
                           }),
-                      product.productResponse.data.products[index].inFavorites
+                      ProductProvider.productResponse.data.products[index].inFavorites
                           ? IconButton(
                               icon: Icon(
                                 Icons.favorite,
                                 color: Color.fromRGBO(42, 87, 128, 1),
                               ),
                               onPressed: () {
-                                product.productResponse.data.products[index]
+                                ProductProvider.productResponse.data.products[index]
                                     .inFavorites = _ref.isfav;
                                 _ref.onclick();
                               })
@@ -123,19 +121,16 @@ class _ProductsWidgetState extends State<ProductsWidget> {
                               ),
                               onPressed: () {
                                 Favorites f = Favorites(
-                                  favoritesId: product
-                                      .productResponse.data.products[index].id,
-                                  favoritesImage: product
-                                      .productResponse.data.products[index].image,
-                                  favoritesName: product
-                                      .productResponse.data.products[index].name,
+                                  favoritesId:ProductProvider.productResponse.data.products[index].id,
+                                  favoritesImage:ProductProvider.productResponse.data.products[index].image,
+                                  favoritesName:ProductProvider.productResponse.data.products[index].name,
                                   favoritesPrice:
-                                      "${product.productResponse.data.products[index].price}",
+                                      "${ProductProvider.productResponse.data.products[index].price}",
                                 );
                                 _ref.addFav(f, context);
 
                                 print("${_ref.viewAllFavorites()}");
-                                product.productResponse.data.products[index]
+                                ProductProvider.productResponse.data.products[index]
                                     .inFavorites = _ref.isfav;
                                 _ref.onclick();
                               })

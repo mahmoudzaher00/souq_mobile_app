@@ -9,14 +9,12 @@ class CartViewModel extends ChangeNotifier{
   Cart postCart;
 
  static Cartgetmodel getCart;
-  var x = getCart.data.cartItems;
- // @override
- //  void notifyListeners() {
- //   x = getCart.data.cartItems;
- //    super.notifyListeners();
- //  }
 
-  void PostCartData({@required int id,}) {
+ var x = getCart.data.cartItems;
+
+  notifyListeners();
+
+    void PostCartData({@required int id,}) {
     DioHelper.postData(
         url: 'carts',
         data: {"product_id":id},
@@ -31,9 +29,10 @@ class CartViewModel extends ChangeNotifier{
         return postCart;
       }}).catchError((error){
       print(error.toString());
-      notifyListeners();
+
     });
     notifyListeners();
+
   }
 
 
@@ -47,7 +46,6 @@ class CartViewModel extends ChangeNotifier{
     ).then((value) {
       print(value.data);
       getCart = Cartgetmodel.fromJson(value.data);
-
       return getCart;
     }).catchError((error) {
       print(error.toString());
@@ -56,6 +54,5 @@ class CartViewModel extends ChangeNotifier{
 
 
   }
-
 
 }

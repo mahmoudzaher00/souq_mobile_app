@@ -3,18 +3,15 @@ import 'package:provider/provider.dart';
 import 'package:untitled1/view/screens/CartScreen.dart';
 import 'package:untitled1/view_model/Cart_View_Model.dart';
 
-
 class MainAppBar extends StatelessWidget with PreferredSizeWidget {
   final Size preferredSize;
 
   MainAppBar() : preferredSize = Size.fromHeight(70.0);
 
-
-
-
   @override
   Widget build(BuildContext context) {
     CartViewModel ref = Provider.of<CartViewModel>(context);
+    ref.x;
     return AppBar(
       iconTheme: IconThemeData(
         color: Colors.white,
@@ -33,7 +30,8 @@ class MainAppBar extends StatelessWidget with PreferredSizeWidget {
                     color: Colors.white,
                   ),
                   onPressed: () {
-                    Navigator.push(context, MaterialPageRoute(builder: (context) => CartScreen()));
+                    Navigator.push(context,
+                        MaterialPageRoute(builder: (context) => CartScreen()));
                   },
                 ),
               ),
@@ -42,12 +40,11 @@ class MainAppBar extends StatelessWidget with PreferredSizeWidget {
                   decoration: BoxDecoration(
                       color: Colors.red.shade900, shape: BoxShape.circle),
                   child: Padding(
-                    padding: const EdgeInsets.all(4.0),
-                    child: ref.x.length == null?Text("") :Text(
-                     "${ref.x.length}",
-                      style: TextStyle(color: Colors.white),
-                    )
-                  ),
+                      padding: const EdgeInsets.all(4.0),
+                      child: Text(
+                        "${ref.x.length}",
+                        style: TextStyle(color: Colors.white),
+                      )),
                 ),
               ),
             ]),

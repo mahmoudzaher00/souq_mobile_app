@@ -24,10 +24,11 @@ class _SignUpScreenState extends State<SignUpScreen> {
 
   final TextEditingController _phoneTextEditingController = TextEditingController();
 
+
   @override
   Widget build(BuildContext context) {
      final _model = Provider.of<SignupViewModel>(context);
-    // final ref = Provider.of<ProfileViewModel>(context);
+
 
      Future<void> sendRegisterData() async {
        if (await checkInternetConnectivity()) {

@@ -21,8 +21,6 @@ class _CartScreenState extends State<CartScreen> {
   @override
   Widget build(BuildContext context) {
     CartViewModel ref = Provider.of<CartViewModel>(context);
-    ProductProvider product = Provider.of<ProductProvider>(context);
-
 
     Future<void> removeCartData(int id) async {
       if (await checkInternetConnectivity()) {
@@ -60,7 +58,7 @@ class _CartScreenState extends State<CartScreen> {
                               height: MediaQuery.of(context).size.height * 0.16,
                               child: Row(
                                 mainAxisAlignment:
-                                    MainAxisAlignment.spaceBetween,
+                                MainAxisAlignment.spaceBetween,
                                 children: [
                                   Container(
                                       height: double.infinity,
@@ -95,8 +93,7 @@ class _CartScreenState extends State<CartScreen> {
                                       ),
                                       onPressed: () {
                                         ref.x.removeAt(i);
-                                        //removeCartData(CartViewModel.getCart.data.cartItems[i].product.id);
-                                        removeCartData(product.productResponse.data.products[i].id);
+                                        removeCartData(ProductProvider.productResponse.data.products[i].id);
 
                                       })
                                 ],

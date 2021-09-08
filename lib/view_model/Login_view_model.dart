@@ -1,12 +1,13 @@
 import 'package:flutter/material.dart';
 import 'package:untitled1/model/Login.dart';
 import 'package:untitled1/model/Profile.dart';
+import 'package:untitled1/view/screens/SplashScreentwo.dart';
 import 'package:untitled1/view/shared/Network/local/shared_pref.dart';
 import 'package:untitled1/view/shared/Network/remote/dio_helper.dart';
 import 'package:untitled1/view/shared/components/components.dart';
 import 'package:untitled1/view/shared/components/constants.dart';
-import 'package:untitled1/view/widgets/custom_bottomNavigationTwo.dart';
-
+import 'package:untitled1/view_model/Cart_View_Model.dart';
+import 'package:untitled1/view_model/Product_view_model.dart';
 import 'Profile_view_model.dart';
 
 class LoginViewModel extends ChangeNotifier{
@@ -40,7 +41,7 @@ Profile profileModel;
           token = loginmodel.data.token;
           ProfileViewModel.getProfileData();
           Navigator.pushAndRemoveUntil(context, MaterialPageRoute(
-              builder: (context) => CustomBottomNavigationBarTwo()), (
+              builder: (context) => SplashScreentwo()), (
               Route<dynamic> route) => false);
         });
         return loginmodel;

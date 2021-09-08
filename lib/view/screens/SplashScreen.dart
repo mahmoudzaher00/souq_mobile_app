@@ -1,6 +1,8 @@
 import 'dart:async';
 import 'package:flutter/material.dart';
 import 'package:untitled1/view/screens/LoginScreen.dart';
+import 'package:untitled1/view_model/Cart_View_Model.dart';
+import 'package:untitled1/view_model/Product_view_model.dart';
 import 'LoginScreen.dart';
 
 class SplashScreen extends StatefulWidget {
@@ -18,6 +20,7 @@ class _SplashScreenState extends State<SplashScreen> {
     super.initState();
     gotoNext();
   }
+
 
   @override
   Widget build(BuildContext context) {

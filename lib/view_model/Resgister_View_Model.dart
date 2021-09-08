@@ -1,13 +1,13 @@
 import 'package:flutter/material.dart';
-import 'package:path/path.dart';
-import 'package:provider/provider.dart';
 import 'package:untitled1/model/Profile.dart';
 import 'package:untitled1/model/Register.dart';
+import 'package:untitled1/view/screens/SplashScreentwo.dart';
 import 'package:untitled1/view/shared/Network/local/shared_pref.dart';
 import 'package:untitled1/view/shared/Network/remote/dio_helper.dart';
 import 'package:untitled1/view/shared/components/components.dart';
 import 'package:untitled1/view/shared/components/constants.dart';
-import 'package:untitled1/view/widgets/custom_bottomNavigationTwo.dart';
+import 'package:untitled1/view_model/Cart_View_Model.dart';
+import 'package:untitled1/view_model/Product_view_model.dart';
 
 import 'Profile_view_model.dart';
 
@@ -71,8 +71,10 @@ class SignupViewModel extends ChangeNotifier{
           ).then((value) {
             token = registerModel.data.token;
             ProfileViewModel.getProfileData();
+            CartViewModel.getCartData();
+            ProductProvider.fetchproduct();
             Navigator.pushAndRemoveUntil
-              (context, MaterialPageRoute(builder: (context)=> CustomBottomNavigationBarTwo()), (Route<dynamic> route) => false,);
+              (context, MaterialPageRoute(builder: (context)=> SplashScreentwo()), (Route<dynamic> route) => false,);
 
           });
           return registerModel;

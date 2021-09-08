@@ -2,6 +2,7 @@ import 'dart:async';
 import 'package:flutter/material.dart';
 import 'package:untitled1/view/widgets/custom_bottomNavigationTwo.dart';
 import 'package:untitled1/view_model/Cart_View_Model.dart';
+import 'package:untitled1/view_model/Product_view_model.dart';
 
 
 class SplashScreentwo extends StatefulWidget {
@@ -10,20 +11,17 @@ class SplashScreentwo extends StatefulWidget {
 }
 
 class _SplashScreentwoState extends State<SplashScreentwo> {
-  final int timerDurationMilliseconds = 1200;
-
-  final int navigateDurationMilliseconds = 3000;
-
   @override
   void initState() {
-    super.initState();
-    gotoNext();
+    ProductProvider.fetchproduct();
     CartViewModel.getCartData();
+    gotoNext();
+    super.initState();
   }
 
   @override
   Widget build(BuildContext context) {
-
+   // CartViewModel.x =CartViewModel.getCart.data.cartItems;
     return Scaffold(
       body: Container(
         width: MediaQuery.of(context).size.width,
@@ -36,7 +34,8 @@ class _SplashScreentwoState extends State<SplashScreentwo> {
   }
 
   gotoNext() {
-    Timer(Duration(seconds: 6), () {
+    Timer(Duration(seconds: 5), () {
+
       Navigator.pushReplacement(
           context, MaterialPageRoute(builder: (context) => CustomBottomNavigationBarTwo()));
     }

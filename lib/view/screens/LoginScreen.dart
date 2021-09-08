@@ -150,7 +150,6 @@ class LoginScreen extends StatelessWidget {
                         onPressed: () {
                           if (_form.currentState.validate()) {
                             sendLoginData();
-
                           }
                         },
                         child: Text(

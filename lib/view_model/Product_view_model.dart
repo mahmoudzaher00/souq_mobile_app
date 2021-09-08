@@ -7,16 +7,17 @@ import '../view/shared/Network/remote/api_service.dart';
 
 
 class ProductProvider extends ChangeNotifier {
-  ProductException productException;
-  Product productResponse;
+  static ProductException productException;
+  static Product productResponse;
 
-  fetchproduct() {
+static  fetchproduct() {
     ApiServices().fetchproduct().then((value) {
       if (value.statusCode == 200) {
         productResponse = Product.fromJson(json.decode(value.body));
+        print(productResponse.data.products);
       } else
         productException = ProductException.checkstatuscode(value.statusCode);
-      notifyListeners();
+
     });
   }
 }
