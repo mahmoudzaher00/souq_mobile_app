@@ -95,6 +95,7 @@ class _ProductsWidgetState extends State<ProductsWidget> {
                        color: Color.fromRGBO(42, 87, 128, 1),
                        ),
                        onPressed: () {
+
                              sendorRemoveCartData(product.productResponse.data.products[index].id);
                        }):
                       IconButton(

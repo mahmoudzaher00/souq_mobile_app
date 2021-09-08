@@ -1,26 +1,20 @@
 import 'package:flutter/material.dart';
+import 'package:provider/provider.dart';
 import 'package:untitled1/view/screens/CartScreen.dart';
 import 'package:untitled1/view_model/Cart_View_Model.dart';
 
 
-class MainAppBar extends StatefulWidget with PreferredSizeWidget {
+class MainAppBar extends StatelessWidget with PreferredSizeWidget {
   final Size preferredSize;
 
   MainAppBar() : preferredSize = Size.fromHeight(70.0);
 
-  @override
-  _MainAppBarState createState() => _MainAppBarState();
-}
 
-class _MainAppBarState extends State<MainAppBar> {
-  // void initState() {
-  //   CartViewModel.getCartData();
-  //   super.initState();
-  //
-  // }
+
 
   @override
   Widget build(BuildContext context) {
+    CartViewModel ref = Provider.of<CartViewModel>(context);
     return AppBar(
       iconTheme: IconThemeData(
         color: Colors.white,
@@ -49,8 +43,8 @@ class _MainAppBarState extends State<MainAppBar> {
                       color: Colors.red.shade900, shape: BoxShape.circle),
                   child: Padding(
                     padding: const EdgeInsets.all(4.0),
-                    child: CartViewModel.getCart.data.cartItems.length ==null?Text("") :Text(
-                     "${CartViewModel.getCart.data.cartItems.length}",
+                    child: ref.x.length == null?Text("") :Text(
+                     "${ref.x.length}",
                       style: TextStyle(color: Colors.white),
                     )
                   ),
