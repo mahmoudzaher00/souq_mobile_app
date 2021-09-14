@@ -71,7 +71,7 @@ class SignupViewModel extends ChangeNotifier{
           ).then((value) {
             token = registerModel.data.token;
             ProfileViewModel.getProfileData();
-            CartViewModel.getCartData();
+            //CartViewModel.getCartData();
             ProductProvider.fetchproduct();
             Navigator.pushAndRemoveUntil
               (context, MaterialPageRoute(builder: (context)=> SplashScreentwo()), (Route<dynamic> route) => false,);

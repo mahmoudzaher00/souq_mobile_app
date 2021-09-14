@@ -42,7 +42,7 @@ class MainAppBar extends StatelessWidget with PreferredSizeWidget {
                   child: Padding(
                       padding: const EdgeInsets.all(4.0),
                       child: Text(
-                        "${ref.x.length}",
+                        "",
                         style: TextStyle(color: Colors.white),
                       )),
                 ),

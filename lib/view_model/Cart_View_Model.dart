@@ -8,9 +8,9 @@ import 'package:untitled1/view/shared/components/components.dart';
 class CartViewModel extends ChangeNotifier{
   Cart postCart;
 
- static Cartgetmodel getCart;
+  Cartgetmodel getCart;
 
- var x = getCart.data.cartItems;
+ var x ;
 
   notifyListeners();
 
@@ -20,7 +20,7 @@ class CartViewModel extends ChangeNotifier{
         data: {"product_id":id},
         token:MySharedPreferences.getData(key:'token')
     ).then((value) {
-      print(value.data);
+     print(value.data);
       postCart = Cart.fromJson(value.data);
       if(postCart.status==true && postCart.status!=null){
         return postCart;
@@ -39,17 +39,20 @@ class CartViewModel extends ChangeNotifier{
 
 
 
-  static Future<Cartgetmodel> getCartData(){
+   void getCartData(){
     DioHelper.getData(
       url: "carts",
       token: MySharedPreferences.getData(key: 'token')
     ).then((value) {
       print(value.data);
+
       getCart = Cartgetmodel.fromJson(value.data);
+      x == getCart.data.cartItems;
       return getCart;
     }).catchError((error) {
       print(error.toString());
     });
+    notifyListeners();
 
 
 

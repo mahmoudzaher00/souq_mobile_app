@@ -9,7 +9,7 @@ import 'package:untitled1/view/widgets/ProductsWidget.dart';
 import 'package:untitled1/view/widgets/custom_text.dart';
 import 'package:easy_localization/easy_localization.dart';
 
-import 'package:untitled1/view_model/Profile_view_model.dart';
+
 class HomeScreen extends StatefulWidget {
 
   @override
@@ -31,7 +31,7 @@ class _HomeScreenState extends State<HomeScreen> {
     final statusBar = MediaQuery.of(context).padding.top;
     final appBar = AppBar().preferredSize.height;
     return Scaffold(
-      body: ProductProvider.productResponse.data.products !=null
+      body: ProductProvider.productResponse.data.data!=null
           ? SingleChildScrollView(
               child: Container(
                 height: MediaQuery.of(context).size.height - statusBar - appBar - 105,

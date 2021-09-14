@@ -2,7 +2,7 @@
   "login": "Email",
   "this_should_be_translated": "This should be translated to Arabic!",
   "enter_email": "Please Enter Your Email",
-  "cannot_less": "Email cannot be less than three characters!",
+  "cannot_less": "Email cannot be less than six characters!",
   "password": "Password",
   "enter_password": "Please Enter Your Password",
   "pass_cannot_less": "The password cannot be less than six digits!",

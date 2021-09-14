@@ -44,7 +44,7 @@ class _CartScreenState extends State<CartScreen> {
               Container(
                 height: MediaQuery.of(context).size.height * .86,
                 child: ListView.builder(
-                    itemCount: ref.x.length,
+                    itemCount: ref.getCart.data.cartItems.length,
                     itemBuilder: (context, i) {
                       return Card(
                           elevation: 10,
@@ -64,7 +64,7 @@ class _CartScreenState extends State<CartScreen> {
                                       height: double.infinity,
                                       width: 160,
                                       child: Image.network(
-                                        "${ref.x[i].product.image}",
+                                         "",
                                         //fit: BoxFit.fill,
                                         //scale: 1.5  ,
                                         // height: 50,
@@ -75,27 +75,27 @@ class _CartScreenState extends State<CartScreen> {
                                     mainAxisAlignment: MainAxisAlignment.center,
                                     children: [
                                       Text(
-                                        "${ref.x[i].product.name.substring(0,16)}",
+                                        "",
                                         style: TextStyle(fontSize: 16),
                                       ),
                                       Text(
-                                        "${ref.x[i].product.price}",
+                                        "",
                                         style: TextStyle(
                                             fontSize: 18,
                                             fontWeight: FontWeight.bold),
                                       ),
                                     ],
                                   ),
-                                  IconButton(
-                                      icon: Icon(
-                                        Icons.remove_shopping_cart,
-                                        color: Colors.red,
-                                      ),
-                                      onPressed: () {
-                                        ref.x.removeAt(i);
-                                        removeCartData(ProductProvider.productResponse.data.products[i].id);
-
-                                      })
+                                  // IconButton(
+                                  //     icon: Icon(
+                                  //       Icons.remove_shopping_cart,
+                                  //       color: Colors.red,
+                                  //     ),
+                                  //     onPressed: () {
+                                  //       ref.x.removeAt(i);
+                                  //       removeCartData(ProductProvider.productResponse.data.data[i].id);
+                                  //
+                                  //     })
                                 ],
                               ),
                             ),
