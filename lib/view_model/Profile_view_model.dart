@@ -19,7 +19,10 @@ class ProfileViewModel extends ChangeNotifier{
    });
 
   }
+
+
   UpdateProfile updateProfile;
+
   void getUpdateProfile({String name,String phone,String email}){
     DioHelper.putData(
         url: "update-profile",
@@ -36,7 +39,8 @@ class ProfileViewModel extends ChangeNotifier{
     }).catchError((error) {
       print(error.toString());
     });
-
   }
+
+
 }
 

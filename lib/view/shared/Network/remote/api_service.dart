@@ -11,15 +11,15 @@ class ApiServices{
     }else return _apiServices;
   }
   Future<http.Response>fetchproduct()async{
-    String Url='https://student.valuxapps.com/api/products';
+    String Url='https://student.valuxapps.com/api/home';
     Response response = await http.get(
         Uri.parse(Url),
-        // headers: {
-        //   'Authorization': MySharedPreferences.getData(key: "token"),
-        // }
+        headers: {
+          'Authorization': MySharedPreferences.getData(key: "token"),
+        }
         );
     
-   // print(response.body);
+    print(response.body);
     return response;
   }
 }

@@ -10,7 +10,7 @@ class Cartgetmodel {
   Data data;
 
   Cartgetmodel.fromJson(Map<String, dynamic> json){
-    status= json["status"] != null ? json['status'] : null;
+    status= json["status"] ;
     message= json["message"];
     data=  json['data'] != null ? Data.fromJson(json['data']) : null;
   }

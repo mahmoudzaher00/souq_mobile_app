@@ -6,15 +6,12 @@ import 'package:untitled1/view/shared/Network/remote/dio_helper.dart';
 import 'package:untitled1/view/shared/components/components.dart';
 
 class CartViewModel extends ChangeNotifier{
+
+
+
+
   Cart postCart;
-
-  Cartgetmodel getCart;
-
- var x ;
-
-  notifyListeners();
-
-    void PostCartData({@required int id,}) {
+  void PostCartData({@required int id,}) {
     DioHelper.postData(
         url: 'carts',
         data: {"product_id":id},
@@ -38,24 +35,28 @@ class CartViewModel extends ChangeNotifier{
 
 
 
+  Cartgetmodel getCart;
 
-   void getCartData(){
+   Future<void> getCartData(){
     DioHelper.getData(
       url: "carts",
       token: MySharedPreferences.getData(key: 'token')
-    ).then((value) {
-      print(value.data);
-
-      getCart = Cartgetmodel.fromJson(value.data);
-      x == getCart.data.cartItems;
-      return getCart;
-    }).catchError((error) {
+    ).then((value) async {
+      print("${value.data} + mooooooooooooooo");
+      getCart =await Cartgetmodel.fromJson(value.data);
+      if(getCart.status==true && getCart.status!=null){
+        return getCart;
+      }else if(getCart.status==false||getCart.status==null){
+        makeToast(getCart.message);
+        return getCart;
+      }}).catchError((error){
       print(error.toString());
+
     });
     notifyListeners();
 
-
-
   }
+
+  notifyListeners();
 
 }

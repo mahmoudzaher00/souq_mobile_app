@@ -1,59 +1,31 @@
-// To parse this JSON data, do
-//
-//     final product = productFromJson(jsonString);
-
-import 'dart:convert';
-
-Product productFromJson(String str) => Product.fromJson(json.decode(str));
-
-String productToJson(Product data) => json.encode(data.toJson());
+import 'dart:core';
 
 class Product {
-  Product({
-    this.status,
-    this.message,
-    this.data,
-  });
-
   bool status;
   dynamic message;
   Data data;
 
-  factory Product.fromJson(Map<String, dynamic> json) => Product(
-    status: json["status"],
-    message: json["message"],
-    data: Data.fromJson(json["data"]),
-  );
+   Product.fromJson(Map<String, dynamic> json){
+     status=json["status"];
+     message= json["message"];
+     data= json["data"] != null ? Data.fromJson(json["data"]) : null ;
+   }
 
-  Map<String, dynamic> toJson() => {
-    "status": status,
-    "message": message,
-    "data": data.toJson(),
-  };
+
 }
 
 class Data {
-  Data({
-    this.banners,
-    this.products,
-    this.ad,
-  });
-
   List<Banner> banners;
   List<ProductElement> products;
   String ad;
 
-  factory Data.fromJson(Map<String, dynamic> json) => Data(
-    banners: List<Banner>.from(json["banners"].map((x) => Banner.fromJson(x))),
-    products: List<ProductElement>.from(json["products"].map((x) => ProductElement.fromJson(x))),
-    ad: json["ad"],
-  );
+   Data.fromJson(Map<String, dynamic> json) {
+    banners= List<Banner>.from(json["banners"].map((x) => Banner.fromJson(x)));
+    products= List<ProductElement>.from(json["products"].map((x) => ProductElement.fromJson(x)));
+    ad= json["ad"];
+   }
 
-  Map<String, dynamic> toJson() => {
-    "banners": List<dynamic>.from(banners.map((x) => x.toJson())),
-    "products": List<dynamic>.from(products.map((x) => x.toJson())),
-    "ad": ad,
-  };
+
 }
 
 class Banner {
@@ -85,19 +57,6 @@ class Banner {
 }
 
 class ProductElement {
-  ProductElement({
-    this.id,
-    this.price,
-    this.oldPrice,
-    this.discount,
-    this.image,
-    this.name,
-    this.description,
-    this.images,
-    this.inFavorites,
-    this.inCart,
-  });
-
   int id;
   double price;
   double oldPrice;
@@ -109,29 +68,16 @@ class ProductElement {
   bool inFavorites;
   bool inCart;
 
-  factory ProductElement.fromJson(Map<String, dynamic> json) => ProductElement(
-    id: json["id"],
-    price: json["price"].toDouble(),
-    oldPrice: json["old_price"].toDouble(),
-    discount: json["discount"],
-    image: json["image"],
-    name: json["name"],
-    description: json["description"],
-    images: List<String>.from(json["images"].map((x) => x)),
-    inFavorites: json["in_favorites"],
-    inCart: json["in_cart"],
-  );
+   ProductElement.fromJson(Map<String, dynamic> json){
+    price= json["price"].toDouble();
+    oldPrice= json["old_price"].toDouble();
+    discount= json["discount"];
+    image= json["image"];
+    name= json["name"];
+    description= json["description"];
+    images= List<String>.from(json["images"].map((x) => x));
+    inFavorites= json["in_favorites"];
+    inCart= json["in_cart"];
+  }
 
-  Map<String, dynamic> toJson() => {
-    "id": id,
-    "price": price,
-    "old_price": oldPrice,
-    "discount": discount,
-    "image": image,
-    "name": name,
-    "description": description,
-    "images": List<dynamic>.from(images.map((x) => x)),
-    "in_favorites": inFavorites,
-    "in_cart": inCart,
-  };
 }

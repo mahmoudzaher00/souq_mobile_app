@@ -10,8 +10,8 @@ class MainAppBar extends StatelessWidget with PreferredSizeWidget {
 
   @override
   Widget build(BuildContext context) {
-    CartViewModel ref = Provider.of<CartViewModel>(context);
-    ref.x;
+
+
     return AppBar(
       iconTheme: IconThemeData(
         color: Colors.white,

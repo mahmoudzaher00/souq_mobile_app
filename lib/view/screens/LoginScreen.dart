@@ -27,7 +27,7 @@ class LoginScreen extends StatelessWidget {
             email: _emailTextEditingController.text,
             password: _passwordTextEditingController.text,
             context: context);
-        //ref.getProfileData();
+          //_ref.getProfileData();
 
 
       }

@@ -1,7 +1,5 @@
 import 'package:flutter/material.dart';
-import 'package:provider/provider.dart';
 import 'package:untitled1/translations/locale_keys.g.dart';
-import 'package:untitled1/view_model/Cart_View_Model.dart';
 import 'package:untitled1/view_model/Product_view_model.dart';
 import 'package:untitled1/view/widgets/CategoriesWidget.dart';
 import 'package:untitled1/view/widgets/ImageSlider.dart';
@@ -18,20 +16,13 @@ class HomeScreen extends StatefulWidget {
 
 class _HomeScreenState extends State<HomeScreen> {
 
-  // @override
-  // void initState() {
-  //   ProfileViewModel.getProfileData();
-  //   super.initState();
-  // }
-
   @override
   Widget build(BuildContext context) {
-    // CartViewModel ref = Provider.of<CartViewModel>(context);
-    // ref.x=CartViewModel.getCart.data.cartItems;
+
     final statusBar = MediaQuery.of(context).padding.top;
     final appBar = AppBar().preferredSize.height;
     return Scaffold(
-      body: ProductProvider.productResponse.data.data!=null
+      body: ProductProvider.productResponse.data!= null
           ? SingleChildScrollView(
               child: Container(
                 height: MediaQuery.of(context).size.height - statusBar - appBar - 105,
