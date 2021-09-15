@@ -1,6 +1,5 @@
 import 'package:flutter/material.dart';
 import 'package:untitled1/translations/locale_keys.g.dart';
-import 'package:untitled1/view_model/Product_view_model.dart';
 import 'package:untitled1/view/widgets/CategoriesWidget.dart';
 import 'package:untitled1/view/widgets/ImageSlider.dart';
 import 'package:untitled1/view/widgets/ProductsWidget.dart';
@@ -21,9 +20,9 @@ class _HomeScreenState extends State<HomeScreen> {
 
     final statusBar = MediaQuery.of(context).padding.top;
     final appBar = AppBar().preferredSize.height;
+
     return Scaffold(
-      body: ProductProvider.productResponse.data!= null
-          ? SingleChildScrollView(
+      body: SingleChildScrollView(
               child: Container(
                 height: MediaQuery.of(context).size.height - statusBar - appBar - 105,
                 width: MediaQuery.of(context).size.width,
@@ -65,7 +64,6 @@ class _HomeScreenState extends State<HomeScreen> {
                 ]),
               ),
             )
-          : Center(child: CircularProgressIndicator()),
     );
   }
 }

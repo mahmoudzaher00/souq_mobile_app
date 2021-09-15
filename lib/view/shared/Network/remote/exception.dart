@@ -11,16 +11,3 @@ class ProductException{
 }
 
 }
-// class WeatherException{
-//   String message;
-//   WeatherException({this.message});
-//   WeatherException.checkstatuscode(String statuscode){
-//     switch(statuscode){
-//       case '404':
-//         throw WeatherException(message: 'file not found');
-//       case '500':
-//         throw WeatherException(message: 'Internal server error');
-//     }
-//   }
-//
-// }

@@ -89,7 +89,7 @@ class CartScreen extends StatelessWidget {
                                           color: Colors.red,
                                         ),
                                         onPressed: () {
-                                          removeCartData(ProductProvider.productResponse.data.products[i].id);
+                                         // removeCartData(ProductProvider.productResponse.data.products[i].id);
                                         })
                                   ],
                                 ),

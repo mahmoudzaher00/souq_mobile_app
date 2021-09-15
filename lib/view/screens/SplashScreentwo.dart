@@ -2,7 +2,6 @@ import 'dart:async';
 import 'package:flutter/material.dart';
 import 'package:provider/provider.dart';
 import 'package:untitled1/view/widgets/custom_bottomNavigationTwo.dart';
-import 'package:untitled1/view_model/Cart_View_Model.dart';
 import 'package:untitled1/view_model/Product_view_model.dart';
 import 'package:untitled1/view_model/Profile_view_model.dart';
 
@@ -13,27 +12,21 @@ class SplashScreentwo extends StatefulWidget {
 }
 
 class _SplashScreentwoState extends State<SplashScreentwo> {
+var _isInit = true;
 
-
-
-
-  @override
-  void initState() {
-    ProductProvider.fetchproduct();
-    ProfileViewModel.getProfileData();
-    gotoNext();
-    super.initState();
+@override
+  void didChangeDependencies() {
+    if(_isInit){
+      ProfileViewModel.getProfileData();
+      Provider.of<ProductProvider>(context).fetchProduct();
+      gotoNext();
+    }
+    _isInit = false;
+    super.didChangeDependencies();
   }
-
   @override
   Widget build(BuildContext context) {
-    CartViewModel cartModel = Provider.of<CartViewModel>(context);
-    cartModel.getCartData();
-
-
-
-
-    return Scaffold(
+  return Scaffold(
       body: Container(
         width: MediaQuery.of(context).size.width,
         height: MediaQuery.of(context).size.height,
@@ -45,7 +38,7 @@ class _SplashScreentwoState extends State<SplashScreentwo> {
   }
 
   gotoNext() {
-    Timer(Duration(seconds: 5), () {
+    Timer(Duration(seconds: 3), () {
       Navigator.pushReplacement(
           context, MaterialPageRoute(builder: (context) => CustomBottomNavigationBarTwo()));
     }
