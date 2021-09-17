@@ -35,7 +35,7 @@ void main() async {
 
 
     if (token != null) {
-      widget = SplashScreentwo();
+      widget = SplashScreenTwo();
     } else {
       widget = SplashScreen();
     }

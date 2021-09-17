@@ -13,9 +13,8 @@ class ProductProvider extends ChangeNotifier {
     ApiServices().fetchproduct().then((value) {
       if (value.statusCode == 200) {
         productResponse = Product.fromJson(json.decode(value.body));
-        print(productResponse.data.products.length);
-      } else
-        productException = ProductException.checkstatuscode(value.statusCode);
+
+      } else productException = ProductException.checkstatuscode(value.statusCode);
       notifyListeners();
     });
 

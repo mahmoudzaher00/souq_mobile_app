@@ -2,23 +2,27 @@ import 'dart:async';
 import 'package:flutter/material.dart';
 import 'package:provider/provider.dart';
 import 'package:untitled1/view/widgets/custom_bottomNavigationTwo.dart';
+import 'package:untitled1/view_model/Cart_View_Model.dart';
 import 'package:untitled1/view_model/Product_view_model.dart';
 import 'package:untitled1/view_model/Profile_view_model.dart';
 
 
-class SplashScreentwo extends StatefulWidget {
+class SplashScreenTwo extends StatefulWidget {
   @override
-  _SplashScreentwoState createState() => _SplashScreentwoState();
+  _SplashScreenTwoState createState() => _SplashScreenTwoState();
 }
 
-class _SplashScreentwoState extends State<SplashScreentwo> {
+class _SplashScreenTwoState extends State<SplashScreenTwo> {
 var _isInit = true;
 
 @override
   void didChangeDependencies() {
     if(_isInit){
-      ProfileViewModel.getProfileData();
-      Provider.of<ProductProvider>(context).fetchProduct();
+     Provider.of<ProductProvider>(context).fetchProduct();
+     ProfileViewModel.getProfileData();
+     Provider.of<CartViewModel>(context).getCartData();
+
+
       gotoNext();
     }
     _isInit = false;

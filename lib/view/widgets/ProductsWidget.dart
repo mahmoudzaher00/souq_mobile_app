@@ -20,10 +20,10 @@ class ProductsWidget extends StatelessWidget {
     Future<void> sendorRemoveCartData(var id) async {
       if (await checkInternetConnectivity()) {
         cartModel.PostCartData(id:id);
-        if(cartModel.postCart.status == true && cartModel.postCart.status != null){
+        if(cartModel.postCart != null ){
           makeToast(cartModel.postCart.message);
-        }else if (cartModel.postCart.status == false){
-          makeToast(cartModel.postCart.message);
+        }else {
+          makeToast("Failed to send data ");
         }
       }
       else{

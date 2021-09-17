@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:provider/provider.dart';
 import 'package:untitled1/view/screens/CartScreen.dart';
+import 'package:untitled1/view/screens/test22.dart';
 import 'package:untitled1/view_model/Cart_View_Model.dart';
 
 class MainAppBar extends StatelessWidget with PreferredSizeWidget {
@@ -31,7 +32,7 @@ class MainAppBar extends StatelessWidget with PreferredSizeWidget {
                   ),
                   onPressed: () {
                     Navigator.push(context,
-                        MaterialPageRoute(builder: (context) => CartScreen()));
+                        MaterialPageRoute(builder: (context) => Test22()));
                   },
                 ),
               ),

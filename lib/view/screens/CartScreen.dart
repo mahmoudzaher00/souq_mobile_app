@@ -6,11 +6,13 @@ import 'package:untitled1/view_model/Cart_View_Model.dart';
 import 'package:easy_localization/easy_localization.dart';
 import 'package:untitled1/view_model/Product_view_model.dart';
 
+
 class CartScreen extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
     CartViewModel ref = Provider.of<CartViewModel>(context);
+    ProductProvider ProRef = Provider.of<ProductProvider>(context);
 
     Future<void> removeCartData(int id) async {
       if (await checkInternetConnectivity()) {
@@ -26,7 +28,7 @@ class CartScreen extends StatelessWidget {
 
 
       return Scaffold(
-        body: ref.getCart.data.cartItems != null ?
+        body: ref.getCart != null ?
         SingleChildScrollView(
           child: Container(
             width: 300,
@@ -89,7 +91,7 @@ class CartScreen extends StatelessWidget {
                                           color: Colors.red,
                                         ),
                                         onPressed: () {
-                                         // removeCartData(ProductProvider.productResponse.data.products[i].id);
+                                          removeCartData(ProRef.productResponse.data.products[i].id);
                                         })
                                   ],
                                 ),

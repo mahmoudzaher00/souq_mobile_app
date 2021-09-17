@@ -19,7 +19,7 @@ class ApiServices{
         }
         );
     
-    print(response.body);
+   // print(response.body);
     return response;
   }
 }

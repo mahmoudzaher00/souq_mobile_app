@@ -41,7 +41,7 @@ Profile profileModel;
           token = loginmodel.data.token;
           ProfileViewModel.getProfileData();
           Navigator.pushAndRemoveUntil(context, MaterialPageRoute(
-              builder: (context) => SplashScreentwo()), (
+              builder: (context) => SplashScreenTwo()), (
               Route<dynamic> route) => false);
         });
         return loginmodel;
